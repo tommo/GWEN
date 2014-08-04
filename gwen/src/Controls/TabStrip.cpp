@@ -58,7 +58,7 @@ bool TabStrip::DragAndDrop_CanAcceptPackage( Gwen::DragAndDrop::Package* pPackag
 	if ( !m_bAllowReorder )
 	{ return false; }
 
-	if ( pPackage->name == "TabButtonMove" )
+	if ( pPackage->name == GWEN_T("TabButtonMove") )
 	{ return true; }
 
 	return false;

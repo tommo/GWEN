@@ -50,7 +50,7 @@ Gwen::TextObject ControlList::GetValue()
 		return ( *it )->GetValue();
 	}
 
-	return "";
+	return GWEN_T("");
 }
 
 void ControlList::SetValue( const Gwen::TextObject & value )

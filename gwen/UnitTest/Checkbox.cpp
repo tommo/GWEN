@@ -16,7 +16,7 @@ class Checkbox : public GUnit
 			check->onCheckChanged.Add( this, &Checkbox::OnCheckChanged );
 			Gwen::Controls::CheckBoxWithLabel* labeled = new Gwen::Controls::CheckBoxWithLabel( this );
 			labeled->SetPos( 10, 30 );
-			labeled->Label()->SetText( "Labeled CheckBox" );
+			labeled->Label()->SetText( GWEN_T("Labeled CheckBox") );
 			labeled->Checkbox()->onChecked.Add( this, &Checkbox::OnChecked );
 			labeled->Checkbox()->onUnChecked.Add( this, &Checkbox::OnUnchecked );
 			labeled->Checkbox()->onCheckChanged.Add( this, &Checkbox::OnCheckChanged );
@@ -29,21 +29,21 @@ class Checkbox : public GUnit
 
 		void OnChecked( Controls::Base* pControl )
 		{
-			UnitPrint( L"Checkbox Checked (using 'OnChecked' event)" );
+			UnitPrint( GWEN_T("Checkbox Checked (using 'OnChecked' event)") );
 		}
 
 		void OnUnchecked( Controls::Base* pControl )
 		{
-			UnitPrint( L"Checkbox Unchecked (using 'OnUnchecked' event)" );
+			UnitPrint( GWEN_T("Checkbox Unchecked (using 'OnUnchecked' event)") );
 		}
 
 		void OnCheckChanged( Controls::Base* pControl )
 		{
-			UnitPrint( L"Checkbox CheckChanged (using 'OnCheckChanged' event)" );
+			UnitPrint( GWEN_T("Checkbox CheckChanged (using 'OnCheckChanged' event)") );
 		}
 
 };
 
 
 
-DEFINE_UNIT_TEST( Checkbox, L"Checkbox" );
+DEFINE_UNIT_TEST( Checkbox, GWEN_T("Checkbox") );

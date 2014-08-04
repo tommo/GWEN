@@ -60,7 +60,7 @@ void ProgressBar::SetValue( float val )
 	if ( m_bAutoLabel )
 	{
 		int displayVal = m_fProgress * 100;
-		SetText( Utility::ToString( displayVal ) + "%" );
+		SetText( Utility::ToString( displayVal ) + GWEN_T("%") );
 	}
 }
 

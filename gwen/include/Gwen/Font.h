@@ -23,7 +23,7 @@ namespace Gwen
 		Font()
 		{
 			data = NULL;
-			facename = L"Arial";
+			facename = GWEN_T("Arial");
 			size = 10;
 			realsize = 0;
 			bold = false;

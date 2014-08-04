@@ -31,7 +31,12 @@ namespace Gwen
 		void Allegro::LoadFont( Gwen::Font* font )
 		{
 			font->realsize = font->size * Scale();
-			std::string fontName = Utility::UnicodeToString( font->facename );
+
+#ifdef GWEN_NARROWCHAR
+			std::string fontName = font->facename;
+#else
+			std::string fontName = Gwen::Utility::WideStringToNarrow( font->facename );
+#endif	
 
 			if ( fontName.find( ".ttf" ) == std::string::npos )
 			{
@@ -54,8 +59,13 @@ namespace Gwen
 		void Allegro::RenderText( Gwen::Font* pFont, Gwen::Point pos, const Gwen::UnicodeString & text )
 		{
 			Translate( pos.x, pos.y );
+#ifdef GWEN_NARROWCHAR
+			const std::string &txt = text;
+#else
+			std::string txt = Gwen::Utility::WideStringToNarrow( text );
+#endif
 			ALLEGRO_FONT* afont = ( ALLEGRO_FONT* ) pFont->data;
-			al_draw_text( afont, m_Color, pos.x, pos.y, ALLEGRO_ALIGN_LEFT, Utility::UnicodeToString( text ).c_str() );
+			al_draw_text( afont, m_Color, pos.x, pos.y, ALLEGRO_ALIGN_LEFT, txt.c_str() );
 		}
 
 		Gwen::Point Allegro::MeasureText( Gwen::Font* pFont, const Gwen::UnicodeString & text )
@@ -72,8 +82,14 @@ namespace Gwen
 
 			if ( !afont ) { return Gwen::Point( 0, 0 ); }
 
+#ifdef GWEN_NARROWCHAR
+			const std::string &txt = text;
+#else
+			std::string txt = Gwen::Utility::WideStringToNarrow( text );
+#endif	
+
 			int bx, by, tw, th;
-			al_get_text_dimensions( afont, Utility::UnicodeToString( text ).c_str(), &bx, &by, &tw, &th );
+			al_get_text_dimensions( afont, txt.c_str(), &bx, &by, &tw, &th );
 			return Gwen::Point( tw, th );
 		}
 

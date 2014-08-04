@@ -15,8 +15,8 @@ namespace Gwen
 				{
 				}
 
-				virtual Gwen::String Name() { return "CheckBox"; }
-				virtual Gwen::String BaseName() { return "Base"; }
+				virtual Gwen::String Name() { return GWEN_T("CheckBox"); }
+				virtual Gwen::String BaseName() { return GWEN_T("Base"); }
 
 				virtual Gwen::Controls::Base* CreateInstance( Gwen::Controls::Base* parent )
 				{
@@ -33,7 +33,7 @@ namespace Gwen
 		{
 			class CheckboxText: public ControlFactory::Property
 			{
-					GWEN_CONTROL_FACTORY_PROPERTY( CheckboxText, "The text, or label of the control" );
+					GWEN_CONTROL_FACTORY_PROPERTY( CheckboxText, GWEN_T("The text, or label of the control") );
 
 					UnicodeString GetValue( Controls::Base* ctrl )
 					{
@@ -57,8 +57,8 @@ namespace Gwen
 					AddProperty( new Properties::CheckboxText() );
 				}
 
-				virtual Gwen::String Name()     { return "CheckBoxWithLabel"; }
-				virtual Gwen::String BaseName() { return "Base"; }
+				virtual Gwen::String Name()     { return GWEN_T("CheckBoxWithLabel"); }
+				virtual Gwen::String BaseName() { return GWEN_T("Base"); }
 
 				virtual Gwen::Controls::Base* CreateInstance( Gwen::Controls::Base* parent )
 				{

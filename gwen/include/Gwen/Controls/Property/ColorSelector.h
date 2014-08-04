@@ -17,7 +17,7 @@ namespace Gwen
 					GWEN_CONTROL_INLINE( ColourButton, Button )
 					{
 						m_Color = Colors::Black;
-						SetText( "" );
+						SetText( GWEN_T("") );
 					}
 
 					void Render( Skin::Base* skin )
@@ -65,8 +65,8 @@ namespace Gwen
 					{
 						Gwen::Controls::HSVColorPicker* picker = gwen_cast<Gwen::Controls::HSVColorPicker> ( control );
 						Gwen::String colorStr;
-						colorStr += Gwen::Utility::ToString( ( int ) picker->GetColor().r ) + " ";
-						colorStr += Gwen::Utility::ToString( ( int ) picker->GetColor().g ) + " ";
+						colorStr += Gwen::Utility::ToString( ( int ) picker->GetColor().r ) + GWEN_T(" ");
+						colorStr += Gwen::Utility::ToString( ( int ) picker->GetColor().g ) + GWEN_T(" ");
 						colorStr += Gwen::Utility::ToString( ( int ) picker->GetColor().b );
 						m_TextBox->SetText( colorStr );
 						DoChanged();

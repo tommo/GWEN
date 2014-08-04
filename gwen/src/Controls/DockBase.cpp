@@ -123,11 +123,11 @@ int DockBase::GetDroppedTabDirection( int x, int y )
 bool DockBase::DragAndDrop_CanAcceptPackage( Gwen::DragAndDrop::Package* pPackage )
 {
 	// A TAB button dropped
-	if ( pPackage->name == "TabButtonMove" )
+	if ( pPackage->name == GWEN_T("TabButtonMove") )
 	{ return true; }
 
 	// a TAB window dropped
-	if ( pPackage->name == "TabWindowMove" )
+	if ( pPackage->name == GWEN_T("TabWindowMove") )
 	{ return true; }
 
 	return false;
@@ -150,7 +150,7 @@ bool DockBase::DragAndDrop_HandleDrop( Gwen::DragAndDrop::Package* pPackage, int
 		else { pDock->SendToBack(); }
 	}
 
-	if ( pPackage->name == "TabButtonMove" )
+	if ( pPackage->name == GWEN_T("TabButtonMove") )
 	{
 		TabButton* pTabButton = gwen_cast<TabButton> ( DragAndDrop::SourceControl );
 
@@ -159,7 +159,7 @@ bool DockBase::DragAndDrop_HandleDrop( Gwen::DragAndDrop::Package* pPackage, int
 		pAddTo->AddPage( pTabButton );
 	}
 
-	if ( pPackage->name == "TabWindowMove" )
+	if ( pPackage->name == GWEN_T("TabWindowMove") )
 	{
 		DockedTabControl* pTabControl = gwen_cast<DockedTabControl> ( DragAndDrop::SourceControl );
 

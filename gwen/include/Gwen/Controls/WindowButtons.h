@@ -23,7 +23,7 @@ namespace Gwen
 				{
 					m_pWindow = NULL;
 					SetSize( 31, 31 );
-					SetText( "" );
+					SetText( GWEN_T("") );
 				}
 
 				virtual void Render( Skin::Base* skin )

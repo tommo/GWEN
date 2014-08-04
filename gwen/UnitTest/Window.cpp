@@ -11,13 +11,13 @@ class Window : public GUnit
 		{
 			{
 				Controls::Button* pButton = new Controls::Button( this );
-				pButton->SetText( "Normal Window" );
+				pButton->SetText( GWEN_T("Normal Window") );
 				pButton->onPress.Add( this, &ThisClass::OpenWindow );
 				pButton->SetPos( 0, 0 );
 			}
 			{
 				Controls::Button* pButton = new Controls::Button( this );
-				pButton->SetText( "Modal Window" );
+				pButton->SetText( GWEN_T("Modal Window") );
 				pButton->onPress.Add( this, &ThisClass::OpenModalWindow );
 				pButton->SetPos( 0, 32 );
 			}
@@ -27,7 +27,7 @@ class Window : public GUnit
 		void OpenWindow()
 		{
 			Controls::WindowControl* pWindow = new Controls::WindowControl( GetCanvas() );
-			pWindow->SetTitle( Utility::Format( L"Window %i", m_iWindowCount ) );
+			pWindow->SetTitle( Utility::Format( GWEN_T("Window %i"), m_iWindowCount ) );
 			pWindow->SetSize( 200 + rand() % 100, 200 + rand() % 100 );
 			pWindow->SetPos( rand() % 700, rand() % 400 );
 			pWindow->SetDeleteOnClose( true );
@@ -37,7 +37,7 @@ class Window : public GUnit
 		void OpenModalWindow()
 		{
 			Controls::WindowControl* pWindow = new Controls::WindowControl( GetCanvas() );
-			pWindow->SetTitle( Utility::Format( L"Window %i", m_iWindowCount ) );
+			pWindow->SetTitle( Utility::Format( GWEN_T("Window %i"), m_iWindowCount ) );
 			pWindow->SetSize( 200 + rand() % 100, 200 + rand() % 100 );
 			pWindow->MakeModal( true );
 			pWindow->Position( Pos::Center );
@@ -51,4 +51,4 @@ class Window : public GUnit
 
 
 
-DEFINE_UNIT_TEST( Window, L"Window" );
+DEFINE_UNIT_TEST( Window, GWEN_T("Window") );

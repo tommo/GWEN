@@ -39,21 +39,21 @@ namespace Gwen
 #pragma warning( disable : 4996 )
 #endif
 
-		inline String UnicodeToString( const UnicodeString & strIn )
+		inline std::string WideStringToNarrow( const std::wstring& strIn )
 		{
-			if ( !strIn.length() ) { return ""; }
+			if ( strIn.empty() ) { return ""; }
 
-			String temp( strIn.length(), ( char ) 0 );
+			std::string temp( strIn.length(), ( char ) 0 );
 			std::use_facet< std::ctype<wchar_t> > ( std::locale() ). \
 			narrow( &strIn[0], &strIn[0] + strIn.length(), ' ', &temp[0] );
 			return temp;
 		}
 
-		inline UnicodeString StringToUnicode( const String & strIn )
+		inline std::wstring NarrowStringToWide( const std::string & strIn )
 		{
-			if ( !strIn.length() ) { return L""; }
+			if ( strIn.empty() ) { return L""; }
 
-			UnicodeString temp( strIn.length(), ( wchar_t ) 0 );
+			std::wstring temp( strIn.length(), ( wchar_t ) 0 );
 			std::use_facet< std::ctype<wchar_t> > ( std::locale() ). \
 			widen( &strIn[0], &strIn[0] + strIn.length(), &temp[0] );
 			return temp;
@@ -77,7 +77,7 @@ namespace Gwen
 		template <class T>
 		String ToString( const T & object )
 		{
-			std::ostringstream os;
+			UnicodeOStringStream os;
 			os << object;
 			return os.str();
 		}
@@ -109,7 +109,7 @@ namespace Gwen
 			return inside;
 		}
 
-		GWEN_EXPORT UnicodeString Format( const wchar_t* fmt, ... );
+		GWEN_EXPORT UnicodeString Format( const UnicodeChar * fmt, ... );
 
 		namespace Strings
 		{
@@ -117,7 +117,6 @@ namespace Gwen
 			typedef std::vector<Gwen::UnicodeString> UnicodeList;
 
 			GWEN_EXPORT void Split( const Gwen::String & str, const Gwen::String & seperator, Strings::List & outbits, bool bLeaveSeperators = false );
-			GWEN_EXPORT void Split( const Gwen::UnicodeString & str, const Gwen::UnicodeString & seperator, Strings::UnicodeList & outbits, bool bLeaveSeperators = false );
 			GWEN_EXPORT bool Wildcard( const Gwen::TextObject & strWildcard, const Gwen::TextObject & strHaystack );
 
 			GWEN_EXPORT void ToUpper( Gwen::UnicodeString & str );
@@ -136,7 +135,6 @@ namespace Gwen
 				GWEN_EXPORT bool Bool( const Gwen::String & str );
 				GWEN_EXPORT int Int( const Gwen::String & str );
 				GWEN_EXPORT float Float( const Gwen::String & str );
-				GWEN_EXPORT float Float( const Gwen::UnicodeString & str );
 				GWEN_EXPORT bool Floats( const Gwen::String & str, float* f, size_t iCount );
 			}
 		}

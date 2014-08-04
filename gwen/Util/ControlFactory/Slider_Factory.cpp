@@ -15,18 +15,18 @@ namespace Gwen
 
 			class Min: public ControlFactory::Property
 			{
-					GWEN_CONTROL_FACTORY_PROPERTY( Min, "The minimum value" );
+					GWEN_CONTROL_FACTORY_PROPERTY( Min, GWEN_T("The minimum value") );
 
 					UnicodeString GetValue( Controls::Base* ctrl )
 					{
-						return Gwen::Utility::Format( L"%f", ( int ) gwen_cast<Controls::Slider> ( ctrl )->GetMin() );
+						return Gwen::Utility::Format( GWEN_T("%f"), ( int ) gwen_cast<Controls::Slider> ( ctrl )->GetMin() );
 					}
 
 					void SetValue( Controls::Base* ctrl, const UnicodeString & str )
 					{
 						float val;
 
-						if ( swscanf( str.c_str(), L"%f", &val ) != 1 ) { return; }
+						if ( GWEN_SSCANF( str.c_str(), GWEN_T("%f"), &val ) != 1 ) { return; }
 
 						if ( val == gwen_cast<Controls::Slider> ( ctrl )->GetMin() ) { return; }
 
@@ -37,18 +37,18 @@ namespace Gwen
 
 			class Max: public ControlFactory::Property
 			{
-					GWEN_CONTROL_FACTORY_PROPERTY( Max, "The max value" );
+					GWEN_CONTROL_FACTORY_PROPERTY( Max, GWEN_T("The max value") );
 
 					UnicodeString GetValue( Controls::Base* ctrl )
 					{
-						return Gwen::Utility::Format( L"%f", ( int ) gwen_cast<Controls::Slider> ( ctrl )->GetMax() );
+						return Gwen::Utility::Format( GWEN_T("%f"), ( int ) gwen_cast<Controls::Slider> ( ctrl )->GetMax() );
 					}
 
 					void SetValue( Controls::Base* ctrl, const UnicodeString & str )
 					{
 						float val;
 
-						if ( swscanf( str.c_str(), L"%f", &val ) != 1 ) { return; }
+						if ( GWEN_SSCANF( str.c_str(), GWEN_T("%f"), &val ) != 1 ) { return; }
 
 						if ( val == gwen_cast<Controls::Slider> ( ctrl )->GetMax() ) { return; }
 
@@ -68,8 +68,8 @@ namespace Gwen
 					AddProperty( new Properties::Max() );
 				}
 
-				virtual Gwen::String Name() { return "HorizontalSlider"; }
-				virtual Gwen::String BaseName() { return "Base"; }
+				virtual Gwen::String Name() { return GWEN_T("HorizontalSlider"); }
+				virtual Gwen::String BaseName() { return GWEN_T("Base"); }
 
 				virtual Gwen::Controls::Base* CreateInstance( Gwen::Controls::Base* parent )
 				{

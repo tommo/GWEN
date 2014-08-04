@@ -32,7 +32,6 @@ class GUnit : public Gwen::Controls::Base
 		void SetUnitTest( UnitTest* u ) { m_pUnitTest = u; }
 
 		void UnitPrint( Gwen::UnicodeString str );
-		void UnitPrint( Gwen::String str );
 
 		void Layout( Gwen::Skin::Base* skin )
 		{

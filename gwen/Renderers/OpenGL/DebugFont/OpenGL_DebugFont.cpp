@@ -85,7 +85,11 @@ namespace Gwen
 			if ( !text.length() )
 			{ return; }
 
-			Gwen::String converted_string = Gwen::Utility::UnicodeToString( text );
+#ifdef GWEN_NARROWCHAR
+			const std::string &converted_string = text;
+#else
+			std::string converted_string = Gwen::Utility::WideStringToNarrow( text );
+#endif
 			float yOffset = 0.0f;
 
 			for ( int i = 0; i < text.length(); i++ )
@@ -123,7 +127,11 @@ namespace Gwen
 		{
 			Gwen::Point p;
 			float fSize = pFont->size * Scale();
-			Gwen::String converted_string = Gwen::Utility::UnicodeToString( text );
+#ifdef GWEN_NARROWCHAR
+			const std::string &converted_string = text;
+#else
+			std::string converted_string = Gwen::Utility::WideStringToNarrow( text );
+#endif	
 			float spacing = 0.0f;
 
 			for ( int i = 0; i < text.length(); i++ )

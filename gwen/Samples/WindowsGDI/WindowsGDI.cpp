@@ -52,7 +52,7 @@ int main()
 	//
 	//Gwen::Skin::Simple skin;
 	Gwen::Skin::TexturedBase* skin = new Gwen::Skin::TexturedBase( pRenderer );
-	skin->Init( "DefaultSkin.png" );
+	skin->Init( GWEN_T("DefaultSkin.png") );
 	//
 	// Create a Canvas (it's root, on which all other GWEN panels are created)
 	//

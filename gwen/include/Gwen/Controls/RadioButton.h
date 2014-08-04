@@ -45,7 +45,7 @@ namespace Gwen
 					m_RadioButton->SetKeyboardInputEnabled( false );
 					m_Label = new LabelClickable( this );
 					m_Label->SetAlignment( Pos::CenterV | Pos::Left );
-					m_Label->SetText( "Radio Button" );
+					m_Label->SetText( GWEN_T("Radio Button") );
 					m_Label->Dock( Pos::Fill );
 					m_Label->onPress.Add( m_RadioButton, &CheckBox::OnPress );
 					m_Label->SetTabable( false );

@@ -19,12 +19,12 @@ namespace Gwen
 					{
 						Controls::Button* pButton = new Controls::Button( this );
 						pButton->Dock( Pos::Right );
-						pButton->SetText( "..." );
+						pButton->SetText( GWEN_T("...") );
 						pButton->SetWidth( 20 );
 						pButton->onPress.Add( this, &ThisClass::OnButtonPress );
 						pButton->SetMargin( Margin( 1, 1, 1, 2 ) );
-						m_strDialogName = "Find File";
-						m_strFileExtension = "*.*";
+						m_strDialogName = GWEN_T("Find File");
+						m_strFileExtension = GWEN_T("*.*");
 					}
 
 					File* SetExtension( const Gwen::String & string )

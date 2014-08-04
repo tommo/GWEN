@@ -134,7 +134,7 @@ void runSample()
 	// Create a GWEN skin
 	//
 	Gwen::Skin::TexturedBase skin( g_pRenderer );
-	skin.Init( "DefaultSkin.png" );
+	skin.Init( GWEN_T("DefaultSkin.png") );
 	//
 	// Create a Canvas (it's root, on which all other GWEN panels are created)
 	//

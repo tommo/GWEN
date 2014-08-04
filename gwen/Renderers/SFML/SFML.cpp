@@ -60,7 +60,12 @@ namespace Gwen
 			font->realsize = font->size * Scale();
 			sf::Font* pFont = new sf::Font();
 			
-			if ( !pFont->LoadFromFile( Utility::UnicodeToString( font->facename ), font->realsize  ) )
+#ifdef GWEN_NARROWCHAR
+			const std::string &facename = font->facename;
+#else
+			std::string facename = Gwen::Utility::WideStringToNarrow( font->facename );
+#endif
+			if ( !pFont->LoadFromFile( font->facename, font->realsize  ) )
 			{
 				// Ideally here we should be setting the font to a system default font here.
 				delete pFont;
@@ -161,10 +166,16 @@ namespace Gwen
 			if ( !pTexture ) { return; }
 			if ( pTexture->data ) { FreeTexture( pTexture ); }
 
+#ifdef GWEN_NARROWCHAR
+			const std::string &texname = pTexture->name.Get();
+#else
+			std::string texname = Gwen::Utility::WideStringToNarrow( pTexture->name.Get() );
+#endif	
+
 			sf::Image* tex = new sf::Image();
             tex->SetSmooth( true );
             
-            if ( !tex->LoadFromFile( pTexture->name.Get() ) )
+            if ( !tex->LoadFromFile( texname ) )
 			{
 				delete( tex );
 				pTexture->failed = true;

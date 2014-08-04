@@ -161,7 +161,12 @@ namespace Gwen
 
 		void OpenGL::LoadTexture( Gwen::Texture* pTexture )
 		{
-			const wchar_t* wFileName = pTexture->name.GetUnicode().c_str();
+#ifdef GWEN_NARROWCHAR
+			std::wstring wTexPath = Gwen::Utility::NarrowStringToWide(pTexture->name.GetUnicode());
+			const wchar_t *wFileName = wTexPath.c_str();
+#else
+			const wchar_t *wFileName = pTexture->name.GetUnicode().c_str();
+#endif
 			FREE_IMAGE_FORMAT imageFormat = FreeImage_GetFileTypeU( wFileName );
 
 			if ( imageFormat == FIF_UNKNOWN )

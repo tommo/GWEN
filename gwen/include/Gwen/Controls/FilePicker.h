@@ -26,13 +26,13 @@ namespace Gwen
 					m_Button = new Controls::Button( this );
 					m_Button->Dock( Pos::Right );
 					m_Button->SetMargin( Margin( 2, 0, 0, 0 ) );
-					m_Button->SetText( ".." );
+					m_Button->SetText( GWEN_T("..") );
 					m_Button->SetSize( 20, 20 );
 					m_Button->onPress.Add( this, &FilePicker::OnBrowse );
 					m_TextBox = new Controls::TextBox( this );
 					m_TextBox->Dock( Pos::Fill );
 					this->SetSize( 100, 20 );
-					SetFileType( "Any Type | *.*" );
+					SetFileType( GWEN_T("Any Type | *.*") );
 				}
 
 				void SetFileType( const Gwen::String & string ) { m_FileType = string; }
@@ -52,7 +52,7 @@ namespace Gwen
 
 				void OnBrowse()
 				{
-					Gwen::Dialogs::FileOpen( true, "Name", "Start Path", m_FileType, this, &FilePicker::SetFileNameEvent );
+					Gwen::Dialogs::FileOpen( true, GWEN_T("Name"), GWEN_T("Start Path"), m_FileType, this, &FilePicker::SetFileNameEvent );
 				}
 
 				virtual TextObject GetValue() { return GetFileName(); }

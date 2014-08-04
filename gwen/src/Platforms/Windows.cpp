@@ -66,18 +66,22 @@ void Gwen::Platform::GetDesktopSize( int & w, int & h )
 
 Gwen::UnicodeString Gwen::Platform::GetClipboardText()
 {
-	if ( !OpenClipboard( NULL ) ) { return L""; }
+	if ( !OpenClipboard( NULL ) ) { return GWEN_T(""); }
 
 	HANDLE hData = GetClipboardData( CF_UNICODETEXT );
 
 	if ( hData == NULL )
 	{
 		CloseClipboard();
-		return L"";
+		return GWEN_T("");
 	}
 
 	wchar_t* buffer = ( wchar_t* ) GlobalLock( hData );
+#ifdef GWEN_NARROWCHAR
+	UnicodeString str =  Utility::WideStringToNarrow(buffer);
+#else
 	UnicodeString str = buffer;
+#endif
 	GlobalUnlock( hData );
 	CloseClipboard();
 	return str;
@@ -93,7 +97,12 @@ bool Gwen::Platform::SetClipboardText( const Gwen::UnicodeString & str )
 	HGLOBAL clipbuffer = GlobalAlloc( GMEM_DDESHARE, iDataSize );
 	// Copy the string into the buffer
 	wchar_t* buffer = ( wchar_t* ) GlobalLock( clipbuffer );
+#ifdef GWEN_NARROWCHAR
+	std::wstring wstr =  Utility::NarrowStringToWide(str);
+	wcscpy( buffer, wstr.c_str() );
+#else
 	wcscpy( buffer, str.c_str() );
+#endif
 	GlobalUnlock( clipbuffer );
 	// Place it on the clipboard
 	SetClipboardData( CF_UNICODETEXT, clipbuffer );
@@ -134,28 +143,32 @@ float Gwen::Platform::GetTimeInSeconds()
 
 bool Gwen::Platform::FileOpen( const String & Name, const String & StartPath, const String & Extension, Gwen::Event::Handler* pHandler, Event::Handler::FunctionWithInformation fnCallback )
 {
-	char Filestring[FileStringSize];
-	String returnstring;
+	UnicodeChar Filestring[FileStringSize];
+	//String returnstring;
 
-	char FilterBuffer[FilterBufferSize];
+	UnicodeChar FilterBuffer[FilterBufferSize];
 	{
 		memset( FilterBuffer, 0, sizeof( FilterBuffer ) );
-		memcpy( FilterBuffer, Extension.c_str(), Gwen::Min( Extension.length(), sizeof( FilterBuffer ) ) );
+		memcpy( FilterBuffer, Extension.c_str(), Gwen::Min( Extension.length(), sizeof( FilterBuffer ) ) * sizeof(UnicodeChar) );
 
 		for ( int i = 0; i < FilterBufferSize; i++ )
 		{
-			if ( FilterBuffer[i] == '|' )
+			if ( FilterBuffer[i] == GWEN_T('|') )
 			{ FilterBuffer[i] = 0; }
 		}
 	}
+#ifdef GWEN_NARROWCHAR
 	OPENFILENAMEA opf;
+#else
+	OPENFILENAMEW opf;
+#endif
 	opf.hwndOwner = 0;
 	opf.lpstrFilter = FilterBuffer;
 	opf.lpstrCustomFilter = 0;
 	opf.nMaxCustFilter = 0L;
 	opf.nFilterIndex = 1L;
 	opf.lpstrFile = Filestring;
-	opf.lpstrFile[0] = '\0';
+	opf.lpstrFile[0] = GWEN_T('\0');
 	opf.nMaxFile = FileStringSize;
 	opf.lpstrFileTitle = 0;
 	opf.nMaxFileTitle = 50;
@@ -163,20 +176,24 @@ bool Gwen::Platform::FileOpen( const String & Name, const String & StartPath, co
 	opf.lpstrTitle = Name.c_str();
 	opf.nFileOffset = 0;
 	opf.nFileExtension = 0;
-	opf.lpstrDefExt = "*.*";
+	opf.lpstrDefExt = GWEN_T("*.*");
 	opf.lpfnHook = NULL;
 	opf.lCustData = 0;
 	opf.Flags = ( OFN_PATHMUSTEXIST | OFN_OVERWRITEPROMPT | OFN_NOCHANGEDIR ) & ~OFN_ALLOWMULTISELECT;
 	opf.lStructSize = sizeof( OPENFILENAME );
-
+#ifdef GWEN_NARROWCHAR
 	if ( GetOpenFileNameA( &opf ) )
+#else
+	if ( GetOpenFileNameW( &opf ) )
+#endif
 	{
 		if ( pHandler && fnCallback )
 		{
 			Gwen::Event::Information info;
 			info.Control		= NULL;
 			info.ControlCaller	= NULL;
-			info.String			= opf.lpstrFile;
+			info.String = (String)opf.lpstrFile;
+
 			( pHandler->*fnCallback )( info );
 		}
 	}
@@ -232,7 +249,11 @@ bool Gwen::Platform::FolderOpen( const String & Name, const String & StartPath, 
 				Gwen::Event::Information info;
 				info.Control		= NULL;
 				info.ControlCaller	= NULL;
-				info.String			= Gwen::Utility::UnicodeToString( strOut );
+#ifdef GWEN_NARROWCHAR
+				info.String			=  Utility::WideStringToNarrow(strOut);
+#else
+				info.String			= String(strOut);
+#endif
 				( pHandler->*fnCallback )( info );
 			}
 
@@ -248,28 +269,31 @@ bool Gwen::Platform::FolderOpen( const String & Name, const String & StartPath, 
 
 bool Gwen::Platform::FileSave( const String & Name, const String & StartPath, const String & Extension, Gwen::Event::Handler* pHandler, Gwen::Event::Handler::FunctionWithInformation fnCallback )
 {
-	char Filestring[FileStringSize];
-	String returnstring;
-
-	char FilterBuffer[FilterBufferSize];
+	UnicodeChar Filestring[FileStringSize];
+	
+	UnicodeChar FilterBuffer[FilterBufferSize];
 	{
 		memset( FilterBuffer, 0, sizeof( FilterBuffer ) );
-		memcpy( FilterBuffer, Extension.c_str(), Gwen::Min( Extension.size(), sizeof( FilterBuffer ) ) );
+		memcpy( FilterBuffer, Extension.c_str(), Gwen::Min( Extension.size(), sizeof( FilterBuffer ) ) * sizeof(UnicodeChar) );
 
 		for ( int i = 0; i < FilterBufferSize; i++ )
 		{
-			if ( FilterBuffer[i] == '|' )
+			if ( FilterBuffer[i] == GWEN_T('|') )
 			{ FilterBuffer[i] = 0; }
 		}
 	}
+#ifdef GWEN_NARROWCHAR
 	OPENFILENAMEA opf;
+#else
+	OPENFILENAMEW opf;
+#endif
 	opf.hwndOwner = 0;
 	opf.lpstrFilter = FilterBuffer;
 	opf.lpstrCustomFilter = 0;
 	opf.nMaxCustFilter = 0L;
 	opf.nFilterIndex = 1L;
 	opf.lpstrFile = Filestring;
-	opf.lpstrFile[0] = '\0';
+	opf.lpstrFile[0] = GWEN_T('\0');
 	opf.nMaxFile = FileStringSize;
 	opf.lpstrFileTitle = 0;
 	opf.nMaxFileTitle = 50;
@@ -277,20 +301,24 @@ bool Gwen::Platform::FileSave( const String & Name, const String & StartPath, co
 	opf.lpstrTitle = Name.c_str();
 	opf.nFileOffset = 0;
 	opf.nFileExtension = 0;
-	opf.lpstrDefExt = "*.*";
+	opf.lpstrDefExt = GWEN_T("*.*");
 	opf.lpfnHook = NULL;
 	opf.lCustData = 0;
 	opf.Flags = ( OFN_PATHMUSTEXIST | OFN_OVERWRITEPROMPT | OFN_NOCHANGEDIR ) & ~OFN_ALLOWMULTISELECT;
 	opf.lStructSize = sizeof( OPENFILENAME );
 
+#ifdef GWEN_NARROWCHAR
 	if ( GetSaveFileNameA( &opf ) )
+#else
+	if ( GetSaveFileNameW( &opf ) )
+#endif
 	{
 		if ( pHandler && fnCallback )
 		{
 			Gwen::Event::Information info;
 			info.Control		= NULL;
 			info.ControlCaller	= NULL;
-			info.String			= opf.lpstrFile;
+			info.String			= String(opf.lpstrFile);
 			( pHandler->*fnCallback )( info );
 		}
 	}
@@ -302,15 +330,25 @@ bool Gwen::Platform::FileSave( const String & Name, const String & StartPath, co
 void* Gwen::Platform::CreatePlatformWindow( int x, int y, int w, int h, const Gwen::String & strWindowTitle )
 {
 	CoInitializeEx( NULL, COINIT_APARTMENTTHREADED );
+#ifdef GWEN_NARROWCHAR
 	WNDCLASSA	wc;
+#else
+	WNDCLASSW	wc;
+#endif
+
 	ZeroMemory( &wc, sizeof( wc ) );
 	wc.style			= CS_OWNDC | CS_DROPSHADOW;
 	wc.lpfnWndProc		= DefWindowProc;
 	wc.hInstance		= GetModuleHandle( NULL );
-	wc.lpszClassName	= "GWEN_Window_Class";
+	wc.lpszClassName	= GWEN_T("GWEN_Window_Class");
 	wc.hCursor			= LoadCursor( NULL, IDC_ARROW );
+#ifdef GWEN_NARROWCHAR
 	RegisterClassA( &wc );
 	HWND hWindow = CreateWindowExA( WS_EX_APPWINDOW | WS_EX_ACCEPTFILES, wc.lpszClassName, strWindowTitle.c_str(), WS_POPUP | WS_VISIBLE, x, y, w, h, NULL, NULL, GetModuleHandle( NULL ), NULL );
+#else
+	RegisterClassW( &wc );
+	HWND hWindow = CreateWindowExW( WS_EX_APPWINDOW | WS_EX_ACCEPTFILES, wc.lpszClassName, strWindowTitle.c_str(), WS_POPUP | WS_VISIBLE, x, y, w, h, NULL, NULL, GetModuleHandle( NULL ), NULL );
+#endif
 	ShowWindow( hWindow, SW_SHOW );
 	SetForegroundWindow( hWindow );
 	SetFocus( hWindow );

@@ -25,10 +25,10 @@ int main()
 	//Gwen::Skin::Simple skin;
 	//skin.SetRender( &GwenRenderer );
 	Gwen::Skin::TexturedBase skin( &GwenRenderer );
-	skin.Init( "DefaultSkin.png" );
+	skin.Init( GWEN_T("DefaultSkin.png") );
 	// The fonts work differently in SFML - it can't use
 	// system fonts. So force the skin to use a local one.
-	skin.SetDefaultFont( L"OpenSans.ttf", 11 );
+	skin.SetDefaultFont( GWEN_T("OpenSans.ttf"), 11 );
 	//
 	// Create a Canvas (it's root, on which all other GWEN panels are created)
 	//

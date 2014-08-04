@@ -36,7 +36,7 @@ namespace Gwen
 					{
 						Gwen::Controls::Label* pControl = m_ComboBox->GetSelectedItem();
 
-						if ( !pControl ) { return L""; }
+						if ( !pControl ) { return GWEN_T(""); }
 
 						return pControl->GetName();
 					}

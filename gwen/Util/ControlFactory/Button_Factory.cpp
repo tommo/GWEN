@@ -15,14 +15,14 @@ namespace Gwen
 				{
 				}
 
-				virtual Gwen::String Name() { return "Button"; }
-				virtual Gwen::String BaseName() { return "Label"; }
+				virtual Gwen::String Name() { return GWEN_T("Button"); }
+				virtual Gwen::String BaseName() { return GWEN_T("Label"); }
 
 				virtual Gwen::Controls::Base* CreateInstance( Gwen::Controls::Base* parent )
 				{
 					Gwen::Controls::Button* pControl = new Gwen::Controls::Button( parent );
 					pControl->SetSize( 100, 20 );
-					pControl->SetText( "New Button" );
+					pControl->SetText( GWEN_T("New Button") );
 					return pControl;
 				}
 		};

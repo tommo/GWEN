@@ -16,8 +16,8 @@ using namespace Gwen;
 #define ADD_UNIT_TEST( name )\
 	GUnit* RegisterUnitTest_##name( Gwen::Controls::Base* tab );\
 	{\
-		Controls::Button* pButton = cat->Add( #name );\
-		pButton->SetName( #name );\
+		Controls::Button* pButton = cat->Add( GWEN_T(#name) );\
+		pButton->SetName( GWEN_T(#name) );\
 		GUnit* test = RegisterUnitTest_##name( pCenter );\
 		test->Hide();\
 		test->SetUnitTest( this );\
@@ -32,30 +32,30 @@ GWEN_CONTROL_CONSTRUCTOR( UnitTest )
 	Dock( Pos::Fill );
 	SetSize( 1024, 768 );
 	Controls::CollapsibleList* pList = new Controls::CollapsibleList( this );
-	GetLeft()->GetTabControl()->AddPage( "CollapsibleList", pList );
+	GetLeft()->GetTabControl()->AddPage( GWEN_T("CollapsibleList"), pList );
 	GetLeft()->SetWidth( 150 );
 	m_TextOutput = new Controls::ListBox( GetBottom() );
-	pButton = GetBottom()->GetTabControl()->AddPage( "Output", m_TextOutput );
+	pButton = GetBottom()->GetTabControl()->AddPage( GWEN_T("Output"), m_TextOutput );
 	GetBottom()->SetHeight( 200 );
 	m_StatusBar = new Controls::StatusBar( this );
 	m_StatusBar->Dock( Pos::Bottom );
 	Controls::Layout::Center* pCenter = new Controls::Layout::Center( this );
 	pCenter->Dock( Pos::Fill );
 	{
-		Controls::CollapsibleCategory* cat = pList->Add( "Basic" );
+		Controls::CollapsibleCategory* cat = pList->Add( GWEN_T("Basic") );
 		ADD_UNIT_TEST( Button );
 		ADD_UNIT_TEST( Label );
 		ADD_UNIT_TEST( LabelMultiline );
 	}
 	{
-		Controls::CollapsibleCategory* cat = pList->Add( "Non-Interactive" );
+		Controls::CollapsibleCategory* cat = pList->Add( GWEN_T("Non-Interactive") );
 		ADD_UNIT_TEST( ProgressBar );
 		ADD_UNIT_TEST( GroupBox );
 		ADD_UNIT_TEST( ImagePanel );
 		ADD_UNIT_TEST( StatusBar );
 	}
 	{
-		Controls::CollapsibleCategory* cat = pList->Add( "Controls" );
+		Controls::CollapsibleCategory* cat = pList->Add( GWEN_T("Controls") );
 		ADD_UNIT_TEST( ComboBox );
 		ADD_UNIT_TEST( TextBox );
 		ADD_UNIT_TEST( ListBox );
@@ -67,7 +67,7 @@ GWEN_CONTROL_CONSTRUCTOR( UnitTest )
 		ADD_UNIT_TEST( MenuStrip );
 	}
 	{
-		Controls::CollapsibleCategory* cat = pList->Add( "Containers" );
+		Controls::CollapsibleCategory* cat = pList->Add( GWEN_T("Containers") );
 		ADD_UNIT_TEST( Window );
 		ADD_UNIT_TEST( TreeControl );
 		ADD_UNIT_TEST( Properties );
@@ -76,15 +76,15 @@ GWEN_CONTROL_CONSTRUCTOR( UnitTest )
 		ADD_UNIT_TEST( PageControl );
 	}
 	{
-		Controls::CollapsibleCategory* cat = pList->Add( "Non-Standard" );
+		Controls::CollapsibleCategory* cat = pList->Add( GWEN_T("Non-Standard") );
 		ADD_UNIT_TEST( CollapsibleList );
 		ADD_UNIT_TEST( ColorPicker );
 	}
 	m_StatusBar->SendToBack();
-	PrintText( L"Unit Test Started.\n" );
+	PrintText( GWEN_T("Unit Test Started.\n") );
 	m_fLastSecond = Gwen::Platform::GetTimeInSeconds();
 	m_iFrames = 0;
-	pList->GetNamedChildren( "MenuStrip" ).DoAction();
+	pList->GetNamedChildren( GWEN_T("MenuStrip") ).DoAction();
 }
 
 void UnitTest::OnCategorySelect( Gwen::Event::Info info )
@@ -110,7 +110,7 @@ void UnitTest::Render( Gwen::Skin::Base* skin )
 
 	if ( m_fLastSecond < Gwen::Platform::GetTimeInSeconds() )
 	{
-		m_StatusBar->SetText( Gwen::Utility::Format( L"GWEN Unit Test - %i fps", m_iFrames * 2 ) );
+		m_StatusBar->SetText( Gwen::Utility::Format( GWEN_T("GWEN Unit Test - %i fps"), m_iFrames * 2 ) );
 		m_fLastSecond = Gwen::Platform::GetTimeInSeconds() + 0.5f;
 		m_iFrames = 0;
 	}
@@ -121,10 +121,5 @@ void UnitTest::Render( Gwen::Skin::Base* skin )
 void GUnit::UnitPrint( Gwen::UnicodeString str )
 {
 	m_pUnitTest->PrintText( str );
-}
-
-void GUnit::UnitPrint( Gwen::String str )
-{
-	UnitPrint( Utility::StringToUnicode( str ) );
 }
 

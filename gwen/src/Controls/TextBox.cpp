@@ -44,10 +44,10 @@ GWEN_CONTROL_CONSTRUCTOR( TextBox )
 	m_bSelectAll = false;
 	SetTextColor( Gwen::Color( 50, 50, 50, 255 ) );   // TODO: From Skin
 	SetTabable( true );
-	AddAccelerator( L"Ctrl + C", &TextBox::OnCopy );
-	AddAccelerator( L"Ctrl + X", &TextBox::OnCut );
-	AddAccelerator( L"Ctrl + V", &TextBox::OnPaste );
-	AddAccelerator( L"Ctrl + A", &TextBox::OnSelectAll );
+	AddAccelerator( GWEN_T("Ctrl + C"), &TextBox::OnCopy );
+	AddAccelerator( GWEN_T("Ctrl + X"), &TextBox::OnCut );
+	AddAccelerator( GWEN_T("Ctrl + V"), &TextBox::OnPaste );
+	AddAccelerator( GWEN_T("Ctrl + A"), &TextBox::OnSelectAll );
 	Gwen::Anim::Add( this, new ChangeCaretColor() );
 }
 
@@ -176,7 +176,7 @@ void TextBox::OnMouseDoubleClickLeft( int /*x*/, int /*y*/ )
 
 UnicodeString TextBox::GetSelection()
 {
-	if ( !HasSelection() ) { return L""; }
+	if ( !HasSelection() ) { return GWEN_T(""); }
 
 	int iStart = Utility::Min( m_iCursorPos, m_iCursorEnd );
 	int iEnd = Utility::Max( m_iCursorPos, m_iCursorEnd );
@@ -480,7 +480,7 @@ bool TextBoxMultiline::OnKeyReturn( bool bDown )
 {
 	if ( bDown )
 	{
-		InsertText( L"\n" );
+		InsertText( GWEN_T("\n") );
 	}
 
 	return true;
@@ -722,8 +722,8 @@ bool TextBoxMultiline::OnKeyDown( bool bDown )
 
 GWEN_CONTROL_CONSTRUCTOR( PasswordTextBox )
 {
-	m_realText = "";
-	m_passwordChar = '*';
+	m_realText = String(GWEN_T(""));
+	m_passwordChar = GWEN_T('*');
 }
 
 void PasswordTextBox::SetText( const TextObject& str, bool bDoEvents )
@@ -731,7 +731,7 @@ void PasswordTextBox::SetText( const TextObject& str, bool bDoEvents )
 	if ( m_realText == str.GetUnicode() ) return;
 
 	m_realText = str;
-	std::string passwordChars;
+	UnicodeString passwordChars;
 	for (int i = 0; i < m_realText.length(); i ++)
 		passwordChars += m_passwordChar;
 
