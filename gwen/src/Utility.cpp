@@ -15,9 +15,10 @@ using namespace Gwen;
 #pragma warning(disable:4267)// conversion from 'size_t' to 'int', possible loss of data
 #endif
 
-#ifdef __MINGW32__
-#undef vswprintf
-#define vswprintf _vsnwprintf
+#ifdef GWEN_NARROWCHAR
+#define GWEN_VFPRINTF vfprintf
+#else
+#define GWEN_VFPRINTF vfwprintf
 #endif
 
 #ifdef _MSC_VER
@@ -40,7 +41,7 @@ UnicodeString Gwen::Utility::Format( const UnicodeChar* fmt, ... )
 		FILE* fnull = fopen( GWEN_FNULL, "wb" );
 		va_list c;
 		va_copy( c, s );
-		len = GWEN_VSNPRINTF( fnull, fmt, c );
+		len = GWEN_VFPRINTF( fnull, fmt, c );
 		va_end( c );
 		fclose( fnull );
 	} 
