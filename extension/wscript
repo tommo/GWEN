@@ -1,0 +1,19 @@
+def build( bld ):
+	cxxflags = [ '-DSPINE_SHORT_NAMES' ]
+	cflags = [ '-DSPINE_SHORT_NAMES' ]
+	use = [ 'FMOD', 'spine', 'enet', 'gwen' ]
+	linkflags = []
+	cxxflags += [ '-mmacosx-version-min=10.5' ]
+	use += ['MOAI']
+
+	bld( includes = '.' )
+	bld.stlib( 
+		source = bld.path.ant_glob( '*.cpp' ), 
+		target = 'extension',
+		use    = use,
+		export_includes = '.',
+		cxxflags = cxxflags,
+		cflags   = cflags,
+		linkflags = linkflags
+	)
+

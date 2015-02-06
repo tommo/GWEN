@@ -1,0 +1,94 @@
+{
+	"build_systems":
+	[
+		{
+			"cmd":
+			[				
+				"run"
+			],
+			"name": "RUN",
+			"target": "exec_in_window",
+			"working_dir": "$project_path"
+		}
+	],
+
+	"folders":
+	[
+		{
+			"file_exclude_patterns":
+			[
+				"*.otf",
+				"*.tff",
+				"*.fnt",
+				"*.jpg",
+				"*.png",
+				"*.l2",
+				"*.wav",
+				"*.aifc",
+				"*.caf",
+				"*.ogg",
+				"*.tmx",
+				"*.sxc",
+				"*.graphml",
+
+				"*.xls",
+				"*.ods",
+				
+				"*.pyo",
+				"*.pyc",
+				"*.so",
+				"*.o",
+
+				"*.pyxel",
+
+				".git*",
+				"host/ios/*.xcodeproj",
+				"BUILD_RESULT"
+			],
+			"folder_exclude_patterns":
+			[
+				"host/ios/build",
+				"host/ios/content",
+				"host/ios-release/build",
+				"host/ios-release/content",
+				"output",
+				"asset/audio",
+				"cache",
+				"gii/build",
+				"gii/dist",
+				"gii/test",
+				"gii/template",
+				"gii/support/deploy",
+				"gii/support/webp",
+				"gii/support/ImageMagick",
+				"gii/support/waf",
+				"bin",
+				"env/config/cache"
+			],
+			"path": "./"
+		}
+	],
+	"settings":
+	{
+		"build_switcher_systems":
+		[
+			"RUN"
+		],
+		"show_panel_on_build": false,
+		"sublimeclang_options":
+		[
+			"-I.",
+			"-I/Users/tommo/dev/moai-dev/src"
+		],
+		// "sublimegdb_commandline": "gdb --interpreter=mi --args ../host/osx/moai main.lua",
+		
+		"sublimegdb_commandline": "gdb --interpreter=mi --args moai test.lua",
+		"sublimegdb_workingdir": "/Users/tommo/prj/moai/etc/gwen/test",
+
+		// "sublimegdb_commandline": "gdb --interpreter=mi --args /Users/tommo/prj/moai/yaka/bin/osx/moai",
+		// "sublimegdb_workingdir": "/Users/tommo/prj/moai/yaka/output",
+		"tab_size": 2,
+
+		"lldb.exe": "moai"
+	}
+}

@@ -22,6 +22,7 @@
 #include "Gwen/ControlList.h"
 #include "Gwen/UserData.h"
 
+class MOAIGwenControl;
 
 namespace Gwen
 {
@@ -52,9 +53,15 @@ namespace Gwen
 	{
 		class Canvas;
 
+
 		class GWEN_EXPORT Base : public Event::Handler
 		{
 			public:
+
+				struct ExternalRef {
+					virtual void OnBind( Base* ) {} ;
+					virtual void OnDelete( Base* ) {} ;
+				};
 
 				typedef std::list<Base*> List;
 
@@ -264,7 +271,7 @@ namespace Gwen
 				virtual void SetDisabled( bool active ) { if ( m_bDisabled == active ) { return; } m_bDisabled = active; Redraw(); }
 				virtual bool IsDisabled() { return m_bDisabled; }
 
-				virtual void Redraw() { UpdateColours(); m_bCacheTextureDirty = true; if ( m_Parent ) { m_Parent->Redraw(); } }
+				virtual void Redraw() {  m_bCacheTextureDirty = true; if ( m_Parent ) { m_Parent->Redraw(); UpdateColours(); } }
 				virtual void UpdateColours() {};
 				virtual void SetCacheToTexture() { m_bCacheToTexture = true; }
 				virtual bool ShouldCacheToTexture() { return m_bCacheToTexture; }
@@ -505,6 +512,12 @@ namespace Gwen
 			public:
 
 				UserDataStorage	UserData;
+				ExternalRef *m_ExternalRef;
+
+				void SetExternalRef( ExternalRef* ref ) {
+					m_ExternalRef = ref;
+					if( ref )	ref->OnBind( this );
+				}
 
 		};
 

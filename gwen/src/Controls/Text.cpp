@@ -78,7 +78,7 @@ void Text::Render( Skin::Base* skin )
 	if ( Length() == 0 || !GetFont() ) { return; }
 
 	if ( m_ColorOverride.a == 0 )
-	{ skin->GetRender()->SetDrawColor( m_Color ); }
+	{ skin->GetRender()->SetDrawColor( GetSkin()->Colors.Label.Default ); }
 	else
 	{ skin->GetRender()->SetDrawColor( m_ColorOverride ); }
 
@@ -255,7 +255,8 @@ void Text::SplitWords(const Gwen::UnicodeString &s, std::vector<Gwen::UnicodeStr
 		{
 			int addSum = GetPadding().left+GetPadding().right;
 			//split words
-			str.pop_back();
+			// str.pop_back();
+			str.erase( str.end()-1 );
 			elems.push_back( str );
 			str.clear();
 			--i;

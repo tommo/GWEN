@@ -1,0 +1,12 @@
+#!/bin/bash
+source ~/.bash_profile
+waf build install
+rc=$?;
+if [[ $rc == 0 ]];
+then
+	cd test
+	moai test.lua
+fi
+
+
+

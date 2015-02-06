@@ -49,6 +49,7 @@ Base::Base( Base* pParent, const Gwen::String & Name )
 	m_bCacheTextureDirty = true;
 	m_bCacheToTexture = false;
 	m_bIncludeInSize = true;
+	m_ExternalRef = NULL;
 }
 
 Base::~Base()
@@ -59,6 +60,10 @@ Base::~Base()
 		if ( canvas )
 		{ canvas->PreDeleteCanvas( this ); }
 	}
+	
+	if( m_ExternalRef )
+		m_ExternalRef->OnDelete( this );
+
 	Base::List::iterator iter = Children.begin();
 
 	while ( iter != Children.end() )

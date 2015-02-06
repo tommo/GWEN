@@ -1,0 +1,85 @@
+Waf: Entering directory `/Volumes/prj/moai/etc/gwen/_build'
+[73/82] cxx: gwen/Moai/MOAIGwenControl.cpp -> _build/gwen/Moai/MOAIGwenControl.cpp.1.o
+[75/82] cxx: gwen/Moai/MOAIGwenSystem.cpp -> _build/gwen/Moai/MOAIGwenSystem.cpp.1.o
+../gwen/Moai/MOAIGwenControl.cpp:14:17: error: expected ';' after expression
+        UNUSED( state )
+                       ^
+                       ;
+1 error generated.
+In file included from ../gwen/Moai/MOAIGwenSystem.cpp:1:
+In file included from ../gwen/Moai/MOAIGwenSystem.h:5:
+In file included from /Users/tommo/dev/moai-dev/src/moai-sim/MOAIAction.h:7:
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIBlocker.h:11:17: error: expected class name
+        public virtual MOAILuaObject {
+                       ^
+In file included from ../gwen/Moai/MOAIGwenSystem.cpp:1:
+In file included from ../gwen/Moai/MOAIGwenSystem.h:5:
+In file included from /Users/tommo/dev/moai-dev/src/moai-sim/MOAIAction.h:8:
+In file included from /Users/tommo/dev/moai-dev/src/moai-sim/MOAINode.h:7:
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:15:2: error: unknown type name 'u32'
+        u32 mTypeID;
+        ^
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:16:2: error: unknown type name 'u32'
+        u32 mTypeHint;
+        ^
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:17:2: error: unknown type name 'u32'
+        u32 mFlags;
+        ^
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:19:2: error: unknown type name 'u8'
+        u8 mBuffer [ MAX_SIZE ];
+        ^
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:23:12: error: C++ requires a type specifier for all declarations
+        GET_SET ( u32, Flags, mFlags )
+                  ^~~
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:23:17: error: C++ requires a type specifier for all declarations
+        GET_SET ( u32, Flags, mFlags )
+                       ^~~~~
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:23:24: error: unknown type name 'mFlags'
+        GET_SET ( u32, Flags, mFlags )
+                              ^
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:23:2: error: C++ requires a type specifier for all declarations
+        GET_SET ( u32, Flags, mFlags )
+        ^~~~~~~
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:23:32: error: expected ';' at end of declaration list
+        GET_SET ( u32, Flags, mFlags )
+                                      ^
+                                      ;
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:46:15: error: unknown type name 'u32'
+        static const u32        NULL_ATTR                       = 0x3fffffff;
+                     ^
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:47:15: error: unknown type name 'u32'
+        static const u32        ATTR_ID_MASK            = 0x0000ffff;
+                     ^
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:48:15: error: unknown type name 'u32'
+        static const u32        CLASS_ID_MASK           = 0x3fff0000;
+                     ^
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:49:15: error: unknown type name 'u32'
+        static const u32        ATTR_FLAGS_MASK         = 0xC0000000;
+                     ^
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:51:15: error: unknown type name 'u32'
+        static const u32        ATTR_READ                       = 0x40000000;
+                     ^
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:52:15: error: unknown type name 'u32'
+        static const u32        ATTR_WRITE                      = 0x80000000;
+                     ^
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:53:15: error: unknown type name 'u32'
+        static const u32        ATTR_READ_WRITE         = 0xC0000000;
+                     ^
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:57:40: error: unknown type name 'u32'
+        inline TYPE Apply ( const TYPE& attr, u32 op, u32 flags, u32 typeHint ) {
+                                              ^
+/Users/tommo/dev/moai-dev/src/moai-sim/MOAIAttrOp.h:57:48: error: unknown type name 'u32'
+        inline TYPE Apply ( const TYPE& attr, u32 op, u32 flags, u32 typeHint ) {
+                                                      ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+Waf: Leaving directory `/Volumes/prj/moai/etc/gwen/_build'
+Build failed
+ -> task in 'gwen' failed (exit status 1): 
+	{task 4332071888: cxx MOAIGwenControl.cpp -> MOAIGwenControl.cpp.1.o}
+['/usr/bin/g++', '-arch', 'i386', '-fno-rtti', '-DMOAI_WITH_LUAEXT', '-DMOAI_WITH_BOX2D', '-DMOAI_WITH_FMOD_DESIGNER', '-DMOAI_WITH_HTTP_CLIENT', '-I/Volumes/prj/moai/etc/gwen/_build/gwen/include', '-I/Volumes/prj/moai/etc/gwen/gwen/include', '-I/Volumes/prj/moai/etc/gwen/_build/gwen/src/Renderer/MOAI', '-I/Volumes/prj/moai/etc/gwen/gwen/src/Renderer/MOAI', '-I/Volumes/prj/moai/etc/gwen/_build/gwen', '-I/Volumes/prj/moai/etc/gwen/gwen', '-I/Users/tommo/dev/moai-dev/src', '-I/Users/tommo/dev/moai-dev/src/moaicore', '-I/Users/tommo/dev/moai-dev/src/config-default', '-I/Users/tommo/dev/moai-dev/3rdparty', '-I/Users/tommo/dev/moai-dev/3rdparty/chipmunk-5.3.4/include', '-I/Users/tommo/dev/moai-dev/3rdparty/box2d-2.2.1', '-I/Users/tommo/dev/moai-dev/3rdparty/freetype-2.4.4/include', '-I/Users/tommo/dev/moai-dev/3rdparty/tinyxml', '-I/Users/tommo/dev/moai-dev/3rdparty/lua-5.1.3/src', '-I/Users/tommo/dev/moai-dev/3rdparty/jansson-2.1/src', '-I/Users/tommo/dev/moai-dev/3rdparty/sfmt-1.4', '-I/Users/tommo/dev/moai-dev/3rdparty/expat-2.0.1/lib', '-I/Users/tommo/dev/moai-dev/3rdparty/sdl2-2.0.0/include', '-I/Users/tommo/dev/moai-dev/3rdparty/zlib-1.2.3', '../gwen/Moai/MOAIGwenControl.cpp', '-c', '-o', 'gwen/Moai/MOAIGwenControl.cpp.1.o']
+ -> task in 'gwen' failed (exit status 1): 
+	{task 4332072144: cxx MOAIGwenSystem.cpp -> MOAIGwenSystem.cpp.1.o}
+['/usr/bin/g++', '-arch', 'i386', '-fno-rtti', '-DMOAI_WITH_LUAEXT', '-DMOAI_WITH_BOX2D', '-DMOAI_WITH_FMOD_DESIGNER', '-DMOAI_WITH_HTTP_CLIENT', '-I/Volumes/prj/moai/etc/gwen/_build/gwen/include', '-I/Volumes/prj/moai/etc/gwen/gwen/include', '-I/Volumes/prj/moai/etc/gwen/_build/gwen/src/Renderer/MOAI', '-I/Volumes/prj/moai/etc/gwen/gwen/src/Renderer/MOAI', '-I/Volumes/prj/moai/etc/gwen/_build/gwen', '-I/Volumes/prj/moai/etc/gwen/gwen', '-I/Users/tommo/dev/moai-dev/src', '-I/Users/tommo/dev/moai-dev/src/moaicore', '-I/Users/tommo/dev/moai-dev/src/config-default', '-I/Users/tommo/dev/moai-dev/3rdparty', '-I/Users/tommo/dev/moai-dev/3rdparty/chipmunk-5.3.4/include', '-I/Users/tommo/dev/moai-dev/3rdparty/box2d-2.2.1', '-I/Users/tommo/dev/moai-dev/3rdparty/freetype-2.4.4/include', '-I/Users/tommo/dev/moai-dev/3rdparty/tinyxml', '-I/Users/tommo/dev/moai-dev/3rdparty/lua-5.1.3/src', '-I/Users/tommo/dev/moai-dev/3rdparty/jansson-2.1/src', '-I/Users/tommo/dev/moai-dev/3rdparty/sfmt-1.4', '-I/Users/tommo/dev/moai-dev/3rdparty/expat-2.0.1/lib', '-I/Users/tommo/dev/moai-dev/3rdparty/sdl2-2.0.0/include', '-I/Users/tommo/dev/moai-dev/3rdparty/zlib-1.2.3', '../gwen/Moai/MOAIGwenSystem.cpp', '-c', '-o', 'gwen/Moai/MOAIGwenSystem.cpp.1.o']
+
+[Finished in 0.7s]

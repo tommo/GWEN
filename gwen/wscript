@@ -1,0 +1,33 @@
+import sys
+
+VERSION = '0.0.1'
+APPNAME = 'gwen-moai'
+
+top = '.'
+out = '../_build'
+
+def configure( conf ):
+	conf.load( 'compiler_cxx compiler_c' )
+	conf.env.ARCH  = [ 'i386' ]
+
+def options( opt ):
+	opt.load( 'compiler_cxx compiler_c' )
+
+def build( bld ):
+	bld.load( 'compiler_cxx compiler_c' )
+
+	source = bld.path.ant_glob( 'src/*.cpp' )
+	source += bld.path.ant_glob( 'src/Controls/*.cpp' )
+	source += bld.path.ant_glob( 'moai-gwen/*.cpp' )
+
+	includes = [ 'include' ]
+	cflags   = [ '-fno-rtti' ]
+
+	bld.stlib( 
+		source = source,
+		target = 'gwen',
+		includes = [ './include', 'src/Renderer/MOAI/' ],
+		export_includes = [ './include', '.' ],
+		cflags = cflags,
+		use = 'MOAI'
+	)
