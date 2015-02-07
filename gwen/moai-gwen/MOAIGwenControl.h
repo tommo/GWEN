@@ -38,19 +38,26 @@ private:
 		}
 	};
 
-	static int    _setSkin       ( lua_State* L );
+	static int    _setSkin              ( lua_State* L );
 
-	static int    _setParent     ( lua_State* L );
-	static int    _addChild      ( lua_State* L );
+	static int    _getParent            ( lua_State* L );
+	static int    _setParent            ( lua_State* L );
+	static int    _addChild             ( lua_State* L );
 
-	static int    _getSize       ( lua_State* L );
-	static int    _setSize       ( lua_State* L );
-	static int    _getPos        ( lua_State* L );
-	static int    _setPos        ( lua_State* L );
+	static int    _getChildrenCount     ( lua_State* L );
+	// static int    _getChildren          ( lua_State* L );
 
-	static int    _isValid       ( lua_State* L );
+	static int    _fitChildren          ( lua_State* L );
+	static int    _getChildrenSize      ( lua_State* L );
 
-	static int    _getTypeName   ( lua_State* L );
+	static int    _getSize              ( lua_State* L );
+	static int    _setSize              ( lua_State* L );
+	static int    _getPos               ( lua_State* L );
+	static int    _setPos               ( lua_State* L );
+
+	static int    _isValid              ( lua_State* L );
+
+	static int    _getTypeName          ( lua_State* L );
 
 protected:
 
@@ -61,6 +68,17 @@ protected:
 	void    SetInternalControl( Gwen::Controls::Base* control ) {
 		control->SetExternalRef( &this->mControlRef );
 	};
+
+	virtual Gwen::Controls::Base* CreateGwenControl();
+
+	MOAIGwenControl* Init() {
+		return this->Init( this->CreateGwenControl() );
+	}
+	
+	MOAIGwenControl* Init( Gwen::Controls::Base* control ) {
+		this->SetInternalControl( control );
+		return this;
+	}
 
 public:
 	
@@ -81,6 +99,18 @@ public:
 						~MOAIGwenControl ();
 	void				RegisterLuaClass		( MOAILuaState& state );
 	void				RegisterLuaFuncs		( MOAILuaState& state );
+
+static MOAIGwenControl* _GwenToMoai( Gwen::Controls::Base* control );
+
 };
 
+
+#define MOAI_GWEN_NEW( ThisClass )\
+	static int _new ( lua_State* L ) {\
+		MOAILuaState state ( L );\
+		ThisClass *control = new ThisClass();\
+		control->Init();\
+		control->PushLuaUserdata( state );\
+		return 1;\
+	}	
 #endif

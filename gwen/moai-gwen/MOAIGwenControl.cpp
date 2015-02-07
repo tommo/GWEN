@@ -31,6 +31,19 @@ int MOAIGwenControl::_addChild ( lua_State* L ) {
 	return 0;
 }
 
+int MOAIGwenControl::_getParent ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
+	Gwen::Controls::Base* parent = self->GetInternalControl()->GetParent();
+	if( parent ){
+		MOAIGwenControl* control = _GwenToMoai( parent );
+		control->PushLuaUserdata( state );
+		return 0;
+	} else {
+		lua_pushnil( state );
+	}
+	return 1;
+}
+
 //----------------------------------------------------------------//
 int MOAIGwenControl::_setSize ( lua_State* L ) {
 	MOAI_LUA_SETUP ( MOAIGwenControl, "UNN" )
@@ -81,6 +94,29 @@ int MOAIGwenControl::_getTypeName ( lua_State* L ) {
 }
 
 //----------------------------------------------------------------//
+int MOAIGwenControl::_getChildrenCount ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
+	state.Push( self->GetInternalControl()->NumChildren() );	
+	return 1;
+}
+
+//----------------------------------------------------------------//
+int MOAIGwenControl::_fitChildren ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
+	state.Push( self->GetInternalControl()->SizeToChildren() );	
+	return 1;
+}
+
+//----------------------------------------------------------------//
+int MOAIGwenControl::_getChildrenSize ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
+	Gwen::Point size = self->GetInternalControl()->ChildrenSize();
+	state.Push( size.x );
+	state.Push( size.y );
+	return 2;
+}
+
+//----------------------------------------------------------------//
 MOAIGwenControl::MOAIGwenControl () {
 	RTTI_SINGLE ( MOAILuaObject )
 	this->mControlRef.owner = this;
@@ -98,6 +134,10 @@ MOAIGwenControl::~MOAIGwenControl () {
 	// }
 }
 
+Gwen::Controls::Base* MOAIGwenControl::CreateGwenControl() {
+	return NULL;
+}
+
 //----------------------------------------------------------------//
 void MOAIGwenControl::RegisterLuaClass ( MOAILuaState& state ) {
 	UNUSED( state );
@@ -106,18 +146,24 @@ void MOAIGwenControl::RegisterLuaClass ( MOAILuaState& state ) {
 //----------------------------------------------------------------//
 void MOAIGwenControl::RegisterLuaFuncs ( MOAILuaState& state ) {
 	luaL_Reg regTable [] = {
-		{ "setSkin",   _setSkin   },
-		{ "setParent", _setParent },
-		{ "addChild",  _addChild  },
+		{ "new",             MOAILogMessages::_alertNewIsUnsupported },
+
+		{ "setSkin",         _setSkin          },
+		{ "setParent",       _setParent        },
+		{ "addChild",        _addChild         },
+		{ "getChildrenCount",_getChildrenCount },
+
+		{ "getChildrenSize", _getChildrenSize  },
+		{ "fitChildren",     _fitChildren      },
 
 		//ATTR
-		{ "getSize",   _getSize   },
-		{ "setSize",   _setSize   },
+		{ "getSize",         _getSize          },
+		{ "setSize",         _setSize          },
 
-		{ "getPos",   _getPos     },
-		{ "setPos",   _setPos     },
+		{ "getPos",          _getPos           },
+		{ "setPos",          _setPos           },
 
-		{ "getTypeName",   _getTypeName  },
+		{ "getTypeName",   _getTypeName        },
 
 		{ NULL, NULL }
 	};

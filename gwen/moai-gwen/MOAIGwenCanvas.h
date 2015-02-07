@@ -15,12 +15,15 @@ class MOAIGwenCanvas :
 	public MOAIGwenControl {
 private:
 	//----------------------------------------------------------------//
-	
+	MOAI_GWEN_NEW ( MOAIGwenCanvas )
+	virtual Gwen::Controls::Base* CreateGwenControl();
+
 public:
 		
   DECL_LUA_FACTORY ( MOAIGwenCanvas )
 	
 	//----------------------------------------------------------------//
+						MOAIGwenCanvas			( Gwen::Controls::Base* control );
 						MOAIGwenCanvas			();
 						~MOAIGwenCanvas			();
 	void				RegisterLuaClass		( MOAILuaState& state );

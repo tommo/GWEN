@@ -2,14 +2,15 @@
 #include "Gwen/Controls/Button.h"
 
 
+Gwen::Controls::Base* MOAIGwenButton::CreateGwenControl() {
+	return new Gwen::Controls::Button( MOAIGwenMgr::Get().GetDefaultCanvas() ) ;
+}
+
 //----------------------------------------------------------------//
 MOAIGwenButton::MOAIGwenButton () {
 	RTTI_BEGIN
 		RTTI_EXTEND ( MOAIGwenControl )
-	RTTI_END
-	this->SetInternalControl( 
-		new Gwen::Controls::Button( MOAIGwenMgr::Get().GetDefaultCanvas() ) 
-		);
+	RTTI_END	
 }
 
 //----------------------------------------------------------------//
@@ -27,7 +28,8 @@ void MOAIGwenButton::RegisterLuaFuncs ( MOAILuaState& state ) {
 	
 	luaL_Reg regTable [] = {
 		// { "capParticles",		_capParticles },
-		{ NULL, NULL }
+		{ "new", _new },
+		{ NULL, NULL  }
 	};
 	
 	luaL_register ( state, 0, regTable );

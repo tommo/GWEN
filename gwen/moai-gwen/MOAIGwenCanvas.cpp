@@ -1,13 +1,14 @@
 #include "moai-gwen/MOAIGwenCanvas.h"
 
+Gwen::Controls::Base* MOAIGwenCanvas::CreateGwenControl() {
+	return new Gwen::Controls::Canvas( NULL );
+}
 
 //----------------------------------------------------------------//
 MOAIGwenCanvas::MOAIGwenCanvas () {
 	RTTI_BEGIN
 		RTTI_EXTEND ( MOAIGwenControl )
 	RTTI_END
-	this->SetInternalControl( new Gwen::Controls::Canvas( NULL ) );
-
 }
 
 //----------------------------------------------------------------//
@@ -23,8 +24,8 @@ void MOAIGwenCanvas::RegisterLuaClass ( MOAILuaState& state ) {
 void MOAIGwenCanvas::RegisterLuaFuncs ( MOAILuaState& state ) {
 	MOAIGwenControl::RegisterLuaFuncs( state );
 	luaL_Reg regTable [] = {
-		// { "capParticles",		_capParticles },
-		{ NULL, NULL }
+		{ "new", _new },
+		{ NULL, NULL  }
 	};
 	
 	luaL_register ( state, 0, regTable );

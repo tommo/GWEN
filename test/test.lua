@@ -37,6 +37,7 @@ MOAICoroutine.new():run( function()
 	end
 end)
 
+
 -- label = MOAIGwenLabel.new()
 -- canvas:addChild( label )
 -- button:setText( 'Event Tester' )

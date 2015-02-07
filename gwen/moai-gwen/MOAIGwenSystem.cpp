@@ -41,7 +41,9 @@ MOAIGwenSystem::MOAIGwenSystem () {
 		RTTI_EXTEND ( MOAIAction )
 	RTTI_END
 	this->SetMask ( MOAIProp::CAN_DRAW | MOAIProp::CAN_DRAW_DEBUG );
-	this->mCanvas.Set( *this, new MOAIGwenCanvas() );
+	MOAIGwenCanvas* canvas = new MOAIGwenCanvas();
+	canvas->Init();
+	this->mCanvas.Set( *this, canvas );
 }
 
 //----------------------------------------------------------------//
