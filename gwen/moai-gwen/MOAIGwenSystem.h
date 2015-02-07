@@ -17,9 +17,11 @@ class MOAIGwenSystem :
 	public MOAIAction {
 private:
 	
-	static int    _setSkin           ( lua_State* L );
-	static int    _sendKeyEvent      ( lua_State* L );
-	static int    _sendMouseEvent    ( lua_State* L );
+	static int    _setSkin                 ( lua_State* L );
+	static int    _sendKeyEvent            ( lua_State* L );
+	static int    _sendMouseWheelEvent     ( lua_State* L );
+	static int    _sendMouseMoveEvent      ( lua_State* L );
+	static int    _sendMouseButtonEvent    ( lua_State* L );
 
 	static int    _getCanvas         ( lua_State* L );
 
@@ -34,6 +36,7 @@ private:
 
 
 public:
+	Gwen::Controls::Canvas* GetGwenCanvs(); 
 
 	void			Draw					( int subPrimID, float lod );
 	bool			IsDone					();

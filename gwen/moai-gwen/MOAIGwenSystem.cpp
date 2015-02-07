@@ -18,12 +18,24 @@ int MOAIGwenSystem::_sendKeyEvent ( lua_State* L ) {
 	return 0;
 }
 
-int MOAIGwenSystem::_sendMouseEvent ( lua_State* L ) {
-	MOAI_LUA_SETUP ( MOAIGwenSystem, "U" )
-	//TODO
+int MOAIGwenSystem::_sendMouseMoveEvent ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenSystem, "UNNNN" )
+	float x  = state.GetValue < float >( 2, 0.0f );
+	float y  = state.GetValue < float >( 3, 0.0f );
+	float dx = state.GetValue < float >( 4, 0.0f );
+	float dy = state.GetValue < float >( 5, 0.0f );
+	self->GetGwenCanvs()->InputMouseMoved( x, y , dx, dy );
 	return 0;
 }
 
+int MOAIGwenSystem::_sendMouseButtonEvent ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenSystem, "UNB" )
+	//TODO
+	u32 button  = state.GetValue < u32 >( 2, 0 );
+	bool down   = state.GetValue < bool >( 3, false );
+	self->GetGwenCanvs()->InputMouseButton( button, down );
+	return 0;
+}
 
 int MOAIGwenSystem::_getCanvas ( lua_State* L ) {
 	MOAI_LUA_SETUP ( MOAIGwenSystem, "U" )
@@ -66,10 +78,10 @@ void MOAIGwenSystem::RegisterLuaFuncs ( MOAILuaState& state ) {
 	MOAIAction::RegisterLuaFuncs ( state );
 	
 	luaL_Reg regTable [] = {
-		{ "getCanvas",             _getCanvas },
-		{ "setSkin",               _setSkin },
-		{ "sendKeyEvent",          _setSkin },
-		// { "sendMouseEvent",        _setSkin },
+		{ "getCanvas",                _getCanvas },
+		{ "setSkin",                  _setSkin },
+		{ "sendMouseMoveEvent",       _sendMouseMoveEvent },
+		{ "sendMouseButtonEvent",     _sendMouseButtonEvent },
 		{ NULL, NULL }
 	};
 	
@@ -85,6 +97,7 @@ u32 MOAIGwenSystem::OnGetModelBounds ( ZLBox& bounds ) {
 
 //----------------------------------------------------------------//
 void MOAIGwenSystem::OnUpdate ( float step ) {
+	// this->GetGwenCanvs()->DoThink();
 	this->ScheduleUpdate ();
 }
 
@@ -119,4 +132,8 @@ void MOAIGwenSystem::SetSkin ( MOAIGwenSkin* skin ) {
 	if( this->mCanvas ) {
 		this->mCanvas->SetSkin( skin );
 	}
+}
+
+Gwen::Controls::Canvas* MOAIGwenSystem::GetGwenCanvs() { 
+	return static_cast< Gwen::Controls::Canvas* >( mCanvas->GetInternalControl() );
 }

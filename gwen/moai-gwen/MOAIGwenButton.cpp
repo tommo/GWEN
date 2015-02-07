@@ -20,6 +20,11 @@ MOAIGwenButton::~MOAIGwenButton () {
 //----------------------------------------------------------------//
 void MOAIGwenButton::RegisterLuaClass ( MOAILuaState& state ) {
 	MOAIGwenControl::RegisterLuaClass( state );
+	luaL_Reg regTable [] = {
+		{ "new", _new },
+		{ NULL,  NULL }
+	};
+	luaL_register ( state, 0, regTable );
 }
 
 //----------------------------------------------------------------//

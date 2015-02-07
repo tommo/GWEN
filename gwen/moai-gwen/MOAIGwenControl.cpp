@@ -44,6 +44,26 @@ int MOAIGwenControl::_getParent ( lua_State* L ) {
 	return 1;
 }
 
+
+int MOAIGwenControl::_getChildren( lua_State* L )
+{
+	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
+
+	lua_newtable( L );
+
+	unsigned int count = 1;
+	Gwen::Controls::Base::List & children = self->GetInternalControl()->GetChildren();
+	for ( Gwen::Controls::Base::List::iterator iter = children.begin(); iter != children.end(); ++iter )
+	{
+		Gwen::Controls::Base* child = *iter ;
+		lua_pushnumber ( state, count );
+		PushGwenControl( state, child );
+		lua_settable( L, -3 );
+		++count;
+	}
+	return 1;
+}
+
 //----------------------------------------------------------------//
 int MOAIGwenControl::_setSize ( lua_State* L ) {
 	MOAI_LUA_SETUP ( MOAIGwenControl, "UNN" )
@@ -85,6 +105,25 @@ int MOAIGwenControl::_getPos ( lua_State* L ) {
 	return 2;
 }
 
+//----------------------------------------------------------------//
+int MOAIGwenControl::_moveTo ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "UNN" )
+	float x = state.GetValue < float >( 2, 0.0f );
+	float y = state.GetValue < float >( 3, 0.0f );
+	self->GetInternalControl()->MoveTo( x, y );
+	return 0;
+}
+
+
+//----------------------------------------------------------------//
+int MOAIGwenControl::_moveBy ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "UNN" )
+	float x = state.GetValue < float >( 2, 0.0f );
+	float y = state.GetValue < float >( 3, 0.0f );
+	self->GetInternalControl()->MoveBy( x, y );
+	return 0;
+}
+
 
 //----------------------------------------------------------------//
 int MOAIGwenControl::_getTypeName ( lua_State* L ) {
@@ -98,6 +137,30 @@ int MOAIGwenControl::_getChildrenCount ( lua_State* L ) {
 	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
 	state.Push( self->GetInternalControl()->NumChildren() );	
 	return 1;
+}
+
+//----------------------------------------------------------------//
+int MOAIGwenControl::_sendToBack ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
+	self->GetInternalControl()->SendToBack();
+	return 0;
+}
+
+//----------------------------------------------------------------//
+int MOAIGwenControl::_bringToFront ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
+	self->GetInternalControl()->BringToFront();
+	return 0;
+}
+
+//----------------------------------------------------------------//
+int MOAIGwenControl::_bringNextToControl ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "UU" )
+	MOAIGwenControl* control = state.GetLuaObject< MOAIGwenControl >( 2, 0 );
+	bool behind = state.GetValue< bool >( 3, false );
+	if( control )
+		self->GetInternalControl()->BringNextToControl( control->GetInternalControl(), behind );
+	return 0;
 }
 
 //----------------------------------------------------------------//
@@ -140,30 +203,39 @@ Gwen::Controls::Base* MOAIGwenControl::CreateGwenControl() {
 
 //----------------------------------------------------------------//
 void MOAIGwenControl::RegisterLuaClass ( MOAILuaState& state ) {
-	UNUSED( state );
+	luaL_Reg regTable [] = {
+		{ "new",             MOAILogMessages::_alertNewIsUnsupported },
+		{ NULL, NULL }
+	};
+	luaL_register ( state, 0, regTable );
 }
 
 //----------------------------------------------------------------//
 void MOAIGwenControl::RegisterLuaFuncs ( MOAILuaState& state ) {
 	luaL_Reg regTable [] = {
-		{ "new",             MOAILogMessages::_alertNewIsUnsupported },
+		{ "setSkin",              _setSkin            },
+		{ "setParent",            _setParent          },
+		{ "addChild",             _addChild           },
+		{ "getChildrenCount",     _getChildrenCount   },
+		{ "getChildren",          _getChildren        },
 
-		{ "setSkin",         _setSkin          },
-		{ "setParent",       _setParent        },
-		{ "addChild",        _addChild         },
-		{ "getChildrenCount",_getChildrenCount },
+		{ "sendToBack",           _sendToBack         },
+		{ "bringToFront",         _bringToFront       },
+		{ "bringNextToControl",   _bringNextToControl },
 
-		{ "getChildrenSize", _getChildrenSize  },
-		{ "fitChildren",     _fitChildren      },
+		{ "getChildrenSize",      _getChildrenSize    },
+		{ "fitChildren",          _fitChildren        },
 
 		//ATTR
-		{ "getSize",         _getSize          },
-		{ "setSize",         _setSize          },
+		{ "getSize",              _getSize            },
+		{ "setSize",              _setSize            },
 
-		{ "getPos",          _getPos           },
-		{ "setPos",          _setPos           },
+		{ "getPos",               _getPos             },
+		{ "setPos",               _setPos             },
 
-		{ "getTypeName",   _getTypeName        },
+		{ "moveTo",               _moveTo             },
+		{ "moveBy",               _moveBy             },
+		{ "getTypeName",          _getTypeName        },
 
 		{ NULL, NULL }
 	};

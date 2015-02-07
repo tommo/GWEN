@@ -16,6 +16,8 @@ class MOAIGwenWindowControl :
 	public MOAIGwenControl {
 private:
 	//----------------------------------------------------------------//
+	MOAI_GWEN_NEW ( MOAIGwenWindowControl )
+	virtual Gwen::Controls::Base* CreateGwenControl();
 	
 public:
 		

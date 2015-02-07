@@ -43,9 +43,13 @@ private:
 	static int    _getParent            ( lua_State* L );
 	static int    _setParent            ( lua_State* L );
 	static int    _addChild             ( lua_State* L );
+	static int    _getChildren          ( lua_State* L );
 
 	static int    _getChildrenCount     ( lua_State* L );
 	// static int    _getChildren          ( lua_State* L );
+	static int    _sendToBack           ( lua_State* L );
+	static int    _bringToFront         ( lua_State* L );
+	static int    _bringNextToControl   ( lua_State* L );
 
 	static int    _fitChildren          ( lua_State* L );
 	static int    _getChildrenSize      ( lua_State* L );
@@ -54,6 +58,9 @@ private:
 	static int    _setSize              ( lua_State* L );
 	static int    _getPos               ( lua_State* L );
 	static int    _setPos               ( lua_State* L );
+
+	static int    _moveTo               ( lua_State* L );
+	static int    _moveBy               ( lua_State* L );
 
 	static int    _isValid              ( lua_State* L );
 
@@ -71,6 +78,7 @@ protected:
 
 	virtual Gwen::Controls::Base* CreateGwenControl();
 
+public:
 	MOAIGwenControl* Init() {
 		return this->Init( this->CreateGwenControl() );
 	}
@@ -79,8 +87,6 @@ protected:
 		this->SetInternalControl( control );
 		return this;
 	}
-
-public:
 	
 	friend class MOAIGwenSystem;
 	friend class Gwen::Controls::Base;
@@ -100,7 +106,16 @@ public:
 	void				RegisterLuaClass		( MOAILuaState& state );
 	void				RegisterLuaFuncs		( MOAILuaState& state );
 
-static MOAIGwenControl* _GwenToMoai( Gwen::Controls::Base* control );
+//----------------------------------------------------------------//
+	static MOAIGwenControl* _GwenToMoai( Gwen::Controls::Base* control );
+	static bool PushGwenControl( MOAILuaState& state, Gwen::Controls::Base* control ) {
+		MOAIGwenControl* control1 = _GwenToMoai( control );
+		if( control1 ){
+			control1->PushLuaUserdata( state );
+			return true;
+		}
+		return false;
+	}
 
 };
 

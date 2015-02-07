@@ -10,6 +10,8 @@
 #include "Gwen/Gwen.h"
 #include "Gwen/BaseRender.h"
 
+// #include "moai-sim/MOAIScissorRect.h"
+
 namespace Gwen
 {
 	namespace Renderer
@@ -17,6 +19,9 @@ namespace Gwen
 
 		class MOAIRenderer : public Gwen::Renderer::Base
 		{
+			private:
+				// MOAIScissorRect* mScissorRect;
+				
 			public:
 
 				MOAIRenderer();
