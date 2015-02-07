@@ -47,7 +47,7 @@ MOAIGfxDevice.getFrameBuffer():setRenderTable( { layer } )
 sys = MOAIGwenSystem.new()
 skin = MOAIGwenSkinSimple.new()
 sys:setSkin( skin )
-sys:setLoc( -400, 250 )
+sys:setLoc( -200, 250 )
 
 sys:start()
 bindMouseInput( sys )
@@ -56,37 +56,14 @@ layer:insertProp( sys )
 
 canvas = sys:getCanvas()
 canvas:setName( 'canvas-root' )
+canvas:setSize( 500, 500 )
 
-window = MOAIGwenWindowControl.new()
-canvas:addChild( window )
-window:setSize( 200, 200 )
-window:setPos( 50, 50 )
-window:setName( 'window-1' )
+window = canvas:addChild( MOAIGwenWindowControl.new() )
+window:setSize( 100, 100 )
 
-window2 = MOAIGwenWindowControl.new()
-canvas:addChild( window2 )
-window2:setSize( 200, 300 )
-window2:setName( 'window-2' )
+label = window:addChild( MOAIGwenLabel.new() )
+label:setText( 'GOOD to die' )
+label:setTextColorOverride( 1,0,0,1 )
+label:setPos( 100, 50 )
 
-local button = MOAIGwenButton.new()
-window:addChild( button )
-button:setPos( 100, 50 )
 
-for i, control in ipairs( canvas:getChildren() ) do
-	print( i, control:getTypeName(), control:getName() )
-end
-
-local w = canvas:findChildByName( 'window-1' )
-assert( w == window )
-
-local w = canvas:findChildByName( 'window-2' )
-assert( w == window2 )
-
-print( window2:getBounds() )
-print( window2:getInnerBounds() )
-print( window2:getRenderBounds() )
-
--- label = MOAIGwenLabel.new()
--- canvas:addChild( label )
--- button:setText( 'Event Tester' )
--- button:addHandler( button.ON_PRESS, function( event, data ) print( 'button pressed' ) end )

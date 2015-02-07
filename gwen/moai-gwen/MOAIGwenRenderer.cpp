@@ -67,18 +67,23 @@ namespace Gwen
 
 		void MOAIRenderer::StartClip()
 		{
-			// Gwen::Rect rect = ClipRegion();
-			// printf("%d, %d, %d, %d \n", rect.x, rect.y, rect.w, rect.h);
-			// MOAIGfxDevice& gfx = MOAIGfxDevice::Get ();
-			// ZLRect rect1;
-			// rect1.Init( rect.x, rect.y, rect.x+rect.w, rect.y+rect.h );
-			// gfx.SetScissorRect( rect1 );
+			Gwen::Rect rect = ClipRegion();
+			ZLRect rect1;
+			rect1.Init( rect.x, - rect.y, rect.x+rect.w, - rect.y-rect.h );
+
+			MOAIGfxDevice& gfx = MOAIGfxDevice::Get ();
+			ZLMatrix4x4 mtx = gfx.GetVertexTransform( MOAIGfxDevice::VTX_WORLD_TRANSFORM );
+			mtx.Append( gfx.GetWorldToWndMtx() );
+			
+			mtx.Transform( rect1 );
+			// printf("%f, %f, %f, %f \n", rect1.mXMin, rect1.mYMin, rect1.mXMax, rect1.mYMax );
+			gfx.SetScissorRect( rect1 );
 		};
 
 		void MOAIRenderer::EndClip()
 		{
-			// MOAIGfxDevice& gfx = MOAIGfxDevice::Get ();
-			// gfx.SetScissorRect();
+			MOAIGfxDevice& gfx = MOAIGfxDevice::Get ();
+			gfx.SetScissorRect();
 		};
 
 		void MOAIRenderer::DrawTexturedRect( Gwen::Texture* pTexture, Gwen::Rect rect, float u1, float v1, float u2, float v2 )

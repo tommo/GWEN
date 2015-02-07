@@ -30,7 +30,6 @@ int MOAIGwenSystem::_sendMouseMoveEvent ( lua_State* L ) {
 
 int MOAIGwenSystem::_sendMouseButtonEvent ( lua_State* L ) {
 	MOAI_LUA_SETUP ( MOAIGwenSystem, "UNB" )
-	//TODO
 	u32 button  = state.GetValue < u32 >( 2, 0 );
 	bool down   = state.GetValue < bool >( 3, false );
 	self->GetGwenCanvs()->InputMouseButton( button, down );
@@ -39,7 +38,6 @@ int MOAIGwenSystem::_sendMouseButtonEvent ( lua_State* L ) {
 
 int MOAIGwenSystem::_getCanvas ( lua_State* L ) {
 	MOAI_LUA_SETUP ( MOAIGwenSystem, "U" )
-	//TODO
 	self->mCanvas->PushLuaUserdata( state );
 	return 1;
 }

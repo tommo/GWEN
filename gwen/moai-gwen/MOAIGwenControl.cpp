@@ -29,7 +29,11 @@ int MOAIGwenControl::_setParent ( lua_State* L ) {
 int MOAIGwenControl::_addChild ( lua_State* L ) {
 	MOAI_LUA_SETUP ( MOAIGwenControl, "UU" )
 	MOAIGwenControl* control = state.GetLuaObject< MOAIGwenControl >( 2, 0 );
-	if( control )	control->SetParent( self );
+	if( control )	{
+		control->SetParent( self );
+		control->PushLuaUserdata( state );
+		return 1;
+	}
 	return 0;
 }
 

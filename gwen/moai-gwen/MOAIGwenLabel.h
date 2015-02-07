@@ -14,9 +14,20 @@
 class MOAIGwenLabel :
 	public MOAIGwenControl {
 private:
+
+	static int _setText                  ( lua_State* L );
+	static int _setTextColor             ( lua_State* L );
+	static int _setTextColorOverride     ( lua_State* L );
 	//----------------------------------------------------------------//
+	MOAI_GWEN_NEW( MOAIGwenLabel )
+	virtual Gwen::Controls::Base* CreateGwenControl();
+
 public:
 		
+	inline Gwen::Controls::Label* GetInternalControl() { 
+		return gwen_cast < Gwen::Controls::Label >( this->mControlRef.ref );
+	};
+
   DECL_LUA_FACTORY ( MOAIGwenLabel )
 	
 	//----------------------------------------------------------------//
