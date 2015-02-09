@@ -1,3 +1,6 @@
+#ifndef MOAI_GWEN_CONTROLTYPES_H
+#define MOAI_GWEN_CONTROLTYPES_H
+
 #include <moai-gwen/MOAIGwenControl.h>
 
 //controls
@@ -10,5 +13,7 @@
 
 //skins
 #include <moai-gwen/MOAIGwenSkinSimple.h>
+#include <moai-gwen/MOAIGwenSkinTexturedBase.h>
 
 
+#endif

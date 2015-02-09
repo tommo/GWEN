@@ -45,7 +45,9 @@ MOAIRenderMgr.setBufferTable( { MOAIGfxDevice.getFrameBuffer() } )
 MOAIGfxDevice.getFrameBuffer():setRenderTable( { layer } )
 
 sys = MOAIGwenSystem.new()
-skin = MOAIGwenSkinSimple.new()
+skin = MOAIGwenSkinTexturedBase.new()
+skin:init( 'DefaultSkin.png' )
+
 sys:setSkin( skin )
 sys:setLoc( -200, 250 )
 
@@ -56,14 +58,26 @@ layer:insertProp( sys )
 
 canvas = sys:getCanvas()
 canvas:setName( 'canvas-root' )
-canvas:setSize( 500, 500 )
+-- canvas:setSize( 500, 500 )
 
 window = canvas:addChild( MOAIGwenWindowControl.new() )
 window:setSize( 100, 100 )
+
+
 
 label = window:addChild( MOAIGwenLabel.new() )
 label:setText( 'GOOD to die' )
 label:setTextColorOverride( 1,0,0,1 )
 label:setPos( 100, 50 )
+
+button = window:addChild( MOAIGwenButton.new() )
+button:setSize( 200, 30 )
+
+
+-- window:setListener( window.EVENT_CLOSE, function() print('window closed') end )
+-- window:addListener( window.EVENT_CLOSE, function() print( 'window closed' ) end )
+-- window:setListener( window.EVENT_CLOSE, function() print('window closed') end )
+-- window:getEventHandler( 'close' ):add( obj, function() end )
+-- window:setListener( window.EVENT_CLOSE)
 
 

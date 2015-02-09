@@ -2,9 +2,29 @@
 #include "moai-gwen/MOAIGwenRenderer.h"
 
 #include "Gwen/Skins/Simple.h"
+#include "Gwen/Texture.h"
 
 // #include <zl-util/ZLDeviceTime.h>
 #include "Gwen/Platform.h"
+
+#include "moai-sim/pch.h"
+#include "moai-sim/MOAITexture.h"
+
+//----------------------------------------------------------------//
+
+int MOAIGwenMgr::_setTextureLoader ( lua_State* L ) {
+	MOAILuaState state ( L );
+	MOAIGwenMgr& mgr = MOAIGwenMgr::Get();
+	if( state.IsType( 1, LUA_TFUNCTION ) && state.IsType( 2, LUA_TFUNCTION ) ){
+		mgr.mOnLoadTexture.SetRef ( state, 1 );
+		mgr.mOnUnloadTexture.SetRef ( state, 2 );
+	} else {
+		mgr.mOnLoadTexture.Clear();
+		mgr.mOnUnloadTexture.Clear();
+	}
+	return 0;
+}
+
 //----------------------------------------------------------------//
 MOAIGwenMgr::MOAIGwenMgr ()
 {
@@ -27,6 +47,7 @@ MOAIGwenMgr::~MOAIGwenMgr ()
 void MOAIGwenMgr::RegisterLuaClass(MOAILuaState& state)
 {
 	luaL_Reg regTable[] = {
+		{ "setTextureLoader",  _setTextureLoader },
 		{ NULL, NULL }
 	};
 
@@ -37,6 +58,37 @@ void MOAIGwenMgr::RegisterLuaClass(MOAILuaState& state)
 void MOAIGwenMgr::RegisterLuaFuncs(MOAILuaState& state)
 {
 	UNUSED(state);
+}
+
+
+void MOAIGwenMgr::LoadTexture( Gwen::Texture* texture ) {
+	//TODO: lua callback support
+	if( this->mOnLoadTexture ) {
+		MOAIScopedLuaState state = MOAILuaRuntime::Get ().State ();
+		if ( this->mOnLoadTexture.PushRef ( state )) {
+			lua_pushstring( state, texture->name.c_str() );
+			state.DebugCall ( 1, 1 );
+			MOAITexture* tex = state.GetLuaObject < MOAITexture >( -1, 0 );
+		}
+	} else {
+		//default loader
+		MOAITexture* tex = new MOAITexture();
+		tex->Init( texture->name.c_str(), MOAIImageTransform::TRUECOLOR | MOAIImageTransform::PREMULTIPLY_ALPHA );
+		// printf("loading texture %s\n", texture->name.c_str() );
+		// printf("%d,%d\n", tex->GetWidth(), tex->GetHeight() );
+		texture->data = tex;
+		texture->width = tex->GetWidth();
+		texture->height = tex->GetHeight();
+		tex->Retain();
+	}
+}
+
+void MOAIGwenMgr::ReleaseTexture( Gwen::Texture* texture ) {
+	//TODO
+	if( texture->data ) {
+		MOAITexture* tex = static_cast< MOAITexture* >( texture->data );
+		tex->Release();
+	}
 }
 
 

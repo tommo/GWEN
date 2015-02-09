@@ -11,6 +11,18 @@
 //================================================================//
 // aku-Gwen
 //================================================================//
+void RegisterGwenControlTypes() {
+	// // REGISTER_LUA_CLASS ( MOAIGwenWindowCanvas )
+	REGISTER_LUA_CLASS ( MOAIGwenWindowControl )
+
+	REGISTER_LUA_CLASS ( MOAIGwenButton )
+	REGISTER_LUA_CLASS ( MOAIGwenLabel )
+
+	// //Skins
+	REGISTER_LUA_CLASS ( MOAIGwenSkin )
+	REGISTER_LUA_CLASS ( MOAIGwenSkinTexturedBase )
+	REGISTER_LUA_CLASS ( MOAIGwenSkinSimple )
+}
 
 //----------------------------------------------------------------//
 void AKUGwenAppFinalize () {
@@ -29,16 +41,8 @@ void AKUGwenContextInitialize () {
 
 	// //Controls
 	REGISTER_LUA_CLASS ( MOAIGwenControl )
-	
 	REGISTER_LUA_CLASS ( MOAIGwenCanvas )
-	// // REGISTER_LUA_CLASS ( MOAIGwenWindowCanvas )
-	REGISTER_LUA_CLASS ( MOAIGwenWindowControl )
 
-	REGISTER_LUA_CLASS ( MOAIGwenButton )
-	REGISTER_LUA_CLASS ( MOAIGwenLabel )
-
-	// //Skins
-	REGISTER_LUA_CLASS ( MOAIGwenSkin )
-	REGISTER_LUA_CLASS ( MOAIGwenSkinSimple )
+	RegisterGwenControlTypes();
 
 }

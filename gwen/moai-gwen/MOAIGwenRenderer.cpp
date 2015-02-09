@@ -1,4 +1,5 @@
 #include "moai-gwen/MOAIGwenRenderer.h"
+#include "moai-gwen/MOAIGwenMgr.h"
 
 #include "Gwen/Utility.h"
 #include "Gwen/Font.h"
@@ -10,6 +11,11 @@
 #include "moai-sim/pch.h"
 #include "moai-sim/MOAIDraw.h"
 #include "moai-sim/MOAIGfxDevice.h"
+#include <moai-sim/MOAIShaderMgr.h>
+#include <moai-sim/MOAIVertexFormatMgr.h>
+#include <moai-sim/MOAITexture.h>
+#include <moai-sim/MOAIQuadBrush.h>
+
 
 
 
@@ -41,10 +47,8 @@ namespace Gwen
 		
 		void MOAIRenderer::DrawFilledRect( Gwen::Rect rect )
 		{
-			// MOAIDraw& draw = MOAIDraw::Get ();
 			Translate( rect );
 			MOAIDraw::DrawRectFill( rect.x, -rect.y , rect.x + rect.w, -rect.y - rect.h );
-			// MOAIDraw::DrawRectFill( rect.x, rect.y + rect.h, rect.x + rect.w, rect.y, true );
 		}
 
 		void MOAIRenderer::DrawLineRect( Gwen::Rect rect )
@@ -76,7 +80,6 @@ namespace Gwen
 			mtx.Append( gfx.GetWorldToWndMtx() );
 			
 			mtx.Transform( rect1 );
-			// printf("%f, %f, %f, %f \n", rect1.mXMin, rect1.mYMin, rect1.mXMax, rect1.mYMax );
 			gfx.SetScissorRect( rect1 );
 		};
 
@@ -86,18 +89,44 @@ namespace Gwen
 			gfx.SetScissorRect();
 		};
 
-		void MOAIRenderer::DrawTexturedRect( Gwen::Texture* pTexture, Gwen::Rect rect, float u1, float v1, float u2, float v2 )
+		void MOAIRenderer::DrawTexturedRect( Gwen::Texture* pTexture, Gwen::Rect rect, float u0, float v0, float u1, float v1 )
 		{
+			float tw, th;
+			float x0, y0, x1, y1;
+			
+			if( !pTexture->data )	return;
+			MOAITextureBase* texture = static_cast< MOAITextureBase* >( pTexture->data );
+			tw = texture->GetWidth();
+			th = texture->GetHeight();
+
+			MOAIGfxDevice& gfx = MOAIGfxDevice::Get ();
+			gfx.SetTexture ( texture );
+			gfx.SetShaderPreset ( MOAIShaderMgr::DECK2D_SHADER );
+
+			MOAIQuadBrush::BindVertexFormat ( gfx );
+			MOAIQuadBrush quad;
+			Translate( rect );
+			x0 = rect.x ;
+			y0 = -rect.y ;
+			x1 = rect.x + rect.w ;
+			y1 = -rect.y - rect.h ;
+		
+			quad.SetVerts ( x0, y0, x1, y1 );
+			quad.SetUVs ( u0, v0, u1, v1 );		
+			quad.Draw ();
+
 		}
 
 		void MOAIRenderer::LoadTexture( Gwen::Texture* pTexture )
 		{
 			//TODO
+			MOAIGwenMgr::Get().LoadTexture( pTexture );
 		}
 
 		void MOAIRenderer::FreeTexture( Gwen::Texture* pTexture )
 		{
 			//PASS
+			MOAIGwenMgr::Get().ReleaseTexture( pTexture );
 		}
 
 		Gwen::Color MOAIRenderer::PixelColour( Gwen::Texture* pTexture, unsigned int x, unsigned int y, const Gwen::Color & col_default )

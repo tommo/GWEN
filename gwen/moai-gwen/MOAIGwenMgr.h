@@ -10,7 +10,12 @@ class MOAIGwenMgr :
 	public MOAIGlobalClass< MOAIGwenMgr, MOAILuaObject > {
 private:
 
-	// static int		_sendMessage(lua_State* L);
+	static int		_setTextureLoader(lua_State* L);
+
+	//----------------------------------------------------------------//
+	MOAILuaStrongRef mOnLoadTexture;
+	MOAILuaStrongRef mOnUnloadTexture;
+
 	Gwen::Renderer::Base* mRenderer;
 	Gwen::Skin::Base*     mDefaultSkin;
 	Gwen::Controls::Canvas*   mDefaultCanvas;
@@ -19,6 +24,9 @@ public:
 
 	Gwen::Renderer::Base*     GetRenderer() { return this->mRenderer; };
 	Gwen::Controls::Canvas*   GetDefaultCanvas() { return this->mDefaultCanvas; };
+
+	void LoadTexture         ( Gwen::Texture* texture );
+	void ReleaseTexture      ( Gwen::Texture* texture );
 
 	DECL_LUA_SINGLETON ( MOAIGwenMgr )
 
