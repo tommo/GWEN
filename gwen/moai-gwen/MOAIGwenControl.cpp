@@ -400,6 +400,12 @@ int MOAIGwenControl::_blur ( lua_State* L ) {
 	return 0;
 }
 
+int MOAIGwenControl::_touch ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
+	self->GetInternalControl()->Touch();
+	return 0;
+}
+
 
 //----------------------------------------------------------------//
 int MOAIGwenControl::_isOnTop ( lua_State* L ) {
@@ -491,7 +497,7 @@ int MOAIGwenControl::_invalidateParent ( lua_State* L ) {
 
 //----------------------------------------------------------------//
 MOAIGwenControl::MOAIGwenControl () {
-	RTTI_SINGLE ( MOAILuaObject )
+	RTTI_SINGLE ( MOAIInstanceEventSource )
 	this->mControlRef.owner = this;
 	// this->mGwenControl = this->CreateGwenControl();
 	// assert( this->mGwenControl );
@@ -513,6 +519,11 @@ Gwen::Controls::Base* MOAIGwenControl::CreateGwenControl() {
 
 //----------------------------------------------------------------//
 void MOAIGwenControl::RegisterLuaClass ( MOAILuaState& state ) {
+	MOAIInstanceEventSource::RegisterLuaClass ( state );
+	
+	state.SetField ( -1, "EVENT_HOVER_ENTER",					( u32 )EVENT_HOVER_ENTER );
+	state.SetField ( -1, "EVENT_HOVER_EXIT",					( u32 )EVENT_HOVER_EXIT );
+
 	luaL_Reg regTable [] = {
 		{ "new",             MOAILogMessages::_alertNewIsUnsupported },
 		{ NULL, NULL }
@@ -522,6 +533,8 @@ void MOAIGwenControl::RegisterLuaClass ( MOAILuaState& state ) {
 
 //----------------------------------------------------------------//
 void MOAIGwenControl::RegisterLuaFuncs ( MOAILuaState& state ) {
+	MOAIInstanceEventSource::RegisterLuaFuncs ( state );
+
 	luaL_Reg regTable [] = {
 		{ "getName",              _getName            },
 		{ "setName",              _setName            },
@@ -574,6 +587,7 @@ void MOAIGwenControl::RegisterLuaFuncs ( MOAILuaState& state ) {
 		{ "setFocus",             _setFocus           },
 		{ "focus",                _focus              },
 		{ "blur",                 _blur               },
+		{ "touch",                _touch              },
 
 		{ "isTabable",            _isTabable          },
 		{ "setTabable",           _setTabable         },

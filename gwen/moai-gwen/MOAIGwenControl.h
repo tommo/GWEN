@@ -16,7 +16,16 @@ class MOAIGwenSystem;
 */
 
 class MOAIGwenControl :
-	public MOAILuaObject {
+	public virtual MOAIInstanceEventSource,
+	public Gwen::Event::Handler
+	{
+public:
+	enum Events{
+		EVENT_HOVER_ENTER,
+		EVENT_HOVER_EXIT,
+		TOTAL_EVENTS,
+	};
+
 private:
 
 	struct ControlRef : public Gwen::Controls::Base::ExternalRef
@@ -89,6 +98,7 @@ private:
 	static int    _setFocus             ( lua_State* L );
 	static int    _focus                ( lua_State* L );
 	static int    _blur                 ( lua_State* L );
+	static int    _touch                ( lua_State* L );
 
 	static int    _isOnTop              ( lua_State* L );
 	static int    _isHovered            ( lua_State* L );
@@ -113,19 +123,41 @@ private:
 	static int    _invalidateChildren   ( lua_State* L );
 	static int    _invalidateParent     ( lua_State* L );
 
+	//----------------------------------------------------------------//
+	void _EventCallBack( Gwen::Event::Info &EventInfo ) {
+		u32 ev = (u32)EventInfo.Data;
+		MOAIScopedLuaState state = MOAILuaRuntime::Get ().State ();
+		if ( this->PushListenerAndSelf ( ev, state )) {
+			state.DebugCall ( 1, 0 );
+		}
+	}
+
 protected:
 
 	ControlRef mControlRef;
 
 	MOAILuaSharedPtr < MOAIGwenSkin > mSkin;
-	//----------------------------------------------------------------//
-	void    SetInternalControl( Gwen::Controls::Base* control ) {
-		control->SetExternalRef( &this->mControlRef );
-	};
+	
+	void    ConnectEventCallBack( Gwen::Event::Caller& caller, u32 eventId ) {
+		caller.Add( this, &MOAIGwenControl::_EventCallBack, (void*)eventId );
+	}
 
 	virtual Gwen::Controls::Base* CreateGwenControl();
 
+	virtual void ConnectEvents() {
+		ConnectEventCallBack( GetInternalControl()->onHoverEnter, EVENT_HOVER_ENTER );
+		ConnectEventCallBack( GetInternalControl()->onHoverLeave, EVENT_HOVER_EXIT );
+	};
+
+	//----------------------------------------------------------------//
+	void    SetInternalControl( Gwen::Controls::Base* control ) {
+		control->SetExternalRef( &this->mControlRef );
+		this->ConnectEvents();
+	};
+
+
 public:
+
 	MOAIGwenControl* Init() {
 		return this->Init( this->CreateGwenControl() );
 	}
@@ -134,7 +166,8 @@ public:
 		this->SetInternalControl( control );
 		return this;
 	}
-	
+
+
 	friend class MOAIGwenSystem;
 	friend class Gwen::Controls::Base;
 	
@@ -156,9 +189,9 @@ public:
 //----------------------------------------------------------------//
 	static MOAIGwenControl* _GwenToMoai( Gwen::Controls::Base* control );
 	static bool PushGwenControl( MOAILuaState& state, Gwen::Controls::Base* control ) {
-		MOAIGwenControl* control1 = _GwenToMoai( control );
-		if( control1 ){
-			control1->PushLuaUserdata( state );
+		MOAIGwenControl* wrapped = _GwenToMoai( control );
+		if( wrapped ){
+			wrapped->PushLuaUserdata( state );
 			return true;
 		}
 		return false;

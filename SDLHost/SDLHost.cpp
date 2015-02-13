@@ -43,8 +43,14 @@ namespace InputSensorID {
 	};
 }
 
+
+
 static SDL_Window* sWindow = 0;
 static FreeJoyManager sJoystickManager;
+
+typedef int ( *DisplayModeFunc ) (int, SDL_DisplayMode *);
+static void SetScreenSize ( DisplayModeFunc func);
+
 
 //================================================================//
 // aku callbacks
@@ -53,18 +59,35 @@ static FreeJoyManager sJoystickManager;
 void	_AKUEnterFullscreenModeFunc		();
 void	_AKUExitFullscreenModeFunc		();
 void	_AKUOpenWindowFunc				( const char* title, int width, int height );
+void    _AKUShowCursor ();
+void    _AKUHideCursor ();
+
 
 //----------------------------------------------------------------//
 void _AKUEnterFullscreenModeFunc () {
-
-	printf ( "UNSUPPORTED\n" );
+    //videomode change
+  SDL_SetWindowFullscreen(sWindow, SDL_WINDOW_FULLSCREEN);
+	SetScreenSize( SDL_GetCurrentDisplayMode );
 }
 
 //----------------------------------------------------------------//
 void _AKUExitFullscreenModeFunc () {
 
-	printf ( "UNSUPPORTED\n" );
+  SDL_SetWindowFullscreen(sWindow, 0);
+	SetScreenSize( SDL_GetDesktopDisplayMode );
 }
+
+
+//----------------------------------------------------------------//
+void _AKUShowCursor () {
+	SDL_ShowCursor(1);
+}
+
+//----------------------------------------------------------------//
+void _AKUHideCursor () {
+	SDL_ShowCursor(0);
+}
+
 
 //----------------------------------------------------------------//
 void _AKUOpenWindowFunc ( const char* title, int width, int height ) {
@@ -75,21 +98,35 @@ void _AKUOpenWindowFunc ( const char* title, int width, int height ) {
 		SDL_GL_SetSwapInterval ( 1 );
 		AKUDetectGfxContext ();
 		AKUSetScreenSize ( width, height );
+		// AKUSdlSetWindow ( sWindow );
+
+		// SDL_StartTextInput ();
 	}
+}
+
+//----------------------------------------------------------------//
+void SetScreenSize(DisplayModeFunc func ) {
+
+    SDL_DisplayMode dm;
+
+    if ( func != NULL && func( 0, &dm ) == 0 ) {
+    	AKUSetScreenSize(dm.w, dm.h);
+    }
 }
 
 
 //----------------------------------------------------------------//
 static void _JoyButtonFunc ( int joyId, int buttonId, bool down ) {
-	// if( joyId == 0 ) {
+	if( joyId == 1 ) {
 		// printf("%d,%d,%d\n", joyId, buttonId, down );
-		AKUEnqueueKeyboardEvent( 
+		AKUEnqueueKeyboardKeyEvent( 
 			InputDeviceID::DEVICE, InputSensorID::JOYSTICK_BUTTONS, buttonId, down
 		);
-	// }
+	}
 }
 
 static void _JoyAxisFunc ( int joyId, int axisId, float value ) {
+	// printf("%d,%d,%.2f\n", joyId, axisId, value );
 	if( joyId == 1 ) {
 		if( axisId == 0 ) {
 			AKUEnqueueWheelEvent( 
@@ -148,7 +185,7 @@ void Init ( int argc, char** argv ) {
 	AKUCreateContext ();
 	AKUModulesContextInitialize ();
 	AKUModulesCustomContextInitialize ();
-	// AKUModulesRunLuaAPIWrapper ();
+	AKUModulesRunLuaAPIWrapper ();
 	registerExtensionClasses();
 
 	AKUSetInputConfigurationName ( "SDL" );
@@ -176,6 +213,10 @@ void Init ( int argc, char** argv ) {
 
 	AKUSetFunc_EnterFullscreenMode ( _AKUEnterFullscreenModeFunc );
 	AKUSetFunc_ExitFullscreenMode ( _AKUExitFullscreenModeFunc );
+
+	AKUSetFunc_ShowCursor ( _AKUShowCursor );
+	AKUSetFunc_HideCursor ( _AKUHideCursor );
+
 	AKUSetFunc_OpenWindow ( _AKUOpenWindowFunc );
 	
 	AKUModulesCustomRunBefore ();
@@ -209,7 +250,7 @@ void MainLoop () {
 					switch( sdlEvent.key.keysym.sym ) {
 						default:
 							if( !sdlEvent.key.repeat )
-							AKUEnqueueKeyboardEvent ( InputDeviceID::DEVICE, InputSensorID::KEYBOARD, sdlEvent.key.keysym.sym & 0xffff, sdlEvent.key.type == SDL_KEYDOWN );
+							AKUEnqueueKeyboardKeyEvent ( InputDeviceID::DEVICE, InputSensorID::KEYBOARD, sdlEvent.key.keysym.sym & 0xffff, sdlEvent.key.type == SDL_KEYDOWN );
 					}
 					break;
 					
@@ -243,8 +284,8 @@ void MainLoop () {
 							case SDL_WINDOWEVENT_RESIZED:
 								AKUSetScreenSize ( sdlEvent.window.data1, sdlEvent.window.data2 );
 								AKUSetViewSize ( sdlEvent.window.data1, sdlEvent.window.data2 );
-								AKURender ();
-								SDL_GL_SwapWindow ( sWindow );
+								// AKURender ();
+								// SDL_GL_SwapWindow ( sWindow );
 								break;
 						}
 			}

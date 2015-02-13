@@ -14,7 +14,7 @@ def setup_moai_env( ctx, target, config ):
 		'moai-%s-sim',
 		'moai-%s-3rdparty-core',
 		'moai-%s-3rdparty-crypto',
-		'moai-%s-3rdparty-curl',
+		# 'moai-%s-3rdparty-curl',
 		'moai-%s-luaext',
 		'moai-%s-zl-vfs',
 		'moai-%s-zl-core',
@@ -30,6 +30,15 @@ def setup_moai_env( ctx, target, config ):
 		LIB_NAMES += [
 			'moai-%s-twitter',
 			'moai-%s-crittercism'
+		]
+	else:
+		LIB_NAMES += [
+			'moai-%s-3rdparty-sdl'
+		]
+
+	if target == 'osx':
+		LIB_NAMES += [
+			'moai-%s-apple'
 		]
 
 	LIB_NAMES += [ 

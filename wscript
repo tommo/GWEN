@@ -13,7 +13,7 @@ def configure( conf ):
 	moai_env.setup_moai_env( conf, 'osx', 'debug' )
 	moai_env.setup_fmod_env( conf, 'osx', 'debug' )
 	conf.env.ARCH  = [ 'i386' ]
-	conf.env.CXXFLAGS  = [ '-fno-rtti', '-stdlib=libstdc++', '-g' ]
+	conf.env.CXXFLAGS  = [ '-fno-rtti', '-stdlib=libstdc++', '-g', '-fvisibility=hidden' ]
 
 def options( opt ):
 	opt.load( 'compiler_cxx compiler_c' )

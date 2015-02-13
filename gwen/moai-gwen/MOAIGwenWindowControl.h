@@ -15,12 +15,22 @@
 class MOAIGwenWindowControl :
 	public MOAIGwenControl {
 private:
+	
+	static int _setTitle           ( lua_State* L );
+	static int _setClosable        ( lua_State* L );
+	static int _makeModal          ( lua_State* L );
+	static int _destroyModal       ( lua_State* L );
+
 	//----------------------------------------------------------------//
 	MOAI_GWEN_NEW ( MOAIGwenWindowControl )
 	virtual Gwen::Controls::Base* CreateGwenControl();
 	
 public:
-		
+	
+	inline Gwen::Controls::WindowControl* GetInternalControl() { 
+		return static_cast < Gwen::Controls::WindowControl* >( this->mControlRef.ref );
+	}
+
   DECL_LUA_FACTORY ( MOAIGwenWindowControl )
 	
 	//----------------------------------------------------------------//

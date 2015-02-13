@@ -50,7 +50,7 @@ MOAIGwenSystem::MOAIGwenSystem () {
 		RTTI_EXTEND ( MOAIGraphicsProp )
 		RTTI_EXTEND ( MOAIAction )
 	RTTI_END
-	this->SetMask ( MOAIProp::CAN_DRAW | MOAIProp::CAN_DRAW_DEBUG );
+	// this->SetMask ( MOAIProp::CAN_DRAW | MOAIProp::CAN_DRAW_DEBUG );
 	MOAIGwenCanvas* canvas = new MOAIGwenCanvas();
 	canvas->Init();
 	this->mCanvas.Set( *this, canvas );
@@ -112,7 +112,7 @@ void MOAIGwenSystem::Draw ( int subPrimID, float lod ) {
 	if ( !this->IsVisible ( lod ) ) return;
 
 	this->LoadGfxState ();
-	this->LoadTransforms ();
+	this->LoadVertexTransform ();
 
 	MOAIGfxDevice& gfxDevice = MOAIGfxDevice::Get ();
 	

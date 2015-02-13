@@ -25,7 +25,7 @@ private:
 public:
 		
 	inline Gwen::Controls::Label* GetInternalControl() { 
-		return gwen_cast < Gwen::Controls::Label >( this->mControlRef.ref );
+		return static_cast < Gwen::Controls::Label* >( this->mControlRef.ref );
 	};
 
   DECL_LUA_FACTORY ( MOAIGwenLabel )

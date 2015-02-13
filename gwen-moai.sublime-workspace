@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"stati",
+				"static_cast"
+			],
+			[
+				"sta",
+				"static_cast"
+			],
+			[
+				"MOAGw",
+				"MOAIGwenWindowControl"
+			],
+			[
+				"lua_",
+				"lua_State"
+			],
+			[
 				"text",
 				"texture"
 			],
@@ -498,64 +514,72 @@
 			[
 				"pitchm",
 				"pitchMin"
-			],
-			[
-				"berser",
-				"berserkMode"
-			],
-			[
-				"laun",
-				"launcher"
-			],
-			[
-				"attaki",
-				"attacking"
-			],
-			[
-				"launch",
-				"launchDuration"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "gwen/include/Gwen/Skins/Texturing.h",
-			"settings":
-			{
-				"buffer_size": 4974,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "gwen/include/Gwen/Texture.h",
-			"settings":
-			{
-				"buffer_size": 805,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "gwen/src/Controls/Text.cpp",
-			"settings":
-			{
-				"buffer_size": 9070,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "gwen/src/Controls/TextBox.cpp",
-			"settings":
-			{
-				"buffer_size": 16661,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "gwen/src/Controls/Label.cpp",
 			"settings":
 			{
 				"buffer_size": 2171,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "gwen/include/Gwen/Controls/Base.h",
+			"settings":
+			{
+				"buffer_size": 20028,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "gwen/moai-gwen/MOAIGwenControl.cpp",
+			"settings":
+			{
+				"buffer_size": 19577,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "gwen/moai-gwen/MOAIGwenControl.h",
+			"settings":
+			{
+				"buffer_size": 5850,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "gwen/moai-gwen/MOAIGwenButton.h",
+			"settings":
+			{
+				"buffer_size": 1000,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "gwen/moai-gwen/MOAIGwenButton.cpp",
+			"settings":
+			{
+				"buffer_size": 1013,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "gwen/src/Controls/WindowControl.cpp",
+			"settings":
+			{
+				"buffer_size": 3445,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "gwen/src/Controls/Base.cpp",
+			"settings":
+			{
+				"buffer_size": 25206,
 				"line_ending": "Unix"
 			}
 		},
@@ -576,23 +600,31 @@
 			}
 		},
 		{
+			"file": "gwen/include/Gwen/Texture.h",
+			"settings":
+			{
+				"buffer_size": 805,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "test/test.lua",
 			"settings":
 			{
-				"buffer_size": 2105,
+				"buffer_size": 2135,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "gwen/include/Gwen/Controls/Text.h",
+			"file": "gwen/include/Gwen/Controls/WindowControl.h",
 			"settings":
 			{
-				"buffer_size": 2171,
+				"buffer_size": 1617,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Waf: Entering directory `/Volumes/prj/moai/etc/gwen/_build'\nWaf: Leaving directory `/Volumes/prj/moai/etc/gwen/_build'\n'build' finished successfully (0.036s)\nWaf: Entering directory `/Volumes/prj/moai/etc/gwen/_build'\n- install ./test/moai (from _build/SDLHost/moai)\nWaf: Leaving directory `/Volumes/prj/moai/etc/gwen/_build'\n'install' finished successfully (0.038s)\ninit context\nfound joy: 0\nTEXTURE: '+'    1048576 =   1.00MB < /Volumes/prj/moai/etc/gwen/test/DefaultSkin.png\n\n[Finished in 12.2s]\n",
+			"contents": "Waf: Entering directory `/Volumes/prj/moai/etc/gwen/_build'\nWaf: Leaving directory `/Volumes/prj/moai/etc/gwen/_build'\n'build' finished successfully (0.038s)\nWaf: Entering directory `/Volumes/prj/moai/etc/gwen/_build'\n- install ./test/moai (from _build/SDLHost/moai)\nWaf: Leaving directory `/Volumes/prj/moai/etc/gwen/_build'\n'install' finished successfully (0.037s)\ninit context\nfound joy: 0\nTEXTURE: '+'    1048576 =   1.00MB < /Volumes/prj/moai/etc/gwen/test/DefaultSkin.png\n\n[Finished in 34.0s]\n",
 			"file": "BUILD_RESULT",
 			"file_size": 7073,
 			"file_write_time": 1422932791000000,
@@ -607,9 +639,17 @@
 	"build_system": "RUN",
 	"command_palette":
 	{
-		"height": 130.0,
+		"height": 375.0,
 		"selected_items":
 		[
+			[
+				"yaka",
+				"Set Syntax: Sublime Text Key Map"
+			],
+			[
+				"source",
+				"SourceTree: Open SourceTree"
+			],
 			[
 				"pack inst",
 				"Package Control: Install Package"
@@ -645,10 +685,6 @@
 			[
 				"git che",
 				"Git: Checkout Current File"
-			],
-			[
-				"yaka",
-				"Set Syntax: Sublime Text Key Map"
 			],
 			[
 				"gdb stop",
@@ -765,10 +801,6 @@
 			[
 				"bropa",
 				"Preferences: Browse Packages"
-			],
-			[
-				"source",
-				"SourceTree: Open SourceTree"
 			],
 			[
 				"brop",
@@ -1140,58 +1172,68 @@
 	},
 	"file_history":
 	[
-		"/Volumes/prj/moai/etc/gwen/gwen/UnitTest/LabelMultiline.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/TextBox.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenControl.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenButton.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenButton.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Controls/Button.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/Button.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/src/events.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/UnitTest/Window.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenSystem.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenSystem.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenCanvas.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenWindowCanvas.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenLabel.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenCanvas.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenControl.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenWindowControl.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenWindowCanvas.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Font.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenLabel.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenWindowControl.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenRenderer.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenMgr.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Input/Windows.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/WindowControl.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Controls/Base.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/Base.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/WindowCanvas.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/Text.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/BaseRender.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenRenderer.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenMgr.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Texture.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Skins/Texturing.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/TextBox.cpp",
+		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Controls/Text.h",
+		"/Volumes/prj/moai/etc/gwen/gwen/UnitTest/LabelMultiline.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Controls/Label.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/Label.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/Base.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/host.h",
-		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/Button.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenSkinTexturedBase.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenSkinTexturedBase.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/Util/ImportExport/Base.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Skins/TexturedBase.h",
-		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/Text.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/ScrollControl.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/ControlTypes.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/host.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/ControlTypes.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenMgr.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Structures.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/src/Utility.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Utility.h",
 		"/Volumes/prj/moai/etc/gwen/test/test.lua",
 		"/Volumes/prj/moai/etc/gwen/test/DefaultSkin.png",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenButton.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/UserData.h",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenMgr.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenSkinSimple.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenLabel.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenSkinTextureBase.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenSkinTextureBase.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenSkin.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/TextObject.h",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenButton.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenLabel.h",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenControl.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenControl.h",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenSystem.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/src/BaseRender.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Controls/Base.h",
-		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/BaseRender.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Renderers/OpenGL.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/Canvas.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenCanvas.h",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenCanvas.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Input/Windows.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Input/SDL13.h",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenSystem.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/src/inputhandler.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenWindowControl.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenWindowControl.h",
-		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/WindowControl.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Controls/CollapsibleList.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/TabButton.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/Menu.cpp",
@@ -1203,19 +1245,14 @@
 		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenControls.cpp",
 		"/Users/tommo/Library/Application Support/Sublime Text 2/Packages/Theme - Nexus/README.md",
 		"/Users/tommo/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Controls/Text.h",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenWindowCanvas.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/wscript",
 		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/DockedTabControl.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/Util/ControlFactory/VerticalSplitter_Factory.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/WindowCanvas.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/UnitTest/Button.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/UnitTest/Label.cpp",
 		"/Volumes/prj/moai/etc/gwen/BUILD_RESULT",
 		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Controls/WindowControl.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Controls/ResizableControl.h",
-		"/Volumes/prj/moai/etc/gwen/gwen/UnitTest/Window.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenWindowCanvas.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/ComboBox.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Gwen.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/moai-gwen/MOAIGwenSkinSimple.h",
@@ -1230,7 +1267,6 @@
 		"/Users/tommo/Library/Application Support/Sublime Text 2/Packages/SublimeLLDB/README.md",
 		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Controls/TreeControl.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/TreeControl.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Controls/Button.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Skin.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/CollapsibleCategory.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/TreeNode.cpp",
@@ -1246,7 +1282,6 @@
 		"/Volumes/prj/moai/etc/gwen/gwen/Renderers/MOAI/MOAIGwenRenderer.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/Moai/MOAIGwenMgr.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/src/Platforms/MOAI.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Skins/Texturing.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/Moai/MOAIGwenControl.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/Moai/MOAIGwenSystem.h",
 		"/Volumes/prj/moai/etc/gwen/gwen/Moai/MOAIGwenSystem.cpp",
@@ -1264,10 +1299,7 @@
 		"/Volumes/prj/moai/etc/gwen/gwen/Renderers/MOAI/MOAIGWENRenderer.cpp",
 		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/Controls.h",
 		"/Users/tommo/dev/lib/GWEN-lua/gwen/Bindings/Lua/Controls/Base.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/TabControl.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/src/events.cpp",
-		"/Volumes/prj/moai/etc/gwen/gwen/include/Gwen/ControlList.h",
-		"/Volumes/prj/moai/etc/gwen/gwen/Moai/MOAIGwenMgr.cpp"
+		"/Volumes/prj/moai/etc/gwen/gwen/src/Controls/TabControl.cpp"
 	],
 	"find":
 	{
@@ -1413,6 +1445,56 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"onToggleOff",
+			"restr",
+			"rest",
+			"setRestr",
+			"_restrictToParent",
+			"window",
+			"gwen_cast",
+			"getgwencan",
+			"GetGwenCanvs",
+			"getgwenc",
+			"_destroyModal",
+			"l",
+			"_destroyModal",
+			"MakeModal",
+			"drawBackground",
+			"closable",
+			"SetClosable",
+			"title",
+			"closable",
+			"false",
+			"text",
+			"virtual",
+			"Canvas",
+			"WindowControl",
+			"Button",
+			"Label",
+			"Button",
+			"static",
+			"_setClosable",
+			"blur",
+			"Blur",
+			"_blur",
+			"mini",
+			"RefreshSize",
+			"RefreshSizeWrap",
+			"texture",
+			"Texture",
+			"texture",
+			"Texture",
+			"pTexture",
+			"LoadTexture",
+			"LoadFont",
+			"MOAIRenderer",
+			"		{",
+			"MOAIRenderer",
+			"virtual",
+			"font",
+			"GetFont",
+			"measuretet",
+			"//",
 			"wr",
 			"RefreshSizeWrap",
 			"wrap",
@@ -1490,57 +1572,7 @@
 			"_sendMessage",
 			"_setTextureUnloader",
 			"MOAIScriptNode",
-			"MOAIGwenMgr",
-			"bool",
-			"Event",
-			"onClose",
-			"addListener",
-			"add",
-			"window",
-			"label",
-			"button",
-			".y",
-			"mtx",
-			"MOAIGfxDevice",
-			"GetViewProjMtx",
-			"canvas",
-			"GetVertexTransform",
-			"d",
-			"rect1",
-			"VTX_VIEW_TRANSFORM",
-			"this",
-			"gfx",
-			"button",
-			"100",
-			"500",
-			"button",
-			"canvas",
-			"window",
-			"ndow = canvas:addChild( MOAIGwenWindowControl.new() )\n\n",
-			"bounds",
-			"AddClipRegion",
-			"ClipRegion",
-			"_setTextColor",
-			"_setTextColorOverride",
-			"text",
-			"GetInternalControl",
-			"static_cast",
-			"getinter",
-			"static",
-			"MOAIGwenLabel",
-			"_setText",
-			"capParticles",
-			"text",
-			"MOAIGwenControl",
-			"MOAIGwenLabel",
-			"name",
-			"_setText",
-			"SetText",
-			"satate",
-			"Pu",
-			"Button",
-			"MOAIGwenButton",
-			"MOAIGwenLabel"
+			"MOAIGwenMgr"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1691,10 +1723,66 @@
 			[
 				{
 					"buffer": 0,
-					"file": "gwen/include/Gwen/Skins/Texturing.h",
+					"file": "gwen/src/Controls/Label.cpp",
 					"settings":
 					{
-						"buffer_size": 4974,
+						"buffer_size": 2171,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								642,
+								642
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/Color Scheme - Default/tommo_inactive.tmTheme",
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "gwen/include/Gwen/Controls/Base.h",
+					"settings":
+					{
+						"buffer_size": 20028,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8923,
+								8923
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/Color Scheme - Default/tommo_inactive.tmTheme",
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "gwen/moai-gwen/MOAIGwenControl.cpp",
+					"settings":
+					{
+						"buffer_size": 19577,
 						"regions":
 						{
 						},
@@ -1718,79 +1806,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "gwen/include/Gwen/Texture.h",
-					"settings":
-					{
-						"buffer_size": 805,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								548,
-								548
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/Color Scheme - Default/tommo_inactive.tmTheme",
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 288.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "gwen/src/Controls/Text.cpp",
-					"settings":
-					{
-						"buffer_size": 9070,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4085,
-								4100
-							],
-							[
-								5572,
-								5587
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/Color Scheme - Default/tommo_inactive.tmTheme",
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 3,
-					"file": "gwen/src/Controls/TextBox.cpp",
+					"file": "gwen/moai-gwen/MOAIGwenControl.h",
 					"settings":
 					{
-						"buffer_size": 16661,
+						"buffer_size": 5850,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8868,
-								8868
+								4023,
+								4023
 							]
 						],
 						"settings":
@@ -1800,59 +1828,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 6827.0,
+						"translation.y": 1411.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "gwen/src/Controls/Label.cpp",
+					"file": "gwen/moai-gwen/MOAIGwenButton.h",
 					"settings":
 					{
-						"buffer_size": 2171,
+						"buffer_size": 1000,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1648,
-								1648
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/Color Scheme - Default/tommo_inactive.tmTheme",
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1044.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 5,
-			"sheets":
-			[
-				{
-					"buffer": 2,
-					"file": "gwen/src/Controls/Text.cpp",
-					"settings":
-					{
-						"buffer_size": 9070,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								293,
-								293
+								572,
+								572
 							]
 						],
 						"settings":
@@ -1869,6 +1863,96 @@
 				},
 				{
 					"buffer": 5,
+					"file": "gwen/moai-gwen/MOAIGwenButton.cpp",
+					"settings":
+					{
+						"buffer_size": 1013,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								181,
+								181
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/Color Scheme - Default/tommo_inactive.tmTheme",
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "gwen/src/Controls/WindowControl.cpp",
+					"settings":
+					{
+						"buffer_size": 3445,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1919,
+								1919
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/Color Scheme - Default/tommo_inactive.tmTheme",
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 435.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "gwen/src/Controls/Base.cpp",
+					"settings":
+					{
+						"buffer_size": 25206,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7504,
+								7504
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/Color Scheme - Default/tommo_inactive.tmTheme",
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 19968.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 8,
 					"file": "gwen/include/Gwen/Gwen.h",
 					"settings":
 					{
@@ -1879,24 +1963,24 @@
 						"selection":
 						[
 							[
-								2569,
-								2573
+								107,
+								107
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/Color Scheme - Default/tommo.tmTheme",
+							"color_scheme": "Packages/Color Scheme - Default/tommo_inactive.tmTheme",
 							"syntax": "Packages/C++/C++.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1328.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 9,
 					"file": "gwen/UnitTest/UnitTest.cpp",
 					"settings":
 					{
@@ -1924,7 +2008,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 10,
 					"file": "gwen/include/Gwen/Texture.h",
 					"settings":
 					{
@@ -1952,47 +2036,47 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 11,
 					"file": "test/test.lua",
 					"settings":
 					{
-						"buffer_size": 2105,
+						"buffer_size": 2135,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1474,
-								1474
+								1552,
+								1552
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/Color Scheme - Default/tommo.tmTheme",
+							"color_scheme": "Packages/Color Scheme - Default/tommo_inactive.tmTheme",
 							"syntax": "Packages/Lua/Lua.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 930.0,
+						"translation.y": 865.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "gwen/include/Gwen/Controls/Text.h",
+					"buffer": 12,
+					"file": "gwen/include/Gwen/Controls/WindowControl.h",
 					"settings":
 					{
-						"buffer_size": 2171,
+						"buffer_size": 1617,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								236,
-								252
+								1024,
+								1024
 							]
 						],
 						"settings":
@@ -2001,8 +2085,8 @@
 							"syntax": "Packages/C++/C++.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 9.0,
-						"translation.y": 93.0,
+						"translation.x": 0.0,
+						"translation.y": 420.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2014,7 +2098,7 @@
 			"sheets":
 			[
 				{
-					"buffer": 9,
+					"buffer": 13,
 					"file": "BUILD_RESULT",
 					"settings":
 					{
@@ -2025,8 +2109,8 @@
 						"selection":
 						[
 							[
-								23,
-								0
+								499,
+								499
 							]
 						],
 						"settings":
@@ -2128,6 +2212,58 @@
 		"selected_items":
 		[
 			[
+				"button",
+				"gwen/src/Controls/Button.cpp"
+			],
+			[
+				"button.h",
+				"gwen/include/Gwen/Controls/Button.h"
+			],
+			[
+				"windowcon",
+				"gwen/src/Controls/WindowControl.cpp"
+			],
+			[
+				"window",
+				"gwen/UnitTest/Window.cpp"
+			],
+			[
+				"renderer",
+				"gwen/moai-gwen/MOAIGwenRenderer.cpp"
+			],
+			[
+				"base.h",
+				"gwen/include/Gwen/Controls/Base.h"
+			],
+			[
+				"windocontr",
+				"gwen/include/Gwen/Controls/WindowControl.h"
+			],
+			[
+				"window.h",
+				"gwen/include/Gwen/Input/Windows.h"
+			],
+			[
+				"base.cpp",
+				"gwen/src/Controls/Base.cpp"
+			],
+			[
+				"gwencontro",
+				"gwen/moai-gwen/MOAIGwenControl.cpp"
+			],
+			[
+				"mgr",
+				"gwen/moai-gwen/MOAIGwenMgr.cpp"
+			],
+			[
+				"render",
+				"gwen/include/Gwen/BaseRender.h"
+			],
+			[
+				"font",
+				"gwen/include/Gwen/Font.h"
+			],
+			[
 				"text",
 				"gwen/src/Controls/Text.cpp"
 			],
@@ -2140,10 +2276,6 @@
 				"gwen/UnitTest/LabelMultiline.cpp"
 			],
 			[
-				"renderer",
-				"gwen/moai-gwen/MOAIGwenRenderer.cpp"
-			],
-			[
 				"text.cp",
 				"gwen/src/Controls/Text.cpp"
 			],
@@ -2154,10 +2286,6 @@
 			[
 				"label.h",
 				"gwen/include/Gwen/Controls/Label.h"
-			],
-			[
-				"base.cpp",
-				"gwen/src/Controls/Base.cpp"
 			],
 			[
 				"lael.h",
@@ -2180,16 +2308,8 @@
 				"gwen/moai-gwen/MOAIGwenSkinTexturedBase.cpp"
 			],
 			[
-				"button",
-				"gwen/src/Controls/Button.cpp"
-			],
-			[
 				"test.lu",
 				"test/test.lua"
-			],
-			[
-				"render",
-				"gwen/moai-gwen/MOAIGwenRenderer.cpp"
 			],
 			[
 				"textrebase",
@@ -2210,10 +2330,6 @@
 			[
 				"texture",
 				"gwen/include/Gwen/Texture.h"
-			],
-			[
-				"mgr",
-				"gwen/moai-gwen/MOAIGwenMgr.cpp"
 			],
 			[
 				"texturing",
@@ -2272,10 +2388,6 @@
 				"gwen/src/Controls/WindowControl.cpp"
 			],
 			[
-				"base.h",
-				"gwen/include/Gwen/Controls/Base.h"
-			],
-			[
 				"controltype",
 				"gwen/moai-gwen/ControlTypes.cpp"
 			],
@@ -2324,10 +2436,6 @@
 				"gwen/include/Gwen/Skins/Simple.h"
 			],
 			[
-				"gwencontro",
-				"gwen/moai-gwen/MOAIGwenControl.h"
-			],
-			[
 				"ws",
 				"gwen/wscript"
 			],
@@ -2366,10 +2474,6 @@
 			[
 				"windowcontro",
 				"gwen/src/Controls/WindowControl.cpp"
-			],
-			[
-				"window",
-				"gwen/UnitTest/Window.cpp"
 			],
 			[
 				"win",
@@ -2618,26 +2722,6 @@
 			[
 				"textuba",
 				"gwen/include/Gwen/Skins/TexturedBase.h"
-			],
-			[
-				"textbo",
-				"gwen/UnitTest/TextBox.cpp"
-			],
-			[
-				"skin.h",
-				"gwen/include/Gwen/Skin.h"
-			],
-			[
-				"tabcon",
-				"gwen/include/Gwen/Controls/TabControl.h"
-			],
-			[
-				"control",
-				"gwen/UnitTest/TabControl.cpp"
-			],
-			[
-				"struct",
-				"gwen/include/Gwen/Structures.h"
 			]
 		],
 		"width": 0.0
@@ -2647,6 +2731,10 @@
 		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"gang",
+				"/Volumes/prj/moai/proto/gang/gang.sublime-project"
+			],
 			[
 				"yaka",
 				"/Volumes/prj/moai/yaka/giitest.sublime-project"

@@ -18,7 +18,7 @@
 	#endif
 
 	#ifndef AKU_WITH_FMOD_EX
-		#define AKU_WITH_FMOD_EX 1
+		#define AKU_WITH_FMOD_EX 0
 	#endif
 
 	#ifndef AKU_WITH_HARNESS

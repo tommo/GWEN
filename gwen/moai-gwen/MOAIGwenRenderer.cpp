@@ -23,42 +23,34 @@ namespace Gwen
 {
 	namespace Renderer
 	{
-		MOAIRenderer::MOAIRenderer()
-		{
+		MOAIRenderer::MOAIRenderer() {
 			// this->mScissorRect = new MOAIScissorRect();
 		}
 
-		MOAIRenderer::~MOAIRenderer()
-		{			
+		MOAIRenderer::~MOAIRenderer() {			
 			// delete this->mScissorRect;
 		}
 
-		void MOAIRenderer::Init()
-		{
+		void MOAIRenderer::Init() {
 		}
 
-		void MOAIRenderer::Begin()
-		{			
+		void MOAIRenderer::Begin() {			
 		}
 
-		void MOAIRenderer::End()
-		{
+		void MOAIRenderer::End() {
 		}
 		
-		void MOAIRenderer::DrawFilledRect( Gwen::Rect rect )
-		{
+		void MOAIRenderer::DrawFilledRect( Gwen::Rect rect ) {
 			Translate( rect );
 			MOAIDraw::DrawRectFill( rect.x, -rect.y , rect.x + rect.w, -rect.y - rect.h );
 		}
 
-		void MOAIRenderer::DrawLineRect( Gwen::Rect rect )
-		{
+		void MOAIRenderer::DrawLineRect( Gwen::Rect rect ) {
 			Translate( rect );
 			MOAIDraw::DrawRectOutline( rect.x, - rect.y , rect.x + rect.w, -rect.y - rect.h );
 		}
 
-		void MOAIRenderer::SetDrawColor( Gwen::Color color )
-		{
+		void MOAIRenderer::SetDrawColor( Gwen::Color color ) {
 			MOAIGfxDevice& gfx = MOAIGfxDevice::Get ();
 
 			gfx.SetPenColor( 
@@ -69,8 +61,7 @@ namespace Gwen
 				);
 		}
 
-		void MOAIRenderer::StartClip()
-		{
+		void MOAIRenderer::StartClip() {
 			Gwen::Rect rect = ClipRegion();
 			ZLRect rect1;
 			rect1.Init( rect.x, - rect.y, rect.x+rect.w, - rect.y-rect.h );
@@ -83,14 +74,12 @@ namespace Gwen
 			gfx.SetScissorRect( rect1 );
 		};
 
-		void MOAIRenderer::EndClip()
-		{
+		void MOAIRenderer::EndClip() {
 			MOAIGfxDevice& gfx = MOAIGfxDevice::Get ();
 			gfx.SetScissorRect();
 		};
 
-		void MOAIRenderer::DrawTexturedRect( Gwen::Texture* pTexture, Gwen::Rect rect, float u0, float v0, float u1, float v1 )
-		{
+		void MOAIRenderer::DrawTexturedRect( Gwen::Texture* pTexture, Gwen::Rect rect, float u0, float v0, float u1, float v1 ) {
 			float tw, th;
 			float x0, y0, x1, y1;
 			
@@ -117,56 +106,56 @@ namespace Gwen
 
 		}
 
-		void MOAIRenderer::LoadTexture( Gwen::Texture* pTexture )
-		{
+		void MOAIRenderer::LoadTexture( Gwen::Texture* pTexture ) {
 			//TODO
 			MOAIGwenMgr::Get().LoadTexture( pTexture );
 		}
 
-		void MOAIRenderer::FreeTexture( Gwen::Texture* pTexture )
-		{
+		void MOAIRenderer::FreeTexture( Gwen::Texture* pTexture ) {
 			//PASS
 			MOAIGwenMgr::Get().ReleaseTexture( pTexture );
 		}
 
-		Gwen::Color MOAIRenderer::PixelColour( Gwen::Texture* pTexture, unsigned int x, unsigned int y, const Gwen::Color & col_default )
-		{
+		void MOAIRenderer::LoadFont( Gwen::Font* pFont ) {
+			MOAIGwenMgr::Get().LoadFont( pFont );
+		}
+
+		void MOAIRenderer::FreeFont( Gwen::Font* pFont ) {
+			MOAIGwenMgr::Get().ReleaseFont( pFont );
+		}
+
+
+		Gwen::Color MOAIRenderer::PixelColour( Gwen::Texture* pTexture, unsigned int x, unsigned int y, const Gwen::Color & col_default ) {
 			//TODO
 			return col_default;
 		}
 
-		bool MOAIRenderer::InitializeContext( Gwen::WindowProvider* pWindow )
-		{
+		bool MOAIRenderer::InitializeContext( Gwen::WindowProvider* pWindow ) {
 			//PASS
 			return true;
 		}
 
-		bool MOAIRenderer::ShutdownContext( Gwen::WindowProvider* pWindow )
-		{
+		bool MOAIRenderer::ShutdownContext( Gwen::WindowProvider* pWindow ) {
 			//PASS
 			return true;
 		}
 
-		bool MOAIRenderer::PresentContext( Gwen::WindowProvider* pWindow )
-		{
+		bool MOAIRenderer::PresentContext( Gwen::WindowProvider* pWindow ) {
 			//PASS
 			return true;
 		}
 
-		bool MOAIRenderer::ResizedContext( Gwen::WindowProvider* pWindow, int w, int h )
-		{
+		bool MOAIRenderer::ResizedContext( Gwen::WindowProvider* pWindow, int w, int h ) {
 			//PASS
 			return true;
 		}
 
-		bool MOAIRenderer::BeginContext( Gwen::WindowProvider* pWindow )
-		{
+		bool MOAIRenderer::BeginContext( Gwen::WindowProvider* pWindow ) {
 			//PASS
 			return true;
 		}
 
-		bool MOAIRenderer::EndContext( Gwen::WindowProvider* pWindow )
-		{
+		bool MOAIRenderer::EndContext( Gwen::WindowProvider* pWindow ) {
 			//PASS
 			return true;
 		}

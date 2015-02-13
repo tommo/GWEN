@@ -4,6 +4,7 @@
 #include "moai-gwen/headers.h"
 
 #include "moai-gwen/MOAIGwenControl.h"
+#include "Gwen/Controls/Canvas.h"
 
 //================================================================//
 // MOAIGwenCanvas
@@ -19,9 +20,13 @@ private:
 	virtual Gwen::Controls::Base* CreateGwenControl();
 
 public:
-		
+
+	inline Gwen::Controls::Canvas* GetInternalControl() { 
+		return static_cast < Gwen::Controls::Canvas* >( this->mControlRef.ref );
+	}
+
   DECL_LUA_FACTORY ( MOAIGwenCanvas )
-	
+
 	//----------------------------------------------------------------//
 						MOAIGwenCanvas			( Gwen::Controls::Base* control );
 						MOAIGwenCanvas			();

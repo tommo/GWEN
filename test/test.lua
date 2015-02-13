@@ -6,7 +6,6 @@ local viewport = MOAIViewport.new ()
 viewport:setSize ( 800, 500 )
 viewport:setScale ( 800, 500 )
 layer:setViewport( viewport )
-
 function bindMouseInput( sys )
 	local x0, y0
 	local function onMouseLeftEvent ( down )
@@ -47,6 +46,7 @@ MOAIGfxDevice.getFrameBuffer():setRenderTable( { layer } )
 sys = MOAIGwenSystem.new()
 skin = MOAIGwenSkinTexturedBase.new()
 skin:init( 'DefaultSkin.png' )
+-- skin = MOAIGwenSkinSimple.new()
 
 sys:setSkin( skin )
 sys:setLoc( -200, 250 )
@@ -58,11 +58,11 @@ layer:insertProp( sys )
 
 canvas = sys:getCanvas()
 canvas:setName( 'canvas-root' )
--- canvas:setSize( 500, 500 )
+canvas:setSize( 500, 500 )
 
 window = canvas:addChild( MOAIGwenWindowControl.new() )
 window:setSize( 100, 100 )
-
+window:restrictToParent( false )
 
 
 label = window:addChild( MOAIGwenLabel.new() )
@@ -72,7 +72,11 @@ label:setPos( 100, 50 )
 
 button = window:addChild( MOAIGwenButton.new() )
 button:setSize( 200, 30 )
-
+-- button:setListener( MOAIGwenControl.EVENT_HOVER_ENTER, function() print'hover.enter' end )
+-- button:setListener( MOAIGwenControl.EVENT_HOVER_EXIT, function() print'hover.exit' end )
+button:setListener( MOAIGwenButton.EVENT_CLICK, function() print'click' end )
+button:setListener( MOAIGwenButton.EVENT_DOWN, function() print'down' end )
+button:setListener( MOAIGwenButton.EVENT_UP, function() print'up' end )
 
 -- window:setListener( window.EVENT_CLOSE, function() print('window closed') end )
 -- window:addListener( window.EVENT_CLOSE, function() print( 'window closed' ) end )
@@ -80,4 +84,15 @@ button:setSize( 200, 30 )
 -- window:getEventHandler( 'close' ):add( obj, function() end )
 -- window:setListener( window.EVENT_CLOSE)
 
+-- window.addListener( window.EVENT_CLOSE, function() ... end )
+
+
+-- local func = function() print 'button A' end
+-- button:addListener( button.EVENT_CLICK, func )
+-- button:addListener( button.EVENT_CLICK )
+-- button.onClick:add( func )
+-- button:clearListeners()
+
+-- button:setListener( button.EVENT_CLICK, func )
+-- button:removeListener( button.EVENT_CLICK )
 

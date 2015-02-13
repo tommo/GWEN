@@ -72,14 +72,17 @@ void MOAIGwenMgr::LoadTexture( Gwen::Texture* texture ) {
 		}
 	} else {
 		//default loader
+		zglBegin();
 		MOAITexture* tex = new MOAITexture();
 		tex->Init( texture->name.c_str(), MOAIImageTransform::TRUECOLOR | MOAIImageTransform::PREMULTIPLY_ALPHA );
 		// printf("loading texture %s\n", texture->name.c_str() );
 		// printf("%d,%d\n", tex->GetWidth(), tex->GetHeight() );
+		tex->Bind();
 		texture->data = tex;
 		texture->width = tex->GetWidth();
 		texture->height = tex->GetHeight();
 		tex->Retain();
+		zglEnd();
 	}
 }
 
@@ -89,6 +92,13 @@ void MOAIGwenMgr::ReleaseTexture( Gwen::Texture* texture ) {
 		MOAITexture* tex = static_cast< MOAITexture* >( texture->data );
 		tex->Release();
 	}
+}
+
+
+void MOAIGwenMgr::LoadFont( Gwen::Font* font ) {
+}
+
+void MOAIGwenMgr::ReleaseFont( Gwen::Font* font ) {
 }
 
 

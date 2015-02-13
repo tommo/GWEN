@@ -27,6 +27,8 @@ public:
 
 	void LoadTexture         ( Gwen::Texture* texture );
 	void ReleaseTexture      ( Gwen::Texture* texture );
+	void LoadFont            ( Gwen::Font* font );
+	void ReleaseFont         ( Gwen::Font* font );
 
 	DECL_LUA_SINGLETON ( MOAIGwenMgr )
 
