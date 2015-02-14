@@ -12,16 +12,19 @@
 // aku-Gwen
 //================================================================//
 void RegisterGwenControlTypes() {
-	// // REGISTER_LUA_CLASS ( MOAIGwenWindowCanvas )
-	REGISTER_LUA_CLASS ( MOAIGwenWindowControl )
-
-	REGISTER_LUA_CLASS ( MOAIGwenButton )
-	REGISTER_LUA_CLASS ( MOAIGwenLabel )
-
-	// //Skins
+	//Skins
 	REGISTER_LUA_CLASS ( MOAIGwenSkin )
 	REGISTER_LUA_CLASS ( MOAIGwenSkinTexturedBase )
 	REGISTER_LUA_CLASS ( MOAIGwenSkinSimple )
+
+	REGISTER_LUA_CLASS ( MOAIGwenCanvas )
+	REGISTER_LUA_CLASS ( MOAIGwenWindowControl )
+	// // REGISTER_LUA_CLASS ( MOAIGwenWindowCanvas )
+
+	REGISTER_LUA_CLASS ( MOAIGwenButton )
+	REGISTER_LUA_CLASS ( MOAIGwenLabel )
+	REGISTER_LUA_CLASS ( MOAIGwenCheckBox )
+
 }
 
 //----------------------------------------------------------------//
@@ -35,14 +38,12 @@ void AKUGwenAppInitialize () {
 //----------------------------------------------------------------//
 void AKUGwenContextInitialize () {
 	MOAIGwenMgr::Affirm();
-	// //System
+	// System
 	REGISTER_LUA_CLASS ( MOAIGwenMgr )
 	REGISTER_LUA_CLASS ( MOAIGwenSystem )
 
-	// //Controls
+	// Controls
 	REGISTER_LUA_CLASS ( MOAIGwenControl )
-	REGISTER_LUA_CLASS ( MOAIGwenCanvas )
 
 	RegisterGwenControlTypes();
-
 }

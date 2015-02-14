@@ -324,9 +324,10 @@ namespace Gwen
 		}
 
 		Gwen::Point MOAIRenderer::MeasureText( Gwen::Font* pFont, const Gwen::UnicodeString& text ) {
+			//TODO:...
 			Gwen::Point p;
 			p.x = pFont->size * Scale() * ( float ) text.length() * 2;
-			p.y = pFont->size * Scale() + 4;
+			p.y = pFont->size * Scale() * 1.5f;
 			return p;
 		}
 

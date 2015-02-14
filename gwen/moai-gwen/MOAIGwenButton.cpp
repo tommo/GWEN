@@ -8,7 +8,7 @@ Gwen::Controls::Base* MOAIGwenButton::CreateGwenControl() {
 //----------------------------------------------------------------//
 MOAIGwenButton::MOAIGwenButton () {
 	RTTI_BEGIN
-		RTTI_EXTEND ( MOAIGwenControl )
+		RTTI_EXTEND ( MOAIGwenLabel )
 	RTTI_END	
 }
 
@@ -19,7 +19,7 @@ MOAIGwenButton::~MOAIGwenButton () {
 
 //----------------------------------------------------------------//
 void MOAIGwenButton::RegisterLuaClass ( MOAILuaState& state ) {
-	MOAIGwenControl::RegisterLuaClass( state );
+	MOAIGwenLabel::RegisterLuaClass( state );
 	
 	state.SetField ( -1, "EVENT_CLICK",   ( u32 )EVENT_CLICK  );
 	state.SetField ( -1, "EVENT_UP",      ( u32 )EVENT_UP     );
@@ -35,7 +35,7 @@ void MOAIGwenButton::RegisterLuaClass ( MOAILuaState& state ) {
 
 //----------------------------------------------------------------//
 void MOAIGwenButton::RegisterLuaFuncs ( MOAILuaState& state ) {
-	MOAIGwenControl::RegisterLuaFuncs( state );
+	MOAIGwenLabel::RegisterLuaFuncs( state );
 	
 	luaL_Reg regTable [] = {
 		{ NULL, NULL  }

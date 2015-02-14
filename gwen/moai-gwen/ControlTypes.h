@@ -11,6 +11,8 @@
 #include <moai-gwen/MOAIGwenButton.h>
 #include <moai-gwen/MOAIGwenLabel.h>
 
+#include <moai-gwen/MOAIGwenCheckBox.h>
+
 //skins
 #include <moai-gwen/MOAIGwenSkinSimple.h>
 #include <moai-gwen/MOAIGwenSkinTexturedBase.h>
