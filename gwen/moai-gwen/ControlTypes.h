@@ -13,6 +13,10 @@
 
 #include <moai-gwen/MOAIGwenCheckBox.h>
 
+//compund
+#include <moai-gwen/MOAIGwenColorPicker.h>
+
+
 //skins
 #include <moai-gwen/MOAIGwenSkinSimple.h>
 #include <moai-gwen/MOAIGwenSkinTexturedBase.h>

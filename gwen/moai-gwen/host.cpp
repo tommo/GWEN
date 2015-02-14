@@ -25,6 +25,10 @@ void RegisterGwenControlTypes() {
 	REGISTER_LUA_CLASS ( MOAIGwenLabel )
 	REGISTER_LUA_CLASS ( MOAIGwenCheckBox )
 
+
+	REGISTER_LUA_CLASS ( MOAIGwenColorPicker )
+
+
 }
 
 //----------------------------------------------------------------//

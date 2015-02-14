@@ -15,6 +15,17 @@ int MOAIGwenWindowControl::_setClosable ( lua_State* L ) {
 	return 0;
 }
 
+int MOAIGwenWindowControl::_setResizable ( lua_State* L ) {
+	MOAI_LUA_SETUP( MOAIGwenWindowControl, "UB" )
+	bool resizable = state.GetValue < bool >( 2, true );
+	if( resizable ) {
+		self->GetInternalControl()->EnableResizing();
+	} else {
+		self->GetInternalControl()->DisableResizing();
+	}
+	return 0;
+}
+
 int MOAIGwenWindowControl::_makeModal ( lua_State* L ) {
 	MOAI_LUA_SETUP( MOAIGwenWindowControl, "U" )
 	bool shouldDrawBackground = state.GetValue < bool >( 2, true );
@@ -48,6 +59,7 @@ MOAIGwenWindowControl::~MOAIGwenWindowControl () {
 void MOAIGwenWindowControl::RegisterLuaClass ( MOAILuaState& state ) {
 	MOAIGwenControl::RegisterLuaClass( state );
 	state.SetField ( -1, "EVENT_CLOSE",					( u32 )EVENT_CLOSE );
+	state.SetField ( -1, "EVENT_RESIZE",				( u32 )EVENT_RESIZE );
 	luaL_Reg regTable [] = {
 		{ "new", _new },
 		{ NULL,  NULL }
@@ -59,10 +71,11 @@ void MOAIGwenWindowControl::RegisterLuaClass ( MOAILuaState& state ) {
 void MOAIGwenWindowControl::RegisterLuaFuncs ( MOAILuaState& state ) {
 	MOAIGwenControl::RegisterLuaFuncs( state );
 	luaL_Reg regTable [] = {
-		{ "setTitle",          _setTitle     },
-		{ "setClosable",       _setClosable  },
-		{ "makeModal",         _makeModal    },
-		{ "destroyModal",      _destroyModal },
+		{ "setTitle",          _setTitle      },
+		{ "setClosable",       _setClosable   },
+		{ "setResizable",      _setResizable  },
+		{ "makeModal",         _makeModal     },
+		{ "destroyModal",      _destroyModal  },
 		{ NULL, NULL }
 	};
 	

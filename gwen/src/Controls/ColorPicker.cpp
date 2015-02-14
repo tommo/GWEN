@@ -115,7 +115,7 @@ void ColorPicker::UpdateColorControls( Gwen::String name, Gwen::Color col, int s
 	box->SetText( Gwen::Utility::ToString( sliderVal ) );
 }
 
-void ColorPicker::UpdateControls()
+void ColorPicker::UpdateControls( bool colorChanged )
 {
 	//This is a little weird, but whatever for now
 	UpdateColorControls( GWEN_T("Red"),		Color( GetColor().r, 0, 0, 255 ), GetColor().r );
@@ -124,7 +124,7 @@ void ColorPicker::UpdateControls()
 	UpdateColorControls( GWEN_T("Alpha"),	Color( 255, 255, 255, GetColor().a ), GetColor().a );
 	ColorDisplay* disp = gwen_cast<ColorDisplay> ( FindChildByName( GWEN_T("Result"), true ) );
 	disp->SetColor( Color( GetColor().r, GetColor().g, GetColor().b, GetColor().a ) );
-	onColorChanged.Call( this );
+	if( colorChanged ) onColorChanged.Call( this );
 }
 void ColorPicker::SlidersMoved( Gwen::Controls::Base* control )
 {
@@ -153,7 +153,7 @@ void ColorPicker::Layout( Skin::Base* skin )
 	if ( groupBox )
 	{ groupBox->SetPos( groupBox->X(), Height() * 0.5f - groupBox->Height() * 0.5f ); }
 
-	UpdateControls();
+	UpdateControls( false );
 }
 
 

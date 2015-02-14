@@ -172,8 +172,10 @@ int MOAIGwenControl::_bringNextToControl ( lua_State* L ) {
 //----------------------------------------------------------------//
 int MOAIGwenControl::_fitChildren ( lua_State* L ) {
 	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
-	state.Push( self->GetInternalControl()->SizeToChildren() );	
-	return 1;
+	bool fitWidth  = state.GetValue < bool >( 2, true );
+	bool fitHeight = state.GetValue < bool >( 2, true );
+	self->GetInternalControl()->SizeToChildren( fitWidth, fitHeight );
+	return 0;
 }
 
 //----------------------------------------------------------------//

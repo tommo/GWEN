@@ -1,6 +1,6 @@
 #include "ControlTypes.h"
 
-#define GWEN_TO_MOAI( controlType, control0 ) \
+#define TRY_GWEN_TO_MOAI( controlType, control0 ) \
 	if( gwen_cast< Gwen::Controls::controlType >( control0 ) ) { \
 		MOAIGwenControl* control = new MOAIGwen##controlType();\
 		control->SetInternalControl( control0 );\
@@ -16,11 +16,14 @@ MOAIGwenControl* MOAIGwenControl::_GwenToMoai( Gwen::Controls::Base* control0 ) 
 	}
 	const char* typeName = control0->GetTypeName();
 	
-	GWEN_TO_MOAI( Button,        control0 )
-	GWEN_TO_MOAI( Label,         control0 )
-	GWEN_TO_MOAI( CheckBox,      control0 )
-	GWEN_TO_MOAI( WindowControl, control0 )
-	GWEN_TO_MOAI( Canvas,        control0 )
+	TRY_GWEN_TO_MOAI( Button,        control0 )
+	TRY_GWEN_TO_MOAI( Label,         control0 )
+	TRY_GWEN_TO_MOAI( CheckBox,      control0 )
+	TRY_GWEN_TO_MOAI( WindowControl, control0 )
+	TRY_GWEN_TO_MOAI( Canvas,        control0 )
+	TRY_GWEN_TO_MOAI( ColorPicker,   control0 )
+
+	//TODO:wrap other control with common class?
 
 	return NULL;
 }

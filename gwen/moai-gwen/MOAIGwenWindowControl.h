@@ -17,6 +17,7 @@ class MOAIGwenWindowControl :
 public:
 	enum Events {
 		EVENT_CLOSE = MOAIGwenControl::TOTAL_EVENTS,
+		EVENT_RESIZE,
 		TOTAL_EVENTS
 	};
 
@@ -24,6 +25,7 @@ private:
 	
 	static int _setTitle           ( lua_State* L );
 	static int _setClosable        ( lua_State* L );
+	static int _setResizable       ( lua_State* L );
 	static int _makeModal          ( lua_State* L );
 	static int _destroyModal       ( lua_State* L );
 
@@ -34,6 +36,8 @@ private:
 	virtual void ConnectEvents() {
 		MOAIGwenControl::ConnectEvents();
 		ConnectEventCallBack( GetInternalControl()->onWindowClosed,  EVENT_CLOSE );
+		ConnectEventCallBack( GetInternalControl()->onResize,  EVENT_RESIZE );
+
 	};
 
 public:

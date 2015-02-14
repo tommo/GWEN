@@ -35,6 +35,7 @@ namespace Gwen
 				virtual Gwen::Point GetMinimumSize() { return m_MinimumSize; }
 
 				virtual void DisableResizing();
+				virtual void EnableResizing();
 
 				virtual bool SetBounds( int x, int y, int w, int h );
 

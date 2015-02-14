@@ -1,6 +1,6 @@
 WIP:
  ✔ Base @done (15-02-14 21:24)
-   ✔ API @done (15-02-14 21:24)
+   ✔ API @done (15-02-14 21:29)
    ✔ Event Handle @done (15-02-14 21:24)
  ☐ Button
  ✔ Canvas @done (15-02-14 20:50)
@@ -12,7 +12,7 @@ WIP:
  ✘ WindowCanvas @cancelled (15-02-14 21:27)
 BACKLOG:
  ☐ CollapsibleCategory
- ☐ CollapsibleList
+   ☐ CollapsibleList
  ☐ ColorControls
  ☐ ColorPicker
  ☐ ComboBox
@@ -32,8 +32,8 @@ BACKLOG:
  ☐ LabelClickable
  ☐ ListBox
  ☐ Menu
- ☐ MenuItem
- ☐ MenuStrip
+   ☐ MenuItem
+   ☐ MenuStrip
  ☐ Modal
  ☐ NumericUpDown
  ☐ PageControl
@@ -41,7 +41,7 @@ BACKLOG:
  ☐ Properties
  ☐ PropertyTree
  ☐ RadioButton
- ☐ RadioButtonController
+   ☐ RadioButtonController
  ☐ Rectangle
  ☐ ResizableControl
  ☐ Resizer

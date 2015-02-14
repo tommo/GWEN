@@ -76,6 +76,20 @@ void ResizableControl::DisableResizing()
 	}
 }
 
+void ResizableControl::EnableResizing()
+{
+	for ( Base::List::iterator it = Children.begin(); it != Children.end(); ++it )
+	{
+		Resizer* resizer = gwen_cast<Resizer> ( *it );
+
+		if ( !resizer ) { continue; }
+
+		resizer->SetMouseInputEnabled( true );
+        //resizer->SetHidden( false );
+		//SetPadding( Padding( resizer->Width(), resizer->Width(), resizer->Width(), resizer->Width() ) );
+	}
+}
+
 bool ResizableControl::SetBounds( int x, int y, int w, int h )
 {
 	Gwen::Point minSize = GetMinimumSize();

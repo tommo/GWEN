@@ -60,7 +60,7 @@ namespace Gwen
 				virtual void CreateControls();
 				virtual void SlidersMoved( Gwen::Controls::Base* control );
 				virtual void NumericTyped( Gwen::Controls::Base* control );
-				virtual void UpdateControls();
+				virtual void UpdateControls( bool colorChanged = true );
 				virtual void UpdateColorControls( Gwen::String name, Gwen::Color col, int sliderVal );
 				virtual void CreateColorControl( Gwen::String name, int y );
 
