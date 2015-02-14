@@ -21,11 +21,12 @@ MOAIGwenSkinTexturedBase::~MOAIGwenSkinTexturedBase () {
 
 //----------------------------------------------------------------//
 void MOAIGwenSkinTexturedBase::RegisterLuaClass ( MOAILuaState& state ) {
-	UNUSED( state );
+	MOAIGwenSkin::RegisterLuaClass( state );
 }
 
 //----------------------------------------------------------------//
 void MOAIGwenSkinTexturedBase::RegisterLuaFuncs ( MOAILuaState& state ) {
+	MOAIGwenSkin::RegisterLuaFuncs( state );
 	luaL_Reg regTable [] = {
 		{ "init",		_init },
 		{ NULL, NULL }

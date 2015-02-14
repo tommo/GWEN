@@ -14,11 +14,12 @@ MOAIGwenSkinSimple::~MOAIGwenSkinSimple () {
 
 //----------------------------------------------------------------//
 void MOAIGwenSkinSimple::RegisterLuaClass ( MOAILuaState& state ) {
-	UNUSED( state );
+	MOAIGwenSkin::RegisterLuaClass( state );
 }
 
 //----------------------------------------------------------------//
 void MOAIGwenSkinSimple::RegisterLuaFuncs ( MOAILuaState& state ) {
+	MOAIGwenSkin::RegisterLuaFuncs( state );
 	luaL_Reg regTable [] = {
 		// { "capParticles",		_capParticles },
 		{ NULL, NULL }

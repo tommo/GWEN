@@ -89,6 +89,6 @@
 		// "sublimegdb_workingdir": "/Users/tommo/prj/moai/yaka/output",
 		"tab_size": 2,
 
-		"lldb.exe": "moai"
+		"lldb.exe": "test/moai"
 	}
 }

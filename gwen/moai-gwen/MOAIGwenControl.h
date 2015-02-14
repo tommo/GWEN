@@ -36,13 +36,13 @@ private:
 		~ControlRef() { if( ref ) ref->SetExternalRef( NULL ); }
 		virtual void OnBind( Gwen::Controls::Base* control ) {
 			assert( this->ref == NULL );
-			owner->Retain();
+			MOAIGwenMgr::Get().LuaRetain( this->owner );
 			this->ref = control;
 		}
 
 		virtual void OnDelete( Gwen::Controls::Base* control ) {
 			assert( control == this->ref );
-			owner->Release();
+			MOAIGwenMgr::Get().LuaRelease( this->owner );
 			this->ref = NULL;
 		}
 	};

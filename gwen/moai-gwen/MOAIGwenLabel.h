@@ -16,6 +16,7 @@ class MOAIGwenLabel :
 private:
 
 	static int _setText                  ( lua_State* L );
+	static int _setFont                  ( lua_State* L );
 	static int _setTextColor             ( lua_State* L );
 	static int _setTextColorOverride     ( lua_State* L );
 	//----------------------------------------------------------------//

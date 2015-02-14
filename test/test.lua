@@ -43,13 +43,22 @@ end
 MOAIRenderMgr.setBufferTable( { MOAIGfxDevice.getFrameBuffer() } )
 MOAIGfxDevice.getFrameBuffer():setRenderTable( { layer } )
 
+font = MOAIFont.new ()
+font:load ( "OpenSans.ttf" )
+font:setDefaultSize( 12 )
+font:getCache():setColorFormat( MOAIImage.COLOR_FMT_RGBA_8888 )
+font:getReader():setPenColor( 1,1,1,1 )
+MOAIGwenMgr.registerFont( 'Arial',  font )
+
 sys = MOAIGwenSystem.new()
-skin = MOAIGwenSkinTexturedBase.new()
-skin:init( 'DefaultSkin.png' )
+sys:setLoc( -400, 250 )
 -- skin = MOAIGwenSkinSimple.new()
 
+skin = MOAIGwenSkinTexturedBase.new()
+skin:init( 'DefaultSkin.png' )
+skin:setDefaultFont( 'Arial', 9 )
+
 sys:setSkin( skin )
-sys:setLoc( -200, 250 )
 
 sys:start()
 bindMouseInput( sys )
@@ -58,41 +67,29 @@ layer:insertProp( sys )
 
 canvas = sys:getCanvas()
 canvas:setName( 'canvas-root' )
-canvas:setSize( 500, 500 )
 
 window = canvas:addChild( MOAIGwenWindowControl.new() )
 window:setSize( 100, 100 )
-window:restrictToParent( false )
-
+window:setTitle( 'ABCDEFCG' )
 
 label = window:addChild( MOAIGwenLabel.new() )
-label:setText( 'GOOD to die' )
-label:setTextColorOverride( 1,0,0,1 )
-label:setPos( 100, 50 )
+label:setText( 'This is a very huge story which we dont really want to talk at this momemnt!' )
+label:setPos( 100, 100 )
+label:setFont( 'Arial', 10 )
+label:setSize( 1500, 150 )
 
-button = window:addChild( MOAIGwenButton.new() )
-button:setSize( 200, 30 )
--- button:setListener( MOAIGwenControl.EVENT_HOVER_ENTER, function() print'hover.enter' end )
--- button:setListener( MOAIGwenControl.EVENT_HOVER_EXIT, function() print'hover.exit' end )
-button:setListener( MOAIGwenButton.EVENT_CLICK, function() print'click' end )
-button:setListener( MOAIGwenButton.EVENT_DOWN, function() print'down' end )
-button:setListener( MOAIGwenButton.EVENT_UP, function() print'up' end )
-
--- window:setListener( window.EVENT_CLOSE, function() print('window closed') end )
--- window:addListener( window.EVENT_CLOSE, function() print( 'window closed' ) end )
--- window:setListener( window.EVENT_CLOSE, function() print('window closed') end )
--- window:getEventHandler( 'close' ):add( obj, function() end )
--- window:setListener( window.EVENT_CLOSE)
-
--- window.addListener( window.EVENT_CLOSE, function() ... end )
-
-
--- local func = function() print 'button A' end
--- button:addListener( button.EVENT_CLICK, func )
--- button:addListener( button.EVENT_CLICK )
--- button.onClick:add( func )
--- button:clearListeners()
-
--- button:setListener( button.EVENT_CLICK, func )
--- button:removeListener( button.EVENT_CLICK )
+-- button = window:addChild( MOAIGwenButton.new() )
+-- button:setSize( 200, 30 )
+-- -- button:setListener( MOAIGwenControl.EVENT_HOVER_ENTER, function() print'hover.enter' end )
+-- -- button:setListener( MOAIGwenControl.EVENT_HOVER_EXIT, function() print'hover.exit' end )
+-- button:setListener( MOAIGwenButton.EVENT_CLICK, function() 
+-- 	local win = canvas:addChild( MOAIGwenWindowControl.new() )
+-- 	win:setPos( math.random()*200, math.random()* 200 )
+-- 	win:setListener( MOAIGwenWindowControl.EVENT_HOVER_ENTER, function( wnd )
+-- 		print( 'enter window', wnd )
+-- 	end )
+-- 	win:setListener( MOAIGwenWindowControl.EVENT_CLOSE, function( wnd )
+-- 		print( 'Window is closing', wnd )
+-- 	end )
+-- end )
 

@@ -1,6 +1,15 @@
 #include "moai-gwen/MOAIGwenSkin.h"
 
 //----------------------------------------------------------------//
+int MOAIGwenSkin::_setDefaultFont ( lua_State *L ) {
+	MOAI_LUA_SETUP( MOAIGwenSkin, "USN" )
+	cc8*  faceName = state.GetValue < cc8* >( 2, "" );
+	float size     = state.GetValue < float >( 3, 10.0f );
+	self->GetGwenSkin()->SetDefaultFont( Gwen::Utility::StringToUnicode( faceName ), size );
+	return 0;
+}
+
+//----------------------------------------------------------------//
 MOAIGwenSkin::MOAIGwenSkin () :
 	mGwenSkin( 0 )
 {
@@ -22,7 +31,7 @@ void MOAIGwenSkin::RegisterLuaClass ( MOAILuaState& state ) {
 //----------------------------------------------------------------//
 void MOAIGwenSkin::RegisterLuaFuncs ( MOAILuaState& state ) {
 	luaL_Reg regTable [] = {
-		// { "capParticles",		_capParticles },
+		{ "setDefaultFont",		_setDefaultFont },
 		{ NULL, NULL }
 	};
 	

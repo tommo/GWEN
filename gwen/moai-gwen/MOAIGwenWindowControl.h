@@ -14,6 +14,12 @@
 */
 class MOAIGwenWindowControl :
 	public MOAIGwenControl {
+public:
+	enum Events {
+		EVENT_CLOSE = MOAIGwenControl::TOTAL_EVENTS,
+		TOTAL_EVENTS
+	};
+
 private:
 	
 	static int _setTitle           ( lua_State* L );
@@ -25,6 +31,11 @@ private:
 	MOAI_GWEN_NEW ( MOAIGwenWindowControl )
 	virtual Gwen::Controls::Base* CreateGwenControl();
 	
+	virtual void ConnectEvents() {
+		MOAIGwenControl::ConnectEvents();
+		ConnectEventCallBack( GetInternalControl()->onWindowClosed,  EVENT_CLOSE );
+	};
+
 public:
 	
 	inline Gwen::Controls::WindowControl* GetInternalControl() { 

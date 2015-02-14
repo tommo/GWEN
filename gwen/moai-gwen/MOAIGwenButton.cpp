@@ -21,10 +21,10 @@ MOAIGwenButton::~MOAIGwenButton () {
 void MOAIGwenButton::RegisterLuaClass ( MOAILuaState& state ) {
 	MOAIGwenControl::RegisterLuaClass( state );
 	
-	state.SetField ( -1, "EVENT_CLICK",					( u32 )EVENT_CLICK );
-	state.SetField ( -1, "EVENT_UP",					( u32 )EVENT_UP );
-	state.SetField ( -1, "EVENT_DOWN",					( u32 )EVENT_DOWN );
-	state.SetField ( -1, "EVENT_TOGGLE",					( u32 )EVENT_TOGGLE );
+	state.SetField ( -1, "EVENT_CLICK",   ( u32 )EVENT_CLICK  );
+	state.SetField ( -1, "EVENT_UP",      ( u32 )EVENT_UP     );
+	state.SetField ( -1, "EVENT_DOWN",    ( u32 )EVENT_DOWN   );
+	state.SetField ( -1, "EVENT_TOGGLE",  ( u32 )EVENT_TOGGLE );
 
 	luaL_Reg regTable [] = {
 		{ "new", _new },

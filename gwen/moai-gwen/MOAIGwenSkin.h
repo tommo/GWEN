@@ -16,6 +16,9 @@ class MOAIGwenControl;
 */
 class MOAIGwenSkin :
 	public MOAILuaObject {
+private:
+	static int		_setDefaultFont   ( lua_State* L );
+
 protected:
 	friend class MOAIGwenSystem;
 	friend class MOAIGwenControl;

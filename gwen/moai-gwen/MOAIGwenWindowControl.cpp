@@ -4,7 +4,7 @@
 int MOAIGwenWindowControl::_setTitle ( lua_State* L ) {
 	MOAI_LUA_SETUP( MOAIGwenWindowControl, "US" )
 	cc8* title = state.GetValue < cc8* >( 2, "" );
-	self->GetInternalControl()->SetTitle( title );
+	self->GetInternalControl()->SetTitle( Gwen::Utility::StringToUnicode( title ) );
 	return 0;
 }
 
@@ -47,6 +47,7 @@ MOAIGwenWindowControl::~MOAIGwenWindowControl () {
 //----------------------------------------------------------------//
 void MOAIGwenWindowControl::RegisterLuaClass ( MOAILuaState& state ) {
 	MOAIGwenControl::RegisterLuaClass( state );
+	state.SetField ( -1, "EVENT_CLOSE",					( u32 )EVENT_CLOSE );
 	luaL_Reg regTable [] = {
 		{ "new", _new },
 		{ NULL,  NULL }

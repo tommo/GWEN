@@ -204,7 +204,7 @@ namespace Gwen
 		Gwen::Point Base::MeasureText( Gwen::Font* pFont, const Gwen::UnicodeString & text )
 		{
 			Gwen::Point p;
-			p.x = pFont->size * Scale() * ( float ) text.length() * 0.4;
+			p.x = pFont->size * Scale() * ( float ) text.length();
 			p.y = pFont->size * Scale();
 			return p;
 		}

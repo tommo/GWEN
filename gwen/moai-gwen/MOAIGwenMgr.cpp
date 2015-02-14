@@ -9,6 +9,7 @@
 
 #include "moai-sim/pch.h"
 #include "moai-sim/MOAITexture.h"
+#include "moai-sim/MOAIFont.h"
 
 //----------------------------------------------------------------//
 
@@ -22,6 +23,18 @@ int MOAIGwenMgr::_setTextureLoader ( lua_State* L ) {
 		mgr.mOnLoadTexture.Clear();
 		mgr.mOnUnloadTexture.Clear();
 	}
+	return 0;
+}
+
+//----------------------------------------------------------------//
+
+int MOAIGwenMgr::_registerFont ( lua_State* L ) {
+	MOAILuaState state ( L );
+	MOAIGwenMgr& mgr = MOAIGwenMgr::Get();
+	cc8* faceName = state.GetValue < cc8* >( 1, "" );
+	MOAIFont* font = state.GetLuaObject < MOAIFont > ( 2, 0 );
+	mgr.RegisterFont( faceName, font );
+
 	return 0;
 }
 
@@ -41,6 +54,11 @@ MOAIGwenMgr::~MOAIGwenMgr ()
 	delete this->mDefaultCanvas ;
 	// delete this->mDefaultSkin ;
 	// delete this->mRenderer;
+	FontMapIt fontMapIt = this->mFontMap.begin ();
+	for ( ; fontMapIt != this->mFontMap.end (); ++fontMapIt ) {
+		MOAIFont* font = fontMapIt->second;
+		this->LuaRelease( font );
+	}
 }
 
 //----------------------------------------------------------------//
@@ -48,6 +66,7 @@ void MOAIGwenMgr::RegisterLuaClass(MOAILuaState& state)
 {
 	luaL_Reg regTable[] = {
 		{ "setTextureLoader",  _setTextureLoader },
+		{ "registerFont",  _registerFont },
 		{ NULL, NULL }
 	};
 
@@ -69,18 +88,22 @@ void MOAIGwenMgr::LoadTexture( Gwen::Texture* texture ) {
 			lua_pushstring( state, texture->name.c_str() );
 			state.DebugCall ( 1, 1 );
 			MOAITexture* tex = state.GetLuaObject < MOAITexture >( -1, 0 );
+			tex->Bind();
+			texture->data = tex;
+			texture->width = tex->GetWidth();
+			texture->height = tex->GetHeight();
 		}
 	} else {
 		//default loader
 		zglBegin();
 		MOAITexture* tex = new MOAITexture();
 		tex->Init( texture->name.c_str(), MOAIImageTransform::TRUECOLOR | MOAIImageTransform::PREMULTIPLY_ALPHA );
-		// printf("loading texture %s\n", texture->name.c_str() );
-		// printf("%d,%d\n", tex->GetWidth(), tex->GetHeight() );
 		tex->Bind();
 		texture->data = tex;
 		texture->width = tex->GetWidth();
 		texture->height = tex->GetHeight();
+		// printf("loading texture %s\n", texture->name.c_str() );
+		// printf("%d,%d\n", tex->GetWidth(), tex->GetHeight() );
 		tex->Retain();
 		zglEnd();
 	}
@@ -94,11 +117,34 @@ void MOAIGwenMgr::ReleaseTexture( Gwen::Texture* texture ) {
 	}
 }
 
+void MOAIGwenMgr::RegisterFont ( STLString faceName, MOAIFont* font ) {
+	MOAIFont* oldFont = NULL;
+	
+	if( this->mFontMap.contains( faceName ) ) {
+		oldFont = this->mFontMap[ faceName ];
+		this->LuaRelease( oldFont );
+	}
 
-void MOAIGwenMgr::LoadFont( Gwen::Font* font ) {
+	if( font ) {
+		this->mFontMap[ faceName ] = font;
+		this->LuaRetain( font );
+	} else if( oldFont ) {
+		this->mFontMap.erase( faceName );
+	}
+
 }
 
-void MOAIGwenMgr::ReleaseFont( Gwen::Font* font ) {
+MOAIFont* MOAIGwenMgr::FindFont ( STLString faceName, float size ) {
+	UNUSED( size ); //TODO: font size adapting
+	if( this->mFontMap.contains( faceName ) ) {
+		return this->mFontMap[ faceName ];
+	} else {
+		return NULL;
+	}
+}
+
+MOAIFont* MOAIGwenMgr::FindFont ( Gwen::Font* font ) {
+	return this->FindFont( Gwen::Utility::UnicodeToString( font->facename ).c_str(), font->size );
 }
 
 

@@ -27,25 +27,28 @@ namespace Gwen
 				MOAIRenderer();
 				~MOAIRenderer();
 
-				virtual void Init();
+				void Init();
 
-				virtual void Begin();
-				virtual void End();
+				void Begin();
+				void End();
 
-				virtual void SetDrawColor( Gwen::Color color );
-				virtual void DrawFilledRect( Gwen::Rect rect );
-				virtual void DrawLineRect( Gwen::Rect rect );
-
+				void SetDrawColor  ( Gwen::Color color );
+				void DrawFilledRect( Gwen::Rect rect );
+				void DrawLineRect  ( Gwen::Rect rect );
+				
 				void StartClip();
-				void EndClip();
+				void EndClip  ();
 
 				void DrawTexturedRect( Gwen::Texture* pTexture, Gwen::Rect pTargetRect, float u1 = 0.0f, float v1 = 0.0f, float u2 = 1.0f, float v2 = 1.0f );
-				void LoadFont( Gwen::Font* pFont );
-				void FreeFont( Gwen::Font* pFont );
 				void LoadTexture( Gwen::Texture* pTexture );
 				void FreeTexture( Gwen::Texture* pTexture );
 				Gwen::Color PixelColour( Gwen::Texture* pTexture, unsigned int x, unsigned int y, const Gwen::Color & col_default );
 
+				void RenderText    ( Gwen::Font* pFont, Gwen::Point pos, const Gwen::UnicodeString& text );
+				Gwen::Point MeasureText   ( Gwen::Font* pFont, const Gwen::UnicodeString& text );
+				void LoadFont( Gwen::Font* pFont );
+				void FreeFont( Gwen::Font* pFont );
+				
 			public:
 
 				//

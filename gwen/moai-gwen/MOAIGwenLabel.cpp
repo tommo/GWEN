@@ -11,6 +11,17 @@ int MOAIGwenLabel::_setText(lua_State* L)
 	return 0;
 }
 
+//----------------------------------------------------------------//
+int MOAIGwenLabel::_setFont(lua_State* L)
+{
+	MOAI_LUA_SETUP ( MOAIGwenLabel, "USN" )
+	cc8* face = state.GetValue < cc8* >( 2, "" );
+	u32 size  = state.GetValue < u32 >( 3, 12 );
+
+	self->GetInternalControl()->SetFont( Gwen::Utility::StringToUnicode( face ), size, false );
+	return 0;
+}
+
 
 //----------------------------------------------------------------//
 int MOAIGwenLabel::_setTextColor(lua_State* L)
@@ -81,6 +92,7 @@ void MOAIGwenLabel::RegisterLuaFuncs ( MOAILuaState& state ) {
 	MOAIGwenControl::RegisterLuaFuncs( state );
 	
 	luaL_Reg regTable [] = {
+		{ "setFont",                 _setFont      },
 		{ "setText",                 _setText      },
 		{ "setTextColor",            _setTextColor },
 		{ "setTextColorOverride",    _setTextColorOverride },

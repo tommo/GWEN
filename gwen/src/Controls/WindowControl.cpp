@@ -116,6 +116,8 @@ void WindowControl::RenderUnder( Skin::Base* skin )
 void WindowControl::SetTitle( Gwen::UnicodeString title )
 {
 	m_Title->SetText( title );
+	m_Title->SizeToContents();
+	printf("%d,%d\n", m_Title->Width(), m_Title->Height() );
 }
 
 void WindowControl::SetClosable( bool closeable )
