@@ -26,7 +26,7 @@ Gwen::Controls::Base* MOAIGwenCheckBox::CreateGwenControl() {
 //----------------------------------------------------------------//
 MOAIGwenCheckBox::MOAIGwenCheckBox () {
 	RTTI_BEGIN
-		RTTI_EXTEND ( MOAIGwenControl )
+		RTTI_EXTEND ( MOAIGwenButton )
 	RTTI_END	
 }
 
@@ -37,7 +37,7 @@ MOAIGwenCheckBox::~MOAIGwenCheckBox () {
 
 //----------------------------------------------------------------//
 void MOAIGwenCheckBox::RegisterLuaClass ( MOAILuaState& state ) {
-	MOAIGwenControl::RegisterLuaClass( state );
+	MOAIGwenButton::RegisterLuaClass( state );
 	
 	state.SetField ( -1, "EVENT_CHANGE",     ( u32 )EVENT_CHANGE    );
 	state.SetField ( -1, "EVENT_CHECK",      ( u32 )EVENT_CHECK     );
@@ -52,7 +52,7 @@ void MOAIGwenCheckBox::RegisterLuaClass ( MOAILuaState& state ) {
 
 //----------------------------------------------------------------//
 void MOAIGwenCheckBox::RegisterLuaFuncs ( MOAILuaState& state ) {
-	MOAIGwenControl::RegisterLuaFuncs( state );
+	MOAIGwenButton::RegisterLuaFuncs( state );
 	
 	luaL_Reg regTable [] = {
 		{ "setChecked",     _setChecked  },

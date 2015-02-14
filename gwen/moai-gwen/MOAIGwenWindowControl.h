@@ -28,7 +28,8 @@ private:
 	static int _setResizable       ( lua_State* L );
 	static int _makeModal          ( lua_State* L );
 	static int _destroyModal       ( lua_State* L );
-
+	static int _setDeleteOnClose   ( lua_State* L );
+	
 	//----------------------------------------------------------------//
 	MOAI_GWEN_NEW ( MOAIGwenWindowControl )
 	virtual Gwen::Controls::Base* CreateGwenControl();

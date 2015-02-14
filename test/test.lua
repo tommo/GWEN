@@ -72,14 +72,18 @@ window = canvas:addChild( MOAIGwenWindowControl.new() )
 window:setSize( 100, 100 )
 window:setTitle( 'ABCDEFCG' )
 
-checkbox = window:addChild( MOAIGwenCheckBox.new() )
+groupbox = window:addChild( MOAIGwenGroupBox.new() )
 
-button = window:addChild( MOAIGwenButton.new() )
+checkbox = groupbox:addChild( MOAIGwenCheckBox.new() )
+
+button = groupbox:addChild( MOAIGwenButton.new() )
 button:setText( 'testme' )
+button:setToolTip( 'Test ME now!')
 button:setListener( MOAIGwenButton.EVENT_CLICK, function() 
 	checkbox:toggle()
 end)
-button:setPos( 0, 100 )
+button:setPos( 0, 50 )
+groupbox:setSize( 100, 100 )
 
 pickerWindow = canvas:addChild( MOAIGwenWindowControl.new() )
 picker = pickerWindow:addChild( MOAIGwenColorPicker.new() )

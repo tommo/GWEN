@@ -2,65 +2,64 @@ WIP:
  ✔ Base @done (15-02-14 21:24)
    ✔ API @done (15-02-14 21:29)
    ✔ Event Handle @done (15-02-14 21:24)
- ☐ Button
+ ☐ Button @API
  ✔ Canvas @done (15-02-14 20:50)
  ✔ CheckBox @done (15-02-14 21:24)
- ☐ Label
+ ✔ ColorPicker @done (15-02-14 22:02)
+ ✔ GroupBox @done (15-02-15 02:09)
+ ✔ Label @done (15-02-15 02:25)
+ ✔ LabelClickable @done (15-02-15 02:25)
+ ☐ ListBox
  ✔ Text @done (15-02-14 21:26)
+ ✔ Rectangle @done (15-02-14 22:11)
+ ✔ RadioButton @done (15-02-15 02:19)
+ ☐ RadioButtonController
+ ☐ ScrollControl
  ☐ WindowControl
    ☐ WindowButtons
  ✘ WindowCanvas @cancelled (15-02-14 21:27)
 BACKLOG:
  ☐ CollapsibleCategory
    ☐ CollapsibleList
- ☐ ColorControls
- ☐ ColorPicker
  ☐ ComboBox
  ☐ CrossSplitter
  ☐ DockBase
- ☐ DockedTabControl
+   ☐ DockedTabControl
  ☐ Dragger
  ☐ FieldLabel
  ☐ FilePicker
  ☐ FolderPicker
- ☐ GroupBox
  ☐ Highlight
  ☐ HorizontalScrollBar
  ☐ HorizontalSlider
  ☐ HSVColorPicker
  ☐ ImagePanel
- ☐ LabelClickable
- ☐ ListBox
  ☐ Menu
    ☐ MenuItem
    ☐ MenuStrip
- ☐ Modal
+ ✘ Modal @cancelled (15-02-15 02:20)
  ☐ NumericUpDown
  ☐ PageControl
  ☐ ProgressBar
  ☐ Properties
  ☐ PropertyTree
- ☐ RadioButton
-   ☐ RadioButtonController
- ☐ Rectangle
- ☐ ResizableControl
+ ✘ ResizableControl @cancelled (15-02-14 22:03)
  ☐ Resizer
  ☐ RichLabel
  ☐ ScrollBar
    ☐ ScrollBarBar
    ☐ ScrollBarButton
-   ☐ ScrollControl
  ☐ Slider
  ☐ SplitterBar
  ☐ Splitters
  ☐ StatusBar
- ☐ TabButton
  ☐ TabControl
- ☐ TabStrip
- ☐ TabTitleBar
+   ☐ TabButton
+   ☐ TabStrip
+   ☐ TabTitleBar
  ☐ TextBox
  ☐ ToolBar
  ☐ TreeControl
- ☐ TreeNode
+   ☐ TreeNode
  ☐ VerticalScrollBar
  ☐ VerticalSlider

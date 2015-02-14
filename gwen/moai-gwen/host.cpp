@@ -11,23 +11,28 @@
 //================================================================//
 // aku-Gwen
 //================================================================//
+#define REGISTER_GWEN_CLASS( name ) REGISTER_LUA_CLASS ( MOAIGwen##name )
+
 void RegisterGwenControlTypes() {
 	//Skins
-	REGISTER_LUA_CLASS ( MOAIGwenSkin )
-	REGISTER_LUA_CLASS ( MOAIGwenSkinTexturedBase )
-	REGISTER_LUA_CLASS ( MOAIGwenSkinSimple )
+	REGISTER_GWEN_CLASS ( Skin )
+	REGISTER_GWEN_CLASS ( SkinTexturedBase )
+	REGISTER_GWEN_CLASS ( SkinSimple )
 
-	REGISTER_LUA_CLASS ( MOAIGwenCanvas )
-	REGISTER_LUA_CLASS ( MOAIGwenWindowControl )
-	// // REGISTER_LUA_CLASS ( MOAIGwenWindowCanvas )
+	REGISTER_GWEN_CLASS ( Canvas )
+	REGISTER_GWEN_CLASS ( WindowControl )
+	// // REGISTER_GWEN_CLASS ( WindowCanvas )
 
-	REGISTER_LUA_CLASS ( MOAIGwenButton )
-	REGISTER_LUA_CLASS ( MOAIGwenLabel )
-	REGISTER_LUA_CLASS ( MOAIGwenCheckBox )
+	REGISTER_GWEN_CLASS ( Button )
+	REGISTER_GWEN_CLASS ( Label )
+	REGISTER_GWEN_CLASS ( LabelClickable )
+	REGISTER_GWEN_CLASS ( CheckBox )
+	REGISTER_GWEN_CLASS ( RadioButton )
+	REGISTER_GWEN_CLASS ( GroupBox )
 
+	REGISTER_GWEN_CLASS ( ScrollControl )
 
-	REGISTER_LUA_CLASS ( MOAIGwenColorPicker )
-
+	REGISTER_GWEN_CLASS ( ColorPicker )
 
 }
 

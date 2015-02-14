@@ -3,7 +3,7 @@
 
 #include "moai-gwen/headers.h"
 
-#include "moai-gwen/MOAIGwenControl.h"
+#include "moai-gwen/MOAIGwenButton.h"
 #include "Gwen/Controls/CheckBox.h"
 
 //================================================================//
@@ -14,10 +14,10 @@
 */
 
 class MOAIGwenCheckBox :
-	public MOAIGwenControl {
+	public MOAIGwenButton {
 public:
 	enum Events{
-		EVENT_CHANGE = MOAIGwenControl::TOTAL_EVENTS,
+		EVENT_CHANGE = MOAIGwenButton::TOTAL_EVENTS,
 		EVENT_CHECK,
 		EVENT_UNCHECK,
 		TOTAL_EVENTS,
@@ -35,7 +35,7 @@ private:
 
 protected:
 	virtual void ConnectEvents() {
-		MOAIGwenControl::ConnectEvents();
+		MOAIGwenButton::ConnectEvents();
 		ConnectEventCallBack( GetInternalControl()->onCheckChanged,  EVENT_CHANGE );
 		ConnectEventCallBack( GetInternalControl()->onChecked,       EVENT_CHECK );
 		ConnectEventCallBack( GetInternalControl()->onUnChecked,     EVENT_UNCHECK );

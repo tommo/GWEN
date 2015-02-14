@@ -39,6 +39,12 @@ int MOAIGwenWindowControl::_destroyModal ( lua_State* L ) {
 	return 0;
 }
 
+int MOAIGwenWindowControl::_setDeleteOnClose ( lua_State *L ) {
+	MOAI_LUA_SETUP( MOAIGwenWindowControl, "U" )
+	self->GetInternalControl()->SetDeleteOnClose( state.GetValue < bool >( 2, true ) );
+	return 0;
+}
+
 //----------------------------------------------------------------//
 Gwen::Controls::Base* MOAIGwenWindowControl::CreateGwenControl() {
 	return new Gwen::Controls::WindowControl( MOAIGwenMgr::Get().GetDefaultCanvas() );
@@ -76,6 +82,7 @@ void MOAIGwenWindowControl::RegisterLuaFuncs ( MOAILuaState& state ) {
 		{ "setResizable",      _setResizable  },
 		{ "makeModal",         _makeModal     },
 		{ "destroyModal",      _destroyModal  },
+		{ "setDeleteOnClose",      _setDeleteOnClose  },
 		{ NULL, NULL }
 	};
 	
