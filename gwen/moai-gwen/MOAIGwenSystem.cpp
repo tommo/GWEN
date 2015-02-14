@@ -53,11 +53,13 @@ MOAIGwenSystem::MOAIGwenSystem () {
 	// this->SetMask ( MOAIProp::CAN_DRAW | MOAIProp::CAN_DRAW_DEBUG );
 	MOAIGwenCanvas* canvas = new MOAIGwenCanvas();
 	canvas->Init();
+	canvas->mRootSystem = this;
 	this->mCanvas.Set( *this, canvas );
 }
 
 //----------------------------------------------------------------//
 MOAIGwenSystem::~MOAIGwenSystem () {
+	this->mCanvas->mRootSystem = NULL;
 	this->mCanvas.Set( *this, 0 );
 	this->mSkin.Set( *this, 0 );
 }

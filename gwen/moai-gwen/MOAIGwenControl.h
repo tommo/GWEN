@@ -11,9 +11,8 @@ class MOAIGwenSystem;
 //================================================================//
 // MOAIGwenControl
 //================================================================//
-/**	@lua MOAIGwenControl
-	@text Box2D joint.
-*/
+
+class MOAIGwenCanvas;
 
 class MOAIGwenControl :
 	public virtual MOAIInstanceEventSource,
@@ -58,7 +57,9 @@ private:
 	static int    _getChildren          ( lua_State* L );
 	static int    _getChildrenCount     ( lua_State* L );
 	static int    _findChildByName      ( lua_State* L );
-	static int    _removeAllChildren      ( lua_State* L );
+	static int    _removeAllChildren    ( lua_State* L );
+	static int    _getCanvas            ( lua_State* L );
+	static int    _getSystem            ( lua_State* L );
 
 	static int    _sendToBack           ( lua_State* L );
 	static int    _bringToFront         ( lua_State* L );
@@ -67,8 +68,8 @@ private:
 	static int    _fitChildren          ( lua_State* L );
 	static int    _getChildrenSize      ( lua_State* L );
 
-	static int    _restrictToParent      ( lua_State* L );
-	static int    _shouldRestrictToParent ( lua_State* L );
+	static int    _restrictToParent     ( lua_State* L );
+	static int    _shouldRestrictToParent( lua_State* L );
 
 	static int    _getSize              ( lua_State* L );
 	static int    _setSize              ( lua_State* L );
@@ -77,6 +78,9 @@ private:
 	static int    _getBounds            ( lua_State* L );
 	static int    _getInnerBounds       ( lua_State* L );
 	static int    _getRenderBounds      ( lua_State* L );
+
+	static int    _localToCanvas        ( lua_State* L );
+	static int    _canvasToLocal        ( lua_State* L );
 
 	static int    _getControlAt         ( lua_State* L );
 
@@ -177,6 +181,9 @@ public:
 	void    SetSkin    ( MOAIGwenSkin* skin );
 	void    AddChild   ( MOAIGwenControl* control );
 	void    SetParent  ( MOAIGwenControl* control );
+
+	MOAIGwenSystem* GetSystem();
+	MOAIGwenCanvas* GetCanvas();
 
 	//----------------------------------------------------------------//
   DECL_LUA_FACTORY ( MOAIGwenControl )

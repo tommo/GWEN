@@ -12,6 +12,7 @@
 /**	@lua MOAIGwenCheckBox
 	@text Box2D joint.
 */
+
 class MOAIGwenCheckBox :
 	public MOAIGwenControl {
 public:

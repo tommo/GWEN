@@ -1,5 +1,6 @@
 #include "moai-gwen/MOAIGwenControl.h"
 #include "moai-gwen/MOAIGwenSkin.h"
+#include "moai-gwen/MOAIGwenCanvas.h"
 
 //----------------------------------------------------------------//
 // Glue
@@ -43,7 +44,7 @@ int MOAIGwenControl::_getParent ( lua_State* L ) {
 	if( parent ){
 		MOAIGwenControl* control = _GwenToMoai( parent );
 		control->PushLuaUserdata( state );
-		return 0;
+		return 1;
 	} else {
 		lua_pushnil( state );
 	}
@@ -87,6 +88,32 @@ int MOAIGwenControl::_removeAllChildren ( lua_State* L ) {
 	self->GetInternalControl()->RemoveAllChildren();
 	return 0;
 }
+
+
+int MOAIGwenControl::_getCanvas ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
+	MOAIGwenCanvas* canvas = self->GetCanvas();
+	if( canvas ){
+		canvas->PushLuaUserdata( state );
+		return 1;
+	} else {
+		lua_pushnil( state );
+		return 1;
+	}
+}
+
+int MOAIGwenControl::_getSystem ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
+	MOAIGwenSystem* system = self->GetSystem();
+	if( system ){
+		system->PushLuaUserdata( state );
+		return 1;
+	} else {
+		return 1;
+		lua_pushnil( state );
+	}
+}
+
 
 //----------------------------------------------------------------//
 int MOAIGwenControl::_getName( lua_State* L )
@@ -306,6 +333,30 @@ int MOAIGwenControl::_moveBy ( lua_State* L ) {
 	float y = state.GetValue < float >( 3, 0.0f );
 	self->GetInternalControl()->MoveBy( x, y );
 	return 0;
+}
+
+//----------------------------------------------------------------//
+int MOAIGwenControl::_localToCanvas ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
+	float x = state.GetValue < float >( 2, 0.0f );
+	float y = state.GetValue < float >( 3, 0.0f );
+	Gwen::Point p0( x, y );
+	Gwen::Point p = self->GetInternalControl()->LocalPosToCanvas( p0 );
+	state.Push( p.x );
+	state.Push( p.y );
+	return 2;
+}
+
+//----------------------------------------------------------------//
+int MOAIGwenControl::_canvasToLocal ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
+	float x = state.GetValue < float >( 2, 0.0f );
+	float y = state.GetValue < float >( 3, 0.0f );
+	Gwen::Point p0( x, y );
+	Gwen::Point p = self->GetInternalControl()->CanvasPosToLocal( p0 );
+	state.Push( p.x );
+	state.Push( p.y );
+	return 2;
 }
 
 //----------------------------------------------------------------//
@@ -538,6 +589,7 @@ void MOAIGwenControl::RegisterLuaFuncs ( MOAILuaState& state ) {
 	luaL_Reg regTable [] = {
 		{ "getName",              _getName            },
 		{ "setName",              _setName            },
+		{ "getTypeName",          _getTypeName        },
 
 		{ "setSkin",              _setSkin            },
 		{ "setParent",            _setParent          },
@@ -546,6 +598,9 @@ void MOAIGwenControl::RegisterLuaFuncs ( MOAILuaState& state ) {
 		{ "getChildren",          _getChildren        },
 		{ "findChildByName",      _findChildByName    },
 		{ "removeAllChildren",    _removeAllChildren  },
+		{ "getCanvas",            _getCanvas          },
+		{ "getSystem",            _getSystem          },
+
 
 		{ "sendToBack",           _sendToBack         },
 		{ "bringToFront",         _bringToFront       },
@@ -567,6 +622,11 @@ void MOAIGwenControl::RegisterLuaFuncs ( MOAILuaState& state ) {
 
 		{ "getPos",               _getPos             },
 		{ "setPos",               _setPos             },
+		{ "moveTo",               _moveTo             },
+		{ "moveBy",               _moveBy             },
+		{ "localToCanvas",        _localToCanvas      },
+		{ "canvasToLocal",        _canvasToLocal      },
+
 		{ "getControlAt",         _getControlAt       },
 
 		{ "restrictToParent",       _restrictToParent },
@@ -597,10 +657,7 @@ void MOAIGwenControl::RegisterLuaFuncs ( MOAILuaState& state ) {
 
 		{ "getDock",              _getDock            },
 		{ "setDock",              _setDock            },
-
-		{ "moveTo",               _moveTo             },
-		{ "moveBy",               _moveBy             },
-		{ "getTypeName",          _getTypeName        },
+		
 
 		{ "isMenuComponent",      _isMenuComponent    },
 		{ "closeMenus",           _closeMenus         },
@@ -624,4 +681,19 @@ void MOAIGwenControl::SetSkin ( MOAIGwenSkin* skin ) {
 
 void MOAIGwenControl::SetParent ( MOAIGwenControl* parent ) {
 	this->GetInternalControl()->SetParent( parent->GetInternalControl() );
+}
+
+MOAIGwenCanvas* MOAIGwenControl::GetCanvas() {
+	Gwen::Controls::Base* canvas = this->GetInternalControl()->GetCanvas();
+	if( canvas ){
+		MOAIGwenCanvas* mcanvas = static_cast < MOAIGwenCanvas* >( _GwenToMoai( canvas ) );
+		return mcanvas;
+	}
+	return NULL;
+}
+
+MOAIGwenSystem* MOAIGwenControl::GetSystem() {
+	MOAIGwenCanvas* canvas = this->GetCanvas();
+	if( !canvas ) return NULL;
+	return canvas->mRootSystem;
 }
