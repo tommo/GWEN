@@ -12,13 +12,13 @@ class ImagePanel : public GUnit
 			// Normal
 			{
 				Controls::ImagePanel* img = new Controls::ImagePanel( this );
-				img->SetImage( L"gwen.png" );
+				img->SetImage( GWEN_T("gwen.png") );
 				img->SetBounds( 10, 10, 100, 100 );
 			}
 			// Missing
 			{
 				Controls::ImagePanel* img = new Controls::ImagePanel( this );
-				img->SetImage( L"missingimage.png" );
+				img->SetImage( GWEN_T("missingimage.png") );
 				img->SetBounds( 120, 10, 100, 100 );
 			}
 		}
@@ -27,4 +27,4 @@ class ImagePanel : public GUnit
 
 
 
-DEFINE_UNIT_TEST( ImagePanel, L"ImagePanel" );
+DEFINE_UNIT_TEST( ImagePanel, GWEN_T("ImagePanel") );

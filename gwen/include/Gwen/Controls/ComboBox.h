@@ -41,7 +41,7 @@ namespace Gwen
 
 				virtual void ClearItems();
 
-				virtual MenuItem* AddItem( const UnicodeString & strLabel, const String & strName = "" );
+				virtual MenuItem* AddItem( const UnicodeString& strLabel, const String& strName = GWEN_T("") );
 				virtual bool OnKeyUp( bool bDown );
 				virtual bool OnKeyDown( bool bDown );
 

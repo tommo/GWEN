@@ -34,12 +34,12 @@ namespace Gwen
 
 					virtual TextObject GetPropertyValue()
 					{
-						return m_Checkbox->IsChecked() ? L"1" : L"0";
+						return m_Checkbox->IsChecked() ? GWEN_T("1") : GWEN_T("0");
 					}
 
 					virtual void SetPropertyValue( const TextObject & v, bool bFireChangeEvents )
 					{
-						if ( v == L"1" || v == L"true" || v == L"TRUE" || v == L"yes" || v == L"YES" )
+						if ( v == GWEN_T("1") || v == GWEN_T("true") || v == GWEN_T("TRUE") || v == GWEN_T("yes") || v == GWEN_T("YES") )
 						{ return m_Checkbox->SetChecked( true ); }
 
 						return m_Checkbox->SetChecked( false );

@@ -1149,7 +1149,7 @@ TextObject Base::GetChildValue( const Gwen::String & strName )
 {
 	Base* pChild = FindChildByName( strName, true );
 
-	if ( !pChild ) { return ""; }
+	if ( !pChild ) { return GWEN_T(""); }
 
 	return pChild->GetValue();
 }
@@ -1157,7 +1157,7 @@ TextObject Base::GetChildValue( const Gwen::String & strName )
 TextObject Base::GetValue()
 {
 	// Generic value accessor should be filled in if we have a value to give.
-	return "";
+	return GWEN_T("");
 }
 
 void Base::SetValue( const TextObject & strValue )

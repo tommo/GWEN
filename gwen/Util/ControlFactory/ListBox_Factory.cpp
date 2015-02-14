@@ -15,8 +15,8 @@ namespace Gwen
 				{
 				}
 
-				virtual Gwen::String Name()     { return "ListBox"; }
-				virtual Gwen::String BaseName() { return "Base"; }
+				virtual Gwen::String Name()     { return GWEN_T("ListBox"); }
+				virtual Gwen::String BaseName() { return GWEN_T("Base"); }
 
 				virtual Gwen::Controls::Base* CreateInstance( Gwen::Controls::Base* parent )
 				{

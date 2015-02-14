@@ -17,7 +17,7 @@ using namespace Gwen::Controls;
 
 GWEN_CONTROL_CONSTRUCTOR( TextBoxNumeric )
 {
-	SetText( L"0" );
+	SetText( GWEN_T("0") );
 }
 
 bool TextBoxNumeric::IsTextAllowed( const Gwen::UnicodeString & str, int iPos )
@@ -29,7 +29,7 @@ bool TextBoxNumeric::IsTextAllowed( const Gwen::UnicodeString & str, int iPos )
 
 	for ( size_t i = 0; i < str.length(); i++ )
 	{
-		if ( str[i] == L'-' )
+		if ( str[i] == GWEN_T('-') )
 		{
 			// Has to be at the start
 			if ( i != 0 || iPos != 0 )
@@ -42,27 +42,27 @@ bool TextBoxNumeric::IsTextAllowed( const Gwen::UnicodeString & str, int iPos )
 			continue;
 		}
 
-		if ( str[i] == L'0' ) { continue; }
+		if ( str[i] == GWEN_T('0') ) { continue; }
 
-		if ( str[i] == L'1' ) { continue; }
+		if ( str[i] == GWEN_T('1') ) { continue; }
 
-		if ( str[i] == L'2' ) { continue; }
+		if ( str[i] == GWEN_T('2') ) { continue; }
 
-		if ( str[i] == L'3' ) { continue; }
+		if ( str[i] == GWEN_T('3') ) { continue; }
 
-		if ( str[i] == L'4' ) { continue; }
+		if ( str[i] == GWEN_T('4') ) { continue; }
 
-		if ( str[i] == L'5' ) { continue; }
+		if ( str[i] == GWEN_T('5') ) { continue; }
 
-		if ( str[i] == L'6' ) { continue; }
+		if ( str[i] == GWEN_T('6') ) { continue; }
 
-		if ( str[i] == L'7' ) { continue; }
+		if ( str[i] == GWEN_T('7') ) { continue; }
 
-		if ( str[i] == L'8' ) { continue; }
+		if ( str[i] == GWEN_T('8') ) { continue; }
 
-		if ( str[i] == L'9' ) { continue; }
+		if ( str[i] == GWEN_T('9') ) { continue; }
 
-		if ( str[i] == L'.' )
+		if ( str[i] == GWEN_T('.') )
 		{
 			// Already a fullstop
 			if ( std::count( strString.begin(), strString.end(), L'.' ) > 0 )

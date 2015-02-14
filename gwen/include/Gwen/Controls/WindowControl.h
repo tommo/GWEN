@@ -37,7 +37,6 @@ namespace Gwen
 				virtual void RenderUnder( Skin::Base* skin );
 
 				virtual void SetTitle( Gwen::UnicodeString title );
-				virtual void SetTitle( Gwen::String title ) { SetTitle( Gwen::Utility::StringToUnicode( title ) ); }
 				virtual void SetClosable( bool closeable );
 
 				virtual void Touch();

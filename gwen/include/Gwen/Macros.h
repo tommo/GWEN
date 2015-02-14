@@ -32,6 +32,16 @@
 #define GwenUtil_OutputDebugWideString( lpOutputString ) //wprintf( lpOutputString  )
 //#define GwenUtil_WideStringToFloat( _Str ) wcstof(_Str, NULL)
 
+#elif defined(__native_client__)
+
+	#define GwenUtil_OutputDebugCharString( lpOutputString ) //printf( lpOutputString )
+	#define GwenUtil_OutputDebugWideString( lpOutputString ) //wprintf( lpOutputString  )
+
+#elif defined(__EMSCRIPTEN__)
+
+	#define GwenUtil_OutputDebugCharString( lpOutputString ) //printf( lpOutputString )
+	#define GwenUtil_OutputDebugWideString( lpOutputString ) //wprintf( lpOutputString  )
+
 #else
 
 #error MUST_IMPLEMENT_PLATFORM

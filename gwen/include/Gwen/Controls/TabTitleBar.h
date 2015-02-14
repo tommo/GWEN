@@ -27,7 +27,7 @@ namespace Gwen
 					SetMouseInputEnabled( true );
 					SetTextPadding( Gwen::Padding( 5, 2, 5, 2 ) );
 					SetPadding( Gwen::Padding( 1, 2, 1, 2 ) );
-					DragAndDrop_SetPackage( true, "TabWindowMove" );
+					DragAndDrop_SetPackage( true, GWEN_T("TabWindowMove") );
 				}
 
 				void Render( Skin::Base* skin )

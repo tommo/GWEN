@@ -53,10 +53,6 @@ void RadioButtonController::OnChange()
 	onSelectionChange.Call( this );
 }
 
-LabeledRadioButton* RadioButtonController::AddOption( const Gwen::String & strText, const Gwen::String & strOptionName )
-{
-	return AddOption( Gwen::Utility::StringToUnicode( strText ), strOptionName );
-}
 
 LabeledRadioButton* RadioButtonController::AddOption( const Gwen::UnicodeString & strText, const Gwen::String & strOptionName )
 {

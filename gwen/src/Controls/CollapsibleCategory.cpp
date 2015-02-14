@@ -80,7 +80,7 @@ GWEN_CONTROL_CONSTRUCTOR( CollapsibleCategory )
 {
 	m_pList = NULL;
 	m_pButton = new CategoryHeaderButton( this );
-	m_pButton->SetText( "Category Title" );
+	m_pButton->SetText( GWEN_T("Category Title") );
 	m_pButton->Dock( Pos::Top );
 	m_pButton->SetHeight( 20 );
 	SetPadding( Padding( 1, 0, 1, 5 ) );

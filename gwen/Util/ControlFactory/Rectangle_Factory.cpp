@@ -14,12 +14,12 @@ namespace Gwen
 
 			class Color : public ControlFactory::Property
 			{
-					GWEN_CONTROL_FACTORY_PROPERTY( Color, "Rectangle's Background Color" );
+					GWEN_CONTROL_FACTORY_PROPERTY( Color, GWEN_T("Rectangle's Background Color") );
 
 					UnicodeString GetValue( Controls::Base* ctrl )
 					{
 						Controls::Rectangle* pRect = gwen_cast<Controls::Rectangle> ( ctrl );
-						return Utility::Format( L"%i %i %i %i", pRect->GetColor().r, pRect->GetColor().g, pRect->GetColor().b, pRect->GetColor().a );
+						return Utility::Format( GWEN_T("%i %i %i %i"), pRect->GetColor().r, pRect->GetColor().g, pRect->GetColor().b, pRect->GetColor().a );
 					}
 
 					void SetValue( Controls::Base* ctrl, const UnicodeString & str )
@@ -27,7 +27,7 @@ namespace Gwen
 						Controls::Rectangle* pRect = gwen_cast<Controls::Rectangle> ( ctrl );
 						int r, g, b, a;
 
-						if ( swscanf( str.c_str(), L"%i %i %i %i", &r, &g, &b, &a ) != 4 ) { return; }
+						if ( GWEN_SSCANF( str.c_str(), GWEN_T("%i %i %i %i"), &r, &g, &b, &a ) != 4 ) { return; }
 
 						pRect->SetColor( Gwen::Color( r, g, b, a ) );
 					}
@@ -36,13 +36,13 @@ namespace Gwen
 
 					Gwen::String NumName( int i )
 					{
-						if ( i == 0 ) { return "r"; }
+						if ( i == 0 ) { return GWEN_T("r"); }
 
-						if ( i == 1 ) { return "g"; }
+						if ( i == 1 ) { return GWEN_T("g"); }
 
-						if ( i == 2 ) { return "b"; }
+						if ( i == 2 ) { return GWEN_T("b"); }
 
-						return "a";
+						return GWEN_T("a");
 					}
 
 					float NumGet( Controls::Base* ctrl, int i )
@@ -88,8 +88,8 @@ namespace Gwen
 					AddProperty( new Properties::Color() );
 				}
 
-				virtual Gwen::String Name() { return "Rectangle"; }
-				virtual Gwen::String BaseName() { return "Base"; }
+				virtual Gwen::String Name() { return GWEN_T("Rectangle"); }
+				virtual Gwen::String BaseName() { return GWEN_T("Base"); }
 
 				virtual Gwen::Controls::Base* CreateInstance( Gwen::Controls::Base* parent )
 				{

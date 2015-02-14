@@ -117,7 +117,7 @@ Gwen::Rect Text::GetCharacterPosition( int iChar )
 
 	if ( Length() == 0 || iChar == 0 )
 	{
-		Gwen::Point p = GetSkin()->GetRender()->MeasureText( GetFont(), L" " );
+		Gwen::Point p = GetSkin()->GetRender()->MeasureText( GetFont(), GWEN_T(" ") );
 		return Gwen::Rect( 0, 0, 0, p.y );
 	}
 
@@ -230,11 +230,11 @@ void Text::SplitWords(const Gwen::UnicodeString &s, std::vector<Gwen::UnicodeStr
 	int w = GetParent()->Width() - GetParent()->GetPadding().left-GetParent()->GetPadding().right;
 	for ( int i=0; i<(int)s.length(); i++ ) 
 	{
-		if ( s[i] == L'\n' )
+		if ( s[i] == GWEN_T('\n') )
 		{
 			if ( !str.empty() ) { elems.push_back( str ); }
 
-			elems.push_back( L"\n" );
+			elems.push_back( GWEN_T("\n") );
 			str.clear();
 			continue;
 		}
@@ -281,7 +281,7 @@ void Text::RefreshSizeWrap()
 	SplitWords( GetText().GetUnicode(), words );
 	// Adding a bullshit word to the end simplifies the code below
 	// which is anything but simple.
-	words.push_back( L"" );
+	words.push_back( GWEN_T("") );
 
 	if ( !GetFont() )
 	{
@@ -289,7 +289,7 @@ void Text::RefreshSizeWrap()
 		return;
 	}
 
-	Point pFontSize = GetSkin()->GetRender()->MeasureText( GetFont(), L" " );
+	Point pFontSize = GetSkin()->GetRender()->MeasureText( GetFont(), GWEN_T(" ") );
 	int w = GetParent()->Width() - GetParent()->GetPadding().left-GetParent()->GetPadding().right; 
 	int x = 0, y = 0;
 	Gwen::UnicodeString strLine;

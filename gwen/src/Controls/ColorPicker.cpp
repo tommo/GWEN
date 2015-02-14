@@ -30,12 +30,12 @@ void ColorPicker::CreateColorControl( Gwen::String name, int y )
 	colorGroup->SetPos( 10, y );
 	colorGroup->SetText( name );
 	colorGroup->SetSize( 160, 35 );
-	colorGroup->SetName( name + "groupbox" );
+	colorGroup->SetName( name + GWEN_T("groupbox") );
 	ColorDisplay* disp = new ColorDisplay( colorGroup );
 	disp->SetName( name );
 	disp->SetBounds( 0 , 3, colorSize, colorSize );
 	TextBoxNumeric* numeric = new TextBoxNumeric( colorGroup );
-	numeric->SetName( name + "Box" );
+	numeric->SetName( name + GWEN_T("Box") );
 	numeric->SetPos( 105, 0 );
 	numeric->SetSize( 26, 16 );
 	numeric->SetSelectAllOnFocus( true );
@@ -44,7 +44,7 @@ void ColorPicker::CreateColorControl( Gwen::String name, int y )
 	slider->SetPos( colorSize + 5 , 1 );
 	slider->SetRange( 0, 255 );
 	slider->SetSize( 80, Gwen::Utility::Max( colorSize, 15 ) );
-	slider->SetName( name + "Slider" );
+	slider->SetName( name + GWEN_T("Slider") );
 	slider->onValueChanged.Add( this, &ColorPicker::SlidersMoved );
 }
 
@@ -55,25 +55,25 @@ void ColorPicker::NumericTyped( Gwen::Controls::Base* control )
 	if ( !box )
 	{ return; }
 
-	if ( box->GetText() == L"" )
+	if ( box->GetText() == GWEN_T("") )
 	{ return; }
 
-	int textValue = atoi( box->GetText().c_str() );
+	int textValue = Gwen::Utility::Strings::To::Int( box->GetText().GetUnicode() );
 
 	if ( textValue < 0 ) { textValue = 0; }
 
 	if ( textValue > 255 ) { textValue = 255; }
 
-	if ( box->GetName().find( "Red" ) != Gwen::String::npos )
+	if ( box->GetName().find( GWEN_T("Red") ) != Gwen::String::npos )
 	{ SetRed( textValue ); }
 
-	if ( box->GetName().find( "Green" ) != Gwen::String::npos )
+	if ( box->GetName().find( GWEN_T("Green") ) != Gwen::String::npos )
 	{ SetGreen( textValue ); }
 
-	if ( box->GetName().find( "Blue" ) != Gwen::String::npos )
+	if ( box->GetName().find( GWEN_T("Blue") ) != Gwen::String::npos )
 	{ SetBlue( textValue ); }
 
-	if ( box->GetName().find( "Alpha" ) != Gwen::String::npos )
+	if ( box->GetName().find( GWEN_T("Alpha") ) != Gwen::String::npos )
 	{ SetAlpha( textValue ); }
 
 	UpdateControls();
@@ -89,17 +89,17 @@ void ColorPicker::CreateControls()
 {
 	int startY = 5;
 	int height = 35;
-	CreateColorControl( "Red",	 startY );
-	CreateColorControl( "Green", startY + height );
-	CreateColorControl( "Blue",  startY + height * 2 );
-	CreateColorControl( "Alpha", startY + height * 3 );
+	CreateColorControl( GWEN_T("Red"),	 startY );
+	CreateColorControl( GWEN_T("Green"), startY + height );
+	CreateColorControl( GWEN_T("Blue"),  startY + height * 2 );
+	CreateColorControl( GWEN_T("Alpha"), startY + height * 3 );
 	GroupBox* finalGroup = new GroupBox( this );
 	finalGroup->SetPos( 180, 40 );
 	finalGroup->SetSize( 60, 60 );
-	finalGroup->SetText( "Result" );
-	finalGroup->SetName( "ResultGroupBox" );
+	finalGroup->SetText( GWEN_T("Result") );
+	finalGroup->SetName( GWEN_T("ResultGroupBox") );
 	ColorDisplay* disp = new ColorDisplay( finalGroup );
-	disp->SetName( "Result" );
+	disp->SetName( GWEN_T("Result") );
 	disp->SetBounds( 7 , 5, 32, 32 );
 	disp->SetDrawCheckers( true );
 	//UpdateControls();
@@ -109,20 +109,20 @@ void ColorPicker::UpdateColorControls( Gwen::String name, Gwen::Color col, int s
 {
 	ColorDisplay* disp = gwen_cast<ColorDisplay> ( FindChildByName( name, true ) );
 	disp->SetColor( col );
-	HorizontalSlider* slider = gwen_cast<HorizontalSlider> ( FindChildByName( name + "Slider", true ) );
+	HorizontalSlider* slider = gwen_cast<HorizontalSlider> ( FindChildByName( name + GWEN_T("Slider"), true ) );
 	slider->SetFloatValue( sliderVal );
-	TextBoxNumeric* box = gwen_cast<TextBoxNumeric> ( FindChildByName( name + "Box", true ) );
+	TextBoxNumeric* box = gwen_cast<TextBoxNumeric> ( FindChildByName( name + GWEN_T("Box"), true ) );
 	box->SetText( Gwen::Utility::ToString( sliderVal ) );
 }
 
 void ColorPicker::UpdateControls()
 {
 	//This is a little weird, but whatever for now
-	UpdateColorControls( "Red",		Color( GetColor().r, 0, 0, 255 ), GetColor().r );
-	UpdateColorControls( "Green",	Color( 0, GetColor().g, 0, 255 ), GetColor().g );
-	UpdateColorControls( "Blue",	Color( 0, 0, GetColor().b, 255 ), GetColor().b );
-	UpdateColorControls( "Alpha",	Color( 255, 255, 255, GetColor().a ), GetColor().a );
-	ColorDisplay* disp = gwen_cast<ColorDisplay> ( FindChildByName( "Result", true ) );
+	UpdateColorControls( GWEN_T("Red"),		Color( GetColor().r, 0, 0, 255 ), GetColor().r );
+	UpdateColorControls( GWEN_T("Green"),	Color( 0, GetColor().g, 0, 255 ), GetColor().g );
+	UpdateColorControls( GWEN_T("Blue"),	Color( 0, 0, GetColor().b, 255 ), GetColor().b );
+	UpdateColorControls( GWEN_T("Alpha"),	Color( 255, 255, 255, GetColor().a ), GetColor().a );
+	ColorDisplay* disp = gwen_cast<ColorDisplay> ( FindChildByName( GWEN_T("Result"), true ) );
 	disp->SetColor( Color( GetColor().r, GetColor().g, GetColor().b, GetColor().a ) );
 	onColorChanged.Call( this );
 }
@@ -148,7 +148,7 @@ void ColorPicker::Layout( Skin::Base* skin )
 	BaseClass::Layout( skin );
 	SizeToChildren( false, true );
 	SetSize( Width(), Height() + 5 );
-	GroupBox* groupBox = gwen_cast<GroupBox> ( FindChildByName( "ResultGroupBox", true ) );
+	GroupBox* groupBox = gwen_cast<GroupBox> ( FindChildByName( GWEN_T("ResultGroupBox"), true ) );
 
 	if ( groupBox )
 	{ groupBox->SetPos( groupBox->X(), Height() * 0.5f - groupBox->Height() * 0.5f ); }
@@ -159,13 +159,13 @@ void ColorPicker::Layout( Skin::Base* skin )
 
 int ColorPicker::GetColorByName( Gwen::String colorName )
 {
-	if ( colorName == "Red" )
+	if ( colorName == GWEN_T("Red") )
 	{ return GetColor().r; }
-	else if ( colorName == "Green" )
+	else if ( colorName == GWEN_T("Green") )
 	{ return GetColor().g; }
-	else if ( colorName == "Blue" )
+	else if ( colorName == GWEN_T("Blue") )
 	{ return GetColor().b; }
-	else if ( colorName == "Alpha" )
+	else if ( colorName == GWEN_T("Alpha") )
 	{ return GetColor().a; }
 	else
 	{ return 0; }
@@ -173,36 +173,36 @@ int ColorPicker::GetColorByName( Gwen::String colorName )
 
 Gwen::String ColorPicker::GetColorFromName( Gwen::String name )
 {
-	if ( name.find( "Red" ) != Gwen::String::npos )
-	{ return "Red"; }
+	if ( name.find( GWEN_T("Red") ) != Gwen::String::npos )
+	{ return GWEN_T("Red"); }
 
-	if ( name.find( "Green" ) != Gwen::String::npos )
-	{ return "Green"; }
+	if ( name.find( GWEN_T("Green") ) != Gwen::String::npos )
+	{ return GWEN_T("Green"); }
 
-	if ( name.find( "Blue" ) != Gwen::String::npos )
-	{ return "Blue"; }
+	if ( name.find( GWEN_T("Blue") ) != Gwen::String::npos )
+	{ return GWEN_T("Blue"); }
 
-	if ( name.find( "Alpha" ) != Gwen::String::npos )
-	{ return "Alpha"; }
+	if ( name.find( GWEN_T("Alpha") ) != Gwen::String::npos )
+	{ return GWEN_T("Alpha"); }
 	else
-	{ return ""; }
+	{ return GWEN_T(""); }
 }
 
 void ColorPicker::SetColorByName( Gwen::String colorName, int colorValue )
 {
-	if ( colorName == "Red" )
+	if ( colorName == GWEN_T("Red") )
 	{ SetRed( colorValue ); }
-	else if ( colorName == "Green" )
+	else if ( colorName == GWEN_T("Green") )
 	{ SetGreen( colorValue ); }
-	else if ( colorName == "Blue" )
+	else if ( colorName == GWEN_T("Blue") )
 	{ SetBlue( colorValue ); }
-	else if ( colorName == "Alpha" )
+	else if ( colorName == GWEN_T("Alpha") )
 	{ SetAlpha( colorValue ); }
 }
 
 void ColorPicker::SetAlphaVisible( bool visible )
 {
-	GroupBox* groupBox = gwen_cast<GroupBox> ( FindChildByName( "Alphagroupbox", true ) );
+	GroupBox* groupBox = gwen_cast<GroupBox> ( FindChildByName( GWEN_T("Alphagroupbox"), true ) );
 	groupBox->SetHidden( !visible );
 	Invalidate();
 }

@@ -75,8 +75,6 @@ namespace Gwen
 				virtual void DrawLinedRect( Gwen::Rect rect );
 				virtual void DrawPixel( int x, int y );
 				virtual void DrawShavedCornerRect( Gwen::Rect rect, bool bSlight = false );
-				virtual Gwen::Point MeasureText( Gwen::Font* pFont, const Gwen::String & text );
-				virtual void RenderText( Gwen::Font* pFont, Gwen::Point pos, const Gwen::String & text );
 
 			public:
 

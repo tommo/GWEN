@@ -30,7 +30,7 @@ namespace Gwen
 
 				virtual void Layout( Skin::Base* skin );
 
-				virtual MenuItem* AddItem( const TextObject & strName, const TextObject & strIconName = L"", const TextObject & strAccelerator = L"" );
+				virtual MenuItem* AddItem( const TextObject& strName, const TextObject& strIconName = GWEN_T(""), const TextObject& strAccelerator = GWEN_T("") );
 
 				virtual void AddDivider();
 

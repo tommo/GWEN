@@ -4,7 +4,7 @@
 int MOAIGwenWindowControl::_setTitle ( lua_State* L ) {
 	MOAI_LUA_SETUP( MOAIGwenWindowControl, "US" )
 	cc8* title = state.GetValue < cc8* >( 2, "" );
-	self->GetInternalControl()->SetTitle( Gwen::Utility::StringToUnicode( title ) );
+	self->GetInternalControl()->SetTitle( title );
 	return 0;
 }
 

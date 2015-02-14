@@ -13,33 +13,33 @@ namespace Gwen
 		{
 			class ControlName : public Gwen::ControlFactory::Property
 			{
-					GWEN_CONTROL_FACTORY_PROPERTY( ControlName, "The control's name" );
+					GWEN_CONTROL_FACTORY_PROPERTY( ControlName,  GWEN_T("The control's name") );
 
 					UnicodeString GetValue( Controls::Base* ctrl )
 					{
-						return Utility::Format( L"%S", ctrl->GetName().c_str() );
+						return Utility::Format(  GWEN_T("%S"), ctrl->GetName().c_str() );
 					}
 
 					void SetValue( Controls::Base* ctrl, const UnicodeString & str )
 					{
-						ctrl->SetName( Gwen::Utility::UnicodeToString( str ) );
+						ctrl->SetName( str  );
 					}
 			};
 
 			class Position : public Gwen::ControlFactory::Property
 			{
-					GWEN_CONTROL_FACTORY_PROPERTY( Position, "Sets the position of the control" );
+					GWEN_CONTROL_FACTORY_PROPERTY( Position,  GWEN_T("Sets the position of the control") );
 
 					UnicodeString GetValue( Controls::Base* ctrl )
 					{
-						return Utility::Format( L"%i %i", ctrl->X(), ctrl->Y() );
+						return Utility::Format(  GWEN_T("%i %i"), ctrl->X(), ctrl->Y() );
 					}
 
 					void SetValue( Controls::Base* ctrl, const UnicodeString & str )
 					{
 						int x, y;
 
-						if ( swscanf( str.c_str(), L"%i %i", &x, &y ) != 2 ) { return; }
+						if ( GWEN_SSCANF( str.c_str(), GWEN_T("%i %i"), &x, &y ) != 2 ) { return; }
 
 						ctrl->SetPos( x, y );
 					}
@@ -48,9 +48,9 @@ namespace Gwen
 
 					Gwen::String NumName( int i )
 					{
-						if ( i == 0 ) { return "x"; }
+						if ( i == 0 ) { return GWEN_T("x"); }
 
-						return "y";
+						return GWEN_T("y");
 					}
 
 					float NumGet( Controls::Base* ctrl, int i )
@@ -69,19 +69,19 @@ namespace Gwen
 
 			class Margin : public Gwen::ControlFactory::Property
 			{
-					GWEN_CONTROL_FACTORY_PROPERTY( Margin, "Sets the margin of a docked control" );
+					GWEN_CONTROL_FACTORY_PROPERTY( Margin, GWEN_T("Sets the margin of a docked control") );
 
 					UnicodeString GetValue( Controls::Base* ctrl )
 					{
 						Gwen::Margin m = ctrl->GetMargin();
-						return Utility::Format( L"%i %i %i %i", m.left, m.top, m.right, m.bottom );
+						return Utility::Format( GWEN_T("%i %i %i %i"), m.left, m.top, m.right, m.bottom );
 					}
 
 					void SetValue( Controls::Base* ctrl, const UnicodeString & str )
 					{
 						Gwen::Margin m;
 
-						if ( swscanf( str.c_str(), L"%i %i %i %i", &m.left, &m.top, &m.right, &m.bottom ) != 4 ) { return; }
+						if ( GWEN_SSCANF( str.c_str(), GWEN_T("%i %i %i %i"), &m.left, &m.top, &m.right, &m.bottom ) != 4 ) { return; }
 
 						ctrl->SetMargin( m );
 					}
@@ -90,13 +90,13 @@ namespace Gwen
 
 					Gwen::String NumName( int i )
 					{
-						if ( i == 0 ) { return "left"; }
+						if ( i == 0 ) { return GWEN_T("left"); }
 
-						if ( i == 1 ) { return "top"; }
+						if ( i == 1 ) { return GWEN_T("top"); }
 
-						if ( i == 2 ) { return "right"; }
+						if ( i == 2 ) { return GWEN_T("right"); }
 
-						return "bottom";
+						return GWEN_T("bottom");
 					}
 
 					float NumGet( Controls::Base* ctrl, int i )
@@ -130,18 +130,18 @@ namespace Gwen
 
 			class Size: public Gwen::ControlFactory::Property
 			{
-					GWEN_CONTROL_FACTORY_PROPERTY( Size, "The with and height of the control" );
+					GWEN_CONTROL_FACTORY_PROPERTY( Size, GWEN_T("The with and height of the control") );
 
 					UnicodeString GetValue( Controls::Base* ctrl )
 					{
-						return Utility::Format( L"%i %i", ctrl->Width(), ctrl->Height() );
+						return Utility::Format( GWEN_T("%i %i"), ctrl->Width(), ctrl->Height() );
 					}
 
 					void SetValue( Controls::Base* ctrl, const UnicodeString & str )
 					{
 						int w, h;
 
-						if ( swscanf( str.c_str(), L"%i %i", &w, &h ) != 2 ) { return; }
+						if ( GWEN_SSCANF( str.c_str(), GWEN_T("%i %i"), &w, &h ) != 2 ) { return; }
 
 						ctrl->SetSize( w, h );
 					}
@@ -150,9 +150,9 @@ namespace Gwen
 
 					Gwen::String NumName( int i )
 					{
-						if ( i == 0 ) { return "w"; }
+						if ( i == 0 ) { return GWEN_T("w"); }
 
-						return "h";
+						return GWEN_T("h");
 					}
 
 					float NumGet( Controls::Base* ctrl, int i )
@@ -171,61 +171,61 @@ namespace Gwen
 
 			class Dock : public Gwen::ControlFactory::Property
 			{
-					GWEN_CONTROL_FACTORY_PROPERTY( Dock, "How the control is to be docked" );
+					GWEN_CONTROL_FACTORY_PROPERTY( Dock, GWEN_T("How the control is to be docked") );
 
 					UnicodeString GetValue( Controls::Base* ctrl )
 					{
 						switch ( ctrl->GetDock() )
 						{
 							case Pos::Left:
-								return L"Left";
+								return GWEN_T("Left");
 
 							case Pos::Fill:
-								return L"Fill";
+								return GWEN_T("Fill");
 
 							case Pos::Right:
-								return L"Right";
+								return GWEN_T("Right");
 
 							case Pos::Top:
-								return L"Top";
+								return GWEN_T("Top");
 
 							case Pos::Bottom:
-								return L"Bottom";
+								return GWEN_T("Bottom");
 						}
 
-						return L"None";
+						return GWEN_T("None");
 					}
 
 					void SetValue( Controls::Base* ctrl, const UnicodeString & str )
 					{
-						if ( str == L"Fill" ) { ctrl->Dock( Pos::Fill ); }
+						if ( str == GWEN_T("Fill") ) { ctrl->Dock( Pos::Fill ); }
 
-						if ( str == L"Left" ) { ctrl->Dock( Pos::Left ); }
+						if ( str == GWEN_T("Left") ) { ctrl->Dock( Pos::Left ); }
 
-						if ( str == L"Right" ) { ctrl->Dock( Pos::Right ); }
+						if ( str == GWEN_T("Right") ) { ctrl->Dock( Pos::Right ); }
 
-						if ( str == L"Top" ) { ctrl->Dock( Pos::Top ); }
+						if ( str == GWEN_T("Top") ) { ctrl->Dock( Pos::Top ); }
 
-						if ( str == L"Bottom" ) { ctrl->Dock( Pos::Bottom ); }
+						if ( str == GWEN_T("Bottom") ) { ctrl->Dock( Pos::Bottom ); }
 
-						if ( str == L"None" ) { ctrl->Dock( Pos::None ); }
+						if ( str == GWEN_T("None") ) { ctrl->Dock( Pos::None ); }
 					}
 
 					int OptionNum() { return 6; }
 
 					Gwen::UnicodeString OptionGet( int i )
 					{
-						if ( i == 0 ) { return L"None"; }
+						if ( i == 0 ) { return GWEN_T("None"); }
 
-						if ( i == 1 ) { return L"Left"; }
+						if ( i == 1 ) { return GWEN_T("Left"); }
 
-						if ( i == 2 ) { return L"Right"; }
+						if ( i == 2 ) { return GWEN_T("Right"); }
 
-						if ( i == 3 ) { return L"Top"; }
+						if ( i == 3 ) { return GWEN_T("Top"); }
 
-						if ( i == 4 ) { return L"Bottom"; }
+						if ( i == 4 ) { return GWEN_T("Bottom"); }
 
-						return L"Fill";
+						return GWEN_T("Fill");
 					}
 			};
 
@@ -245,8 +245,8 @@ namespace Gwen
 					AddProperty( new Properties::Margin() );
 				}
 
-				virtual Gwen::String Name() { return "Base"; }
-				virtual Gwen::String BaseName() { return ""; }
+				virtual Gwen::String Name() { return GWEN_T("Base"); }
+				virtual Gwen::String BaseName() { return GWEN_T(""); }
 
 				virtual Gwen::Controls::Base* CreateInstance( Gwen::Controls::Base* parent )
 				{

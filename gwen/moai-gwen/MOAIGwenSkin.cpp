@@ -5,7 +5,7 @@ int MOAIGwenSkin::_setDefaultFont ( lua_State *L ) {
 	MOAI_LUA_SETUP( MOAIGwenSkin, "USN" )
 	cc8*  faceName = state.GetValue < cc8* >( 2, "" );
 	float size     = state.GetValue < float >( 3, 10.0f );
-	self->GetGwenSkin()->SetDefaultFont( Gwen::Utility::StringToUnicode( faceName ), size );
+	self->GetGwenSkin()->SetDefaultFont( std::string( faceName ), size );
 	return 0;
 }
 

@@ -18,7 +18,7 @@ int MOAIGwenLabel::_setFont(lua_State* L)
 	cc8* face = state.GetValue < cc8* >( 2, "" );
 	u32 size  = state.GetValue < u32 >( 3, 12 );
 
-	self->GetInternalControl()->SetFont( Gwen::Utility::StringToUnicode( face ), size, false );
+	self->GetInternalControl()->SetFont( face, size, false );
 	return 0;
 }
 

@@ -13,18 +13,18 @@ namespace Gwen
 		{
 			class CycleSpeed: public ControlFactory::Property
 			{
-					GWEN_CONTROL_FACTORY_PROPERTY( CycleSpeed, "" );
+					GWEN_CONTROL_FACTORY_PROPERTY( CycleSpeed, GWEN_T("") );
 
 					UnicodeString GetValue( Controls::Base* ctrl )
 					{
-						return Utility::Format( L"%f", ( float ) gwen_cast<Controls::ProgressBar> ( ctrl )->GetCycleSpeed() );
+						return Utility::Format( GWEN_T("%f"), ( float ) gwen_cast<Controls::ProgressBar> ( ctrl )->GetCycleSpeed() );
 					}
 
 					void SetValue( Controls::Base* ctrl, const UnicodeString & str )
 					{
 						float num;
 
-						if ( swscanf( str.c_str(), L"%f", &num ) != 1 ) { return; }
+						if ( GWEN_SSCANF( str.c_str(), GWEN_T("%f"), &num ) != 1 ) { return; }
 
 						gwen_cast<Controls::ProgressBar> ( ctrl )->SetCycleSpeed( num );
 					}
@@ -42,8 +42,8 @@ namespace Gwen
 					AddProperty( new Properties::CycleSpeed() );
 				}
 
-				virtual Gwen::String Name()     { return "ProgressBar"; }
-				virtual Gwen::String BaseName() { return "Base"; }
+				virtual Gwen::String Name()     { return GWEN_T("ProgressBar"); }
+				virtual Gwen::String BaseName() { return GWEN_T("Base"); }
 
 				virtual Gwen::Controls::Base* CreateInstance( Gwen::Controls::Base* parent )
 				{

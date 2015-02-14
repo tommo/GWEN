@@ -28,16 +28,16 @@ GWEN_CONTROL_CONSTRUCTOR( WindowControl )
 	m_TitleBar->Dock( Pos::Top );
 	m_Title = new Label( m_TitleBar );
 	m_Title->SetAlignment( Pos::Left | Pos::CenterV );
-	m_Title->SetText( "Window" );
+	m_Title->SetText( GWEN_T("Window") );
 	m_Title->Dock( Pos::Fill );
 	m_Title->SetPadding( Padding( 8, 0, 0, 0 ) );
 	m_Title->SetTextColor( GetSkin()->Colors.Window.TitleInactive );
 	m_CloseButton = new Gwen::Controls::WindowCloseButton( m_TitleBar );
-	m_CloseButton->SetText( "" );
+	m_CloseButton->SetText( GWEN_T("") );
 	m_CloseButton->Dock( Pos::Right );
 	m_CloseButton->onPress.Add( this, &WindowControl::CloseButtonPressed );
 	m_CloseButton->SetTabable( false );
-	m_CloseButton->SetName( "closeButton" );
+	m_CloseButton->SetName( GWEN_T("closeButton") );
 	m_CloseButton->SetWindow( this );
 	//Create a blank content control, dock it to the top - Should this be a ScrollControl?
 	m_InnerPanel = new Base( this );

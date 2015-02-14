@@ -139,7 +139,7 @@ Gwen::String ListBox::GetSelectedRowName()
 {
 	Layout::TableRow* row = GetSelectedRow();
 
-	if ( !row ) { return ""; }
+	if ( !row ) { return GWEN_T(""); }
 
 	return row->GetName();
 }

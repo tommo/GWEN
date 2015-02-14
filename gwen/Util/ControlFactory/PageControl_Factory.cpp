@@ -14,18 +14,18 @@ namespace Gwen
 		{
 			class NumPages: public ControlFactory::Property
 			{
-					GWEN_CONTROL_FACTORY_PROPERTY( NumPages, "The number of pages we have" );
+					GWEN_CONTROL_FACTORY_PROPERTY( NumPages, GWEN_T("The number of pages we have") );
 
 					UnicodeString GetValue( Controls::Base* ctrl )
 					{
-						return Utility::Format( L"%i", ( int ) gwen_cast<Controls::PageControl> ( ctrl )->GetPageCount() );
+						return Utility::Format( GWEN_T("%i"), ( int ) gwen_cast<Controls::PageControl> ( ctrl )->GetPageCount() );
 					}
 
 					void SetValue( Controls::Base* ctrl, const UnicodeString & str )
 					{
 						int num;
 
-						if ( swscanf( str.c_str(), L"%i", &num ) != 1 ) { return; }
+						if ( GWEN_SSCANF( str.c_str(), GWEN_T("%i"), &num ) != 1 ) { return; }
 
 						gwen_cast<Controls::PageControl> ( ctrl )->SetPageCount( num );
 					}
@@ -34,18 +34,18 @@ namespace Gwen
 
 			class FinishName: public ControlFactory::Property
 			{
-					GWEN_CONTROL_FACTORY_PROPERTY( FinishName, "The name of the finish button" );
+					GWEN_CONTROL_FACTORY_PROPERTY( FinishName, GWEN_T("The name of the finish button") );
 
 					UnicodeString GetValue( Controls::Base* ctrl )
 					{
 						Gwen::Controls::PageControl* pControl = gwen_cast<Gwen::Controls::PageControl> ( ctrl );
-						return Utility::StringToUnicode( pControl->FinishButton()->GetName() );
+						return pControl->FinishButton()->GetName();
 					}
 
 					void SetValue( Controls::Base* ctrl, const UnicodeString & str )
 					{
 						Gwen::Controls::PageControl* pControl = gwen_cast<Gwen::Controls::PageControl> ( ctrl );
-						pControl->FinishButton()->SetName( Utility::UnicodeToString( str ) );
+						pControl->FinishButton()->SetName( str );
 					}
 			};
 
@@ -61,8 +61,8 @@ namespace Gwen
 					AddProperty( new Properties::FinishName() );
 				}
 
-				virtual Gwen::String Name()     { return "PageControl"; }
-				virtual Gwen::String BaseName() { return "Base"; }
+				virtual Gwen::String Name()     { return GWEN_T("PageControl"); }
+				virtual Gwen::String BaseName() { return GWEN_T("Base"); }
 
 				virtual Gwen::Controls::Base* CreateInstance( Gwen::Controls::Base* parent )
 				{

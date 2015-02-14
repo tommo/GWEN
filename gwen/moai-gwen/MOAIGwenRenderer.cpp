@@ -318,8 +318,7 @@ namespace Gwen
 
 			MOAIGfxDevice& gfx = MOAIGfxDevice::Get ();
 			BeginDrawString( 1, *font, pFont->size, 0.0f, 0.0f );
-			cc8* cstring =  Gwen::Utility::UnicodeToString( text ).c_str();
-			DrawString( cstring, x, y, 0, 0 );
+			DrawString( text.c_str(), x, y, 0, 0 );
 			EndDrawString();
 			// Gwen::Renderer::Base::RenderText( pFont, pos, text );
 		}

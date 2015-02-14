@@ -29,18 +29,6 @@ namespace Gwen
 			{ GetCTT()->ShutDown(); }
 		}
 
-		void Base::RenderText( Gwen::Font* pFont, Gwen::Point pos, const Gwen::String & text )
-		{
-			Gwen::UnicodeString str = Gwen::Utility::StringToUnicode( text );
-			RenderText( pFont, pos, str );
-		}
-
-		Gwen::Point Base::MeasureText( Gwen::Font* pFont, const Gwen::String & text )
-		{
-			Gwen::UnicodeString str = Gwen::Utility::StringToUnicode( text );
-			return MeasureText( pFont, str );
-		}
-
 		void Base::DrawLinedRect( Gwen::Rect rect )
 		{
 			DrawFilledRect( Gwen::Rect( rect.x, rect.y, rect.w, 1 ) );

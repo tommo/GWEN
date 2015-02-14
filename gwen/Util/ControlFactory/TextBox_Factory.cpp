@@ -15,14 +15,14 @@ namespace Gwen
 				{
 				}
 
-				virtual Gwen::String Name() { return "TextBox"; }
-				virtual Gwen::String BaseName() { return "Label"; }
+				virtual Gwen::String Name() { return GWEN_T("TextBox"); }
+				virtual Gwen::String BaseName() { return GWEN_T("Label"); }
 
 				virtual Gwen::Controls::Base* CreateInstance( Gwen::Controls::Base* parent )
 				{
 					Gwen::Controls::TextBox* pControl = new Gwen::Controls::TextBox( parent );
 					pControl->SetSize( 100, 20 );
-					pControl->SetText( "" );
+					pControl->SetText( GWEN_T("") );
 					return pControl;
 				}
 		};
@@ -36,14 +36,14 @@ namespace Gwen
 				{
 				}
 
-				virtual Gwen::String Name() { return "TextBoxMultiline"; }
-				virtual Gwen::String BaseName() { return "TextBox"; }
+				virtual Gwen::String Name() { return GWEN_T("TextBoxMultiline"); }
+				virtual Gwen::String BaseName() { return GWEN_T("TextBox"); }
 
 				virtual Gwen::Controls::Base* CreateInstance( Gwen::Controls::Base* parent )
 				{
 					Gwen::Controls::TextBoxMultiline* pControl = new Gwen::Controls::TextBoxMultiline( parent );
 					pControl->SetSize( 100, 50 );
-					pControl->SetText( "" );
+					pControl->SetText( GWEN_T("") );
 					return pControl;
 				}
 		};

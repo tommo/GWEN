@@ -65,7 +65,7 @@ namespace Gwen
 					// If we have a child is isn't exportable - maybe it has a child that is
 					// We will count it as one of our children.
 					//
-					if ( !pBaseChild->UserData.Exists( "ControlFactory" ) )
+					if ( !pBaseChild->UserData.Exists( GWEN_T("ControlFactory") ) )
 					{
 						list.Add( GetExportableChildren( pBaseChild ) );
 						continue;

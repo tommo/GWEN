@@ -14,6 +14,7 @@
 
 #include "Gwen/Exports.h"
 #include <string>
+#include <stdio.h>
 
 namespace Gwen
 {
@@ -39,10 +40,42 @@ namespace Gwen
 		static const unsigned char Count	= 10;
 	}
 
-	typedef std::wstring UnicodeString;
-	typedef std::string String;
+#ifdef GWEN_NARROWCHAR
+	typedef std::string			UnicodeString;
+	typedef std::ostringstream	UnicodeOStringStream;
+	typedef char				UnicodeChar;
+	#define GWEN_T(x)			x
+	#define GWEN_VSNPRINTF		vsnprintf
+	#define GWEN_STRTOL			strtol
+	#ifdef _MSC_VER
+		#define GWEN_STRTOF(nptr,endptr) (float)(strtod(nptr, endptr))
+	#else
+		#define GWEN_STRTOF		strtof
+	#endif
+	#define GWEN_SSCANF			sscanf
+#else // Default to wide chars
+	typedef std::wstring		UnicodeString;
+	typedef std::wostringstream	UnicodeOStringStream;
+	typedef wchar_t				UnicodeChar;
+	#define GWEN_T(x)			L ## x
 
-	typedef wchar_t UnicodeChar; // Portability??
+	#ifdef __MINGW32__
+		#define GWEN_VSNPRINTF	_vsnwprintf
+	#else
+		#define GWEN_VSNPRINTF	vswprintf
+	#endif
+
+	#define GWEN_STRTOL			wcstol
+	#ifdef _MSC_VER
+		#define GWEN_STRTOF(nptr,endptr) (float)(wcstod(nptr, endptr))
+	#else
+		#define GWEN_STRTOF		wcstof
+	#endif
+	#define GWEN_SSCANF			swscanf
+#endif
+
+	typedef UnicodeString		String;
+
 
 	struct GWEN_EXPORT Margin
 	{

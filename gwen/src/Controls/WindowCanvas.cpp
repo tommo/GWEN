@@ -57,7 +57,7 @@ WindowCanvas::WindowCanvas( int x, int y, int w, int h, Gwen::Skin::Base* pSkin,
 	m_Title->SetTextColor( GetSkin()->Colors.Window.TitleInactive );
 	// CLOSE
 	{
-		m_pClose = new Gwen::Controls::WindowCloseButton( m_TitleBar, "Close" );
+		m_pClose = new Gwen::Controls::WindowCloseButton( m_TitleBar, GWEN_T("Close") );
 		m_pClose->Dock( Pos::Right );
 		m_pClose->SetMargin( Margin( 0, 0, 4, 0 ) );
 		m_pClose->onPress.Add( this, &WindowCanvas::CloseButtonPressed );
@@ -66,7 +66,7 @@ WindowCanvas::WindowCanvas( int x, int y, int w, int h, Gwen::Skin::Base* pSkin,
 	}
 	// MAXIMIZE
 	{
-		m_pMaximize = new Gwen::Controls::WindowMaximizeButton( m_TitleBar, "Maximize" );
+		m_pMaximize = new Gwen::Controls::WindowMaximizeButton( m_TitleBar, GWEN_T("Maximize") );
 		m_pMaximize->Dock( Pos::Right );
 		m_pMaximize->onPress.Add( this, &WindowCanvas::MaximizeButtonPressed );
 		m_pMaximize->SetTabable( false );
@@ -74,7 +74,7 @@ WindowCanvas::WindowCanvas( int x, int y, int w, int h, Gwen::Skin::Base* pSkin,
 	}
 	// MINIMiZE
 	{
-		m_pMinimize = new Gwen::Controls::WindowMinimizeButton( m_TitleBar, "Minimize" );
+		m_pMinimize = new Gwen::Controls::WindowMinimizeButton( m_TitleBar, GWEN_T("Minimize") );
 		m_pMinimize->Dock( Pos::Right );
 		m_pMinimize->onPress.Add( this, &WindowCanvas::MinimizeButtonPressed );
 		m_pMinimize->SetTabable( false );

@@ -33,7 +33,7 @@ GWEN_CONTROL_CONSTRUCTOR( NumericUpDown )
 	m_iMax = 100;
 	m_iMin = 0;
 	m_iNumber = 0;
-	SetText( "0" );
+	SetText( GWEN_T("0")  );
 }
 
 void NumericUpDown::OnButtonUp( Base* /*control*/ )

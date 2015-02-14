@@ -67,7 +67,7 @@ namespace Gwen
 
 				typedef std::map<Gwen::UnicodeString, Gwen::Event::Caller*> AccelMap;
 
-				Base( Base* pParent, const Gwen::String & Name = "" );
+				Base( Base* pParent, const Gwen::String& Name = GWEN_T("") );
 				virtual ~Base();
 
 				virtual const char* GetTypeName() { return "Base"; }
@@ -311,7 +311,7 @@ namespace Gwen
 					caller->Add( handler, func );
 					Gwen::UnicodeString str = accelerator.GetUnicode();
 					Gwen::Utility::Strings::ToUpper( str );
-					Gwen::Utility::Strings::Strip( str, L" " );
+					Gwen::Utility::Strings::Strip( str, GWEN_T(" ") );
 					m_Accelerators[ str ] = caller;
 				}
 
@@ -325,7 +325,7 @@ namespace Gwen
 					caller->Add( handler, func, data );
 					Gwen::UnicodeString str = accelerator.GetUnicode();
 					Gwen::Utility::Strings::ToUpper( str );
-					Gwen::Utility::Strings::Strip( str, L" " );
+					Gwen::Utility::Strings::Strip( str, GWEN_T(" ") );
 					m_Accelerators[ str ] = caller;
 				}
 
@@ -344,7 +344,7 @@ namespace Gwen
 					caller->GlobalAdd( handler, func );
 					Gwen::UnicodeString str = accelerator.GetUnicode();
 					Gwen::Utility::Strings::ToUpper( str );
-					Gwen::Utility::Strings::Strip( str, L" " );
+					Gwen::Utility::Strings::Strip( str, GWEN_T(" ") );
 					m_Accelerators[ str ] = caller;
 				}
 
@@ -357,7 +357,7 @@ namespace Gwen
 					caller->GlobalAdd( handler, func, data );
 					Gwen::UnicodeString str = accelerator.GetUnicode();
 					Gwen::Utility::Strings::ToUpper( str );
-					Gwen::Utility::Strings::Strip( str, L" " );
+					Gwen::Utility::Strings::Strip( str, GWEN_T(" ") );
 					m_Accelerators[ str ] = caller;
 				}
 
@@ -438,7 +438,7 @@ namespace Gwen
 
 				// Giver
 
-				virtual void DragAndDrop_SetPackage( bool bDraggable, const String & strName = "", void* pUserData = NULL );
+				virtual void DragAndDrop_SetPackage( bool bDraggable, const String & strName = GWEN_T(""), void* pUserData = NULL );
 				virtual bool DragAndDrop_Draggable();
 				virtual bool DragAndDrop_ShouldStartDrag() { return true; }
 				virtual void DragAndDrop_StartDragging( Gwen::DragAndDrop::Package* pPackage, int x, int y );
@@ -596,7 +596,7 @@ T* Gwen::Controls::Base::FindChild( const Gwen::String & name, bool bRecursive )
 	GWEN_DYNAMIC( ThisName, BaseName )\
 	virtual const char* GetTypeName(){ return #ThisName; }\
 	virtual const char* GetBaseTypeName(){ return BaseClass::GetTypeName(); }\
-	ThisName( Gwen::Controls::Base* pParent, const Gwen::String& pName = "" )
+	ThisName( Gwen::Controls::Base* pParent, const Gwen::String& pName = GWEN_T("") )
 
 #define GWEN_CONTROL_INLINE( ThisName, BaseName )\
 	GWEN_CONTROL( ThisName, BaseName ) : BaseClass( pParent, pName )

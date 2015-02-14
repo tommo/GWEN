@@ -13,7 +13,7 @@ class StatusBar : public GUnit
 			Dock( Pos::Fill );
 			Gwen::Controls::StatusBar* pStatus = new Gwen::Controls::StatusBar( this );
 			Gwen::Controls::Label* pRight = new Gwen::Controls::Label( pStatus );
-			pRight->SetText( L"Label Added to Right" );
+			pRight->SetText( GWEN_T("Label Added to Right") );
 			pStatus->AddControl( pRight, true );
 		}
 
@@ -22,4 +22,4 @@ class StatusBar : public GUnit
 
 
 
-DEFINE_UNIT_TEST( StatusBar, L"StatusBar" );
+DEFINE_UNIT_TEST( StatusBar, GWEN_T("StatusBar") );

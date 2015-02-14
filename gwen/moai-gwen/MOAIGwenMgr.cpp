@@ -85,7 +85,7 @@ void MOAIGwenMgr::LoadTexture( Gwen::Texture* texture ) {
 	if( this->mOnLoadTexture ) {
 		MOAIScopedLuaState state = MOAILuaRuntime::Get ().State ();
 		if ( this->mOnLoadTexture.PushRef ( state )) {
-			lua_pushstring( state, texture->name.c_str() );
+			lua_pushstring( state, texture->name.Get().c_str() );
 			state.DebugCall ( 1, 1 );
 			MOAITexture* tex = state.GetLuaObject < MOAITexture >( -1, 0 );
 			tex->Bind();
@@ -144,7 +144,7 @@ MOAIFont* MOAIGwenMgr::FindFont ( STLString faceName, float size ) {
 }
 
 MOAIFont* MOAIGwenMgr::FindFont ( Gwen::Font* font ) {
-	return this->FindFont( Gwen::Utility::UnicodeToString( font->facename ).c_str(), font->size );
+	return this->FindFont( font->facename.c_str(), font->size );
 }
 
 

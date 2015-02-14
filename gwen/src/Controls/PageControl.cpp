@@ -31,27 +31,27 @@ GWEN_CONTROL_CONSTRUCTOR( PageControl )
 	pControls->SetSize( 24, 24 );
 	pControls->SetMargin( Margin( 10, 10, 10, 10 ) );
 	m_Finish = new Controls::Button( pControls );
-	m_Finish->SetText( "Finish" );
+	m_Finish->SetText( GWEN_T("Finish") );
 	m_Finish->Dock( Pos::Right );
 	m_Finish->onPress.Add( this, &ThisClass::Finish );
 	m_Finish->SetSize( 70 );
 	m_Finish->SetMargin( Margin( 4, 0, 0, 0 ) );
 	m_Finish->Hide();
 	m_Next = new Controls::Button( pControls );
-	m_Next->SetText( "Next >" );
+	m_Next->SetText( GWEN_T("Next >") );
 	m_Next->Dock( Pos::Right );
 	m_Next->onPress.Add( this, &ThisClass::NextPage );
 	m_Next->SetSize( 70 );
 	m_Next->SetMargin( Margin( 4, 0, 0, 0 ) );
 	m_Back = new Controls::Button( pControls );
-	m_Back->SetText( "< Back" );
+	m_Back->SetText( GWEN_T("< Back") );
 	m_Back->Dock( Pos::Right );
 	m_Back->onPress.Add( this, &ThisClass::PreviousPage );
 	m_Back->SetSize( 70 );
 	m_Label = new Controls::Label( pControls );
 	m_Label->Dock( Pos::Fill );
 	m_Label->SetAlignment( Pos::Left | Pos::CenterV );
-	m_Label->SetText( "Page 1 or 2" );
+	m_Label->SetText( GWEN_T("Page 1 or 2") );
 }
 
 void PageControl::SetPageCount( unsigned int iNum )
@@ -97,7 +97,7 @@ void PageControl::ShowPage( unsigned int i )
 	m_iCurrentPage = i;
 	m_Back->SetDisabled( m_iCurrentPage == 0 );
 	m_Next->SetDisabled( m_iCurrentPage >= m_iPages );
-	m_Label->SetText( Utility::Format( L"Page %i of %i", m_iCurrentPage + 1, m_iPages ) );
+	m_Label->SetText( Utility::Format( GWEN_T("Page %i of %i"), m_iCurrentPage + 1, m_iPages ) );
 
 	if ( GetUseFinishButton() )
 	{

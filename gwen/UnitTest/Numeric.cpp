@@ -26,4 +26,4 @@ class Numeric : public GUnit
 
 
 
-DEFINE_UNIT_TEST( Numeric, L"Numeric" );
+DEFINE_UNIT_TEST( Numeric, GWEN_T("Numeric") );

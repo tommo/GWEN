@@ -21,7 +21,7 @@ def build( bld ):
 	source += bld.path.ant_glob( 'moai-gwen/*.cpp' )
 
 	includes = [ 'include' ]
-	cflags   = [ '-fno-rtti' ]
+	cflags   = [ '-fno-rtti', '-DGWEN_NARROWCHAR' ]
 
 	bld.stlib( 
 		source = source,
@@ -29,5 +29,6 @@ def build( bld ):
 		includes = [ './include', 'src/Renderer/MOAI/' ],
 		export_includes = [ './include', '.' ],
 		cflags = cflags,
+		cxxflags = cflags,
 		use = 'MOAI'
 	)

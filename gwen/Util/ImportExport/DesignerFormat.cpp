@@ -9,7 +9,7 @@ class DesignerFormat : public Gwen::ImportExport::Base
 
 		DesignerFormat();
 
-		virtual Gwen::String Name() { return "Designer"; }
+		virtual Gwen::String Name() { return GWEN_T("Designer"); }
 
 		virtual bool CanImport() { return true; }
 		virtual void Import( Gwen::Controls::Base* pRoot, const Gwen::String & strFilename );
@@ -39,7 +39,7 @@ void DesignerFormat::Import( Gwen::Controls::Base* pRoot, const Gwen::String & s
 	Bootil::Data::Tree tree;
 	Bootil::Data::Json::Import( tree, strContents );
 
-	if ( !tree.HasChild( "Controls" ) ) { return; }  // false
+	if ( !tree.HasChild( GWEN_T("Controls") ) ) { return; }  // false
 
 	ImportFromTree( pRoot, tree.GetChild( "Controls" ) );
 }
@@ -49,7 +49,7 @@ void DesignerFormat::ImportFromTree( Gwen::Controls::Base* pRoot, Bootil::Data::
 	ControlFactory::Base* pRootFactory = ControlFactory::Find( "Base" );
 
 	if ( pRoot->UserData.Exists( "ControlFactory" ) )
-	{ pRootFactory = pRoot->UserData.Get<ControlFactory::Base*> ( "ControlFactory" ); }
+	{ pRootFactory = pRoot->UserData.Get<ControlFactory::Base*> ( GWEN_T("ControlFactory") ); }
 
 	if ( tree.HasChild( "Properties" ) )
 	{
@@ -74,12 +74,12 @@ void DesignerFormat::ImportFromTree( Gwen::Controls::Base* pRoot, Bootil::Data::
 		}
 	}
 
-	if ( tree.HasChild( "Children" ) )
+	if ( tree.HasChild( GWEN_T("Children") ) )
 	{
-		Bootil::Data::Tree & ChildrenObject = tree.GetChild( "Children" );
+		Bootil::Data::Tree & ChildrenObject = tree.GetChild( GWEN_T("Children") );
 		BOOTIL_FOREACH( c, ChildrenObject.Children(), Bootil::Data::Tree::List )
 		{
-			Bootil::BString strType = c->ChildValue( "Type" );
+			Bootil::BString strType = c->ChildValue( GWEN_T("Type") );
 			ControlFactory::Base* pFactory = ControlFactory::Find( strType );
 
 			if ( !pFactory ) { continue; }
@@ -90,11 +90,11 @@ void DesignerFormat::ImportFromTree( Gwen::Controls::Base* pRoot, Bootil::Data::
 
 			// Tell the control we're here and we're queer
 			{
-				int iPage = c->ChildVar<int> ( "Page", 0 );
+				int iPage = c->ChildVar<int> ( GWEN_T("Page"), 0 );
 				pRootFactory->AddChild( pRoot, pControl, iPage );
 			}
 			pControl->SetMouseInputEnabled( true );
-			pControl->UserData.Set( "ControlFactory", pFactory );
+			pControl->UserData.Set( GWEN_T("ControlFactory"), pFactory );
 			ImportFromTree( pControl, *c );
 		}
 	}
@@ -116,31 +116,31 @@ void DesignerFormat::ExportToTree( Gwen::Controls::Base* pRoot, Bootil::Data::Tr
 {
 	Bootil::Data::Tree* me = &tree;
 
-	if ( strcmp( pRoot->GetTypeName(), "DocumentCanvas" ) == 0 )
+	if ( pRoot->GetTypeName() == GWEN_T("DocumentCanvas") )
 	{
-		me = &tree.AddChild( "Controls" );
+		me = &tree.AddChild( GWEN_T("Controls") );
 	}
 	else
 	{
 		me = &tree.AddChild();
 	}
 
-	me->SetChild( "Type", pRoot->GetTypeName() );
+	me->SetChild( GWEN_T("Type"), pRoot->GetTypeName() );
 
 	//
 	// Set properties from the control factory
 	//
-	if ( pRoot->UserData.Exists( "ControlFactory" ) )
+	if ( pRoot->UserData.Exists( GWEN_T("ControlFactory") ) )
 	{
-		Bootil::Data::Tree & props = me->AddChild( "Properties" );
-		ControlFactory::Base* pCF = pRoot->UserData.Get<ControlFactory::Base*> ( "ControlFactory" );
+		Bootil::Data::Tree & props = me->AddChild( GWEN_T("Properties") );
+		ControlFactory::Base* pCF = pRoot->UserData.Get<ControlFactory::Base*> ( GWEN_T("ControlFactory") );
 		// Save the ParentPage
 		{
 			int iParentPage = pCF->GetParentPage( pRoot );
 
 			if ( iParentPage != 0 )
 			{
-				me->SetChildVar( "Page", iParentPage );
+				me->SetChildVar( GWEN_T("Page"), iParentPage );
 			}
 		}
 
@@ -173,7 +173,7 @@ void DesignerFormat::ExportToTree( Gwen::Controls::Base* pRoot, Bootil::Data::Tr
 
 	if ( !list.list.empty() )
 	{
-		Bootil::Data::Tree & children = me->AddChild( "Children" );
+		Bootil::Data::Tree & children = me->AddChild( GWEN_T("Children") );
 		ControlList::List::iterator it = list.list.begin();
 		ControlList::List::iterator itEnd = list.list.end();
 

@@ -6,8 +6,8 @@ namespace Gwen
 	namespace ControlFactory
 	{
 
-		const Gwen::UnicodeString PropertyBool::True	= L"true";
-		const Gwen::UnicodeString PropertyBool::False	= L"false";
+		const Gwen::UnicodeString PropertyBool::True	= GWEN_T("true");
+		const Gwen::UnicodeString PropertyBool::False	= GWEN_T("false");
 
 		void InitializeControls()
 		{
@@ -152,14 +152,14 @@ namespace Gwen
 
 		void Base::SetParentPage( Gwen::Controls::Base* ctrl, int i )
 		{
-			ctrl->UserData.Set<int> ( "ParentPage", i );
+			ctrl->UserData.Set<int> ( GWEN_T("ParentPage"), i );
 		}
 
 		int Base::GetParentPage( Gwen::Controls::Base* ctrl )
 		{
-			if ( !ctrl->UserData.Exists( "ParentPage" ) ) { return 0; }
+			if ( !ctrl->UserData.Exists( GWEN_T("ParentPage") ) ) { return 0; }
 
-			return ctrl->UserData.Get<int> ( "ParentPage" );
+			return ctrl->UserData.Get<int> ( GWEN_T("ParentPage") );
 		}
 
 	}
