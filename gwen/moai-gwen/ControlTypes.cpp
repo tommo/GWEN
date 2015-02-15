@@ -1,11 +1,13 @@
 #include "ControlTypes.h"
 
-#define TRY_GWEN_TO_MOAI( controlType, control0 ) \
+#define _TRY_GWEN_TO_MOAI( controlType, moaiType, control0 ) \
 	if( gwen_cast< Gwen::Controls::controlType >( control0 ) ) { \
-		MOAIGwenControl* control = new MOAIGwen##controlType();\
+		MOAIGwenControl* control = new MOAIGwen##moaiType();\
 		control->SetInternalControl( control0 );\
 		return control;\
 	}
+
+#define TRY_GWEN_TO_MOAI( controlType, control0 ) _TRY_GWEN_TO_MOAI( controlType, controlType, control0 )
 
 MOAIGwenControl* MOAIGwenControl::_GwenToMoai( Gwen::Controls::Base* control0 ) {
 	if( !control0 ) return NULL;
@@ -19,10 +21,16 @@ MOAIGwenControl* MOAIGwenControl::_GwenToMoai( Gwen::Controls::Base* control0 ) 
 	TRY_GWEN_TO_MOAI( Button,          control0 )
 	TRY_GWEN_TO_MOAI( Label,           control0 )
 	TRY_GWEN_TO_MOAI( LabelClickable,  control0 )
+	TRY_GWEN_TO_MOAI( Rectangle,       control0 )
 	TRY_GWEN_TO_MOAI( CheckBox,        control0 )
 	TRY_GWEN_TO_MOAI( RadioButton,     control0 )
-	TRY_GWEN_TO_MOAI( Rectangle,       control0 )
-	TRY_GWEN_TO_MOAI( GroupBox,        control0 )
+	TRY_GWEN_TO_MOAI( ComboBox,        control0 )
+	TRY_GWEN_TO_MOAI( MenuItem,        control0 )
+	TRY_GWEN_TO_MOAI( Menu,            control0 )
+	_TRY_GWEN_TO_MOAI( MenuStrip, MenuBar, control0 )
+	_TRY_GWEN_TO_MOAI( ToolBarStrip, ToolBar, control0 )
+	_TRY_GWEN_TO_MOAI( MenuStrip, MenuBar, control0 )
+	_TRY_GWEN_TO_MOAI( RadioButtonController, RadioButtonGroup, control0 )
 	TRY_GWEN_TO_MOAI( ScrollControl,   control0 )
 	TRY_GWEN_TO_MOAI( WindowControl,   control0 )
 	TRY_GWEN_TO_MOAI( Canvas,          control0 )

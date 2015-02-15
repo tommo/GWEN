@@ -27,8 +27,16 @@ void RegisterGwenControlTypes() {
 	REGISTER_GWEN_CLASS ( Label )
 	REGISTER_GWEN_CLASS ( LabelClickable )
 	REGISTER_GWEN_CLASS ( CheckBox )
+	REGISTER_GWEN_CLASS ( ComboBox )
 	REGISTER_GWEN_CLASS ( RadioButton )
 	REGISTER_GWEN_CLASS ( GroupBox )
+	REGISTER_GWEN_CLASS ( RadioButtonGroup )
+
+	REGISTER_GWEN_CLASS ( Menu )
+	REGISTER_GWEN_CLASS ( MenuItem )
+	REGISTER_GWEN_CLASS ( MenuBar )
+
+	REGISTER_GWEN_CLASS ( ToolBar )
 
 	REGISTER_GWEN_CLASS ( ScrollControl )
 

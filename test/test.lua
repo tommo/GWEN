@@ -95,6 +95,11 @@ picker:setColor( 1, 1, 1, 1 )
 pickerWindow:setSize( 300, 200 )
 pickerWindow:setResizable( false )
 
+
+local toolBar = canvas:addChild( MOAIGwenToolBar.new() )
+local button1 = toolBar:addChild( MOAIGwenButton.new() )
+toolBar:setSize( 200, 50 )
+button1:setText( 'test me' )
 -- label = window:addChild( MOAIGwenLabel.new() )
 -- label:setText( 'This is a very huge story which we dont really want to talk at this momemnt!' )
 -- label:setPos( 100, 100 )

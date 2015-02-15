@@ -13,11 +13,18 @@
 #include <moai-gwen/MOAIGwenLabelClickable.h>
 #include <moai-gwen/MOAIGwenButton.h>
 #include <moai-gwen/MOAIGwenCheckBox.h>
+#include <moai-gwen/MOAIGwenComboBox.h>
 #include <moai-gwen/MOAIGwenRadioButton.h>
+#include <moai-gwen/MOAIGwenRadioButtonGroup.h>
+
+#include <moai-gwen/MOAIGwenMenu.h>
+#include <moai-gwen/MOAIGwenMenuItem.h>
+#include <moai-gwen/MOAIGwenMenuBar.h>
 
 #include <moai-gwen/MOAIGwenGroupBox.h>
 
 #include <moai-gwen/MOAIGwenScrollControl.h>
+#include <moai-gwen/MOAIGwenToolBar.h>
 
 //compund
 #include <moai-gwen/MOAIGwenColorPicker.h>
