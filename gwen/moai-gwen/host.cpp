@@ -37,9 +37,11 @@ void RegisterGwenControlTypes() {
 	REGISTER_GWEN_CLASS ( MenuBar )
 
 	REGISTER_GWEN_CLASS ( ToolBar )
+	REGISTER_GWEN_CLASS ( ToolButton )
 
 	REGISTER_GWEN_CLASS ( ScrollControl )
 
+	REGISTER_GWEN_CLASS ( ProgressBar )
 	REGISTER_GWEN_CLASS ( ColorPicker )
 
 }

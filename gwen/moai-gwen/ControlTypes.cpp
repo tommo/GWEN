@@ -1,13 +1,12 @@
 #include "ControlTypes.h"
 
-#define _TRY_GWEN_TO_MOAI( controlType, moaiType, control0 ) \
+#define TRY_GWEN_TO_MOAI( controlType, moaiType, control0 ) \
 	if( gwen_cast< Gwen::Controls::controlType >( control0 ) ) { \
 		MOAIGwenControl* control = new MOAIGwen##moaiType();\
 		control->SetInternalControl( control0 );\
 		return control;\
 	}
 
-#define TRY_GWEN_TO_MOAI( controlType, control0 ) _TRY_GWEN_TO_MOAI( controlType, controlType, control0 )
 
 MOAIGwenControl* MOAIGwenControl::_GwenToMoai( Gwen::Controls::Base* control0 ) {
 	if( !control0 ) return NULL;
@@ -18,23 +17,24 @@ MOAIGwenControl* MOAIGwenControl::_GwenToMoai( Gwen::Controls::Base* control0 ) 
 	}
 	const char* typeName = control0->GetTypeName();
 	
-	TRY_GWEN_TO_MOAI( Button,          control0 )
-	TRY_GWEN_TO_MOAI( Label,           control0 )
-	TRY_GWEN_TO_MOAI( LabelClickable,  control0 )
-	TRY_GWEN_TO_MOAI( Rectangle,       control0 )
-	TRY_GWEN_TO_MOAI( CheckBox,        control0 )
-	TRY_GWEN_TO_MOAI( RadioButton,     control0 )
-	TRY_GWEN_TO_MOAI( ComboBox,        control0 )
-	TRY_GWEN_TO_MOAI( MenuItem,        control0 )
-	TRY_GWEN_TO_MOAI( Menu,            control0 )
-	_TRY_GWEN_TO_MOAI( MenuStrip, MenuBar, control0 )
-	_TRY_GWEN_TO_MOAI( ToolBarStrip, ToolBar, control0 )
-	_TRY_GWEN_TO_MOAI( MenuStrip, MenuBar, control0 )
-	_TRY_GWEN_TO_MOAI( RadioButtonController, RadioButtonGroup, control0 )
-	TRY_GWEN_TO_MOAI( ScrollControl,   control0 )
-	TRY_GWEN_TO_MOAI( WindowControl,   control0 )
-	TRY_GWEN_TO_MOAI( Canvas,          control0 )
-	TRY_GWEN_TO_MOAI( ColorPicker,     control0 )
+	TRY_GWEN_TO_MOAI( Button,                 Button,               control0 )
+	TRY_GWEN_TO_MOAI( Label,                  Label,                control0 )
+	TRY_GWEN_TO_MOAI( LabelClickable,         LabelClickable,       control0 )
+	TRY_GWEN_TO_MOAI( Rectangle,              Rectangle,            control0 )
+	TRY_GWEN_TO_MOAI( CheckBox,               CheckBox,             control0 )
+	TRY_GWEN_TO_MOAI( RadioButton,            RadioButton,          control0 )
+	TRY_GWEN_TO_MOAI( ComboBox,               ComboBox,             control0 )
+	TRY_GWEN_TO_MOAI( Menu,                   Menu,                 control0 )
+	TRY_GWEN_TO_MOAI( MenuStrip,              MenuBar,              control0 ) //Renamed
+	TRY_GWEN_TO_MOAI( MenuItem,               MenuItem,             control0 )
+	TRY_GWEN_TO_MOAI( ToolBarStrip,           ToolBar,              control0 ) //Renamed
+	TRY_GWEN_TO_MOAI( ToolBarButton,          ToolButton,           control0 ) //Renamed
+	TRY_GWEN_TO_MOAI( RadioButtonController,  RadioButtonGroup,     control0 ) //Renamed
+	TRY_GWEN_TO_MOAI( ScrollControl,          ScrollControl,        control0 )
+	TRY_GWEN_TO_MOAI( ProgressBar,            ProgressBar,          control0 )
+	TRY_GWEN_TO_MOAI( WindowControl,          WindowControl,        control0 )
+	TRY_GWEN_TO_MOAI( Canvas,                 Canvas,               control0 )
+	TRY_GWEN_TO_MOAI( ColorPicker,            ColorPicker,          control0 )
 	//TODO:wrap other control with common class?
 
 	return NULL;

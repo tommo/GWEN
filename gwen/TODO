@@ -14,6 +14,8 @@ WIP:
  ✔ Menu @done (15-02-15 20:39)
    ✔ MenuItem @done (15-02-15 20:39)
    ✔ MenuStrip @done (15-02-15 20:39)
+ ✔ ToolBar @done (15-02-15 21:03)
+   ✔ ToolBarButton @done (15-02-15 21:04)
  ✔ Text @done (15-02-14 21:26)
  ✔ Rectangle @done (15-02-14 22:11)
  ✔ RadioButton @done (15-02-15 02:19)
@@ -30,11 +32,9 @@ BACKLOG:
    ☐ DockedTabControl
  ☐ Dragger
  ☐ FieldLabel
- ☐ FilePicker
- ☐ FolderPicker
- ☐ Highlight
- ☐ HorizontalScrollBar
- ☐ HorizontalSlider
+ ☐ FilePicker @optional
+ ☐ FolderPicker @optional
+ ✘ Highlight @cancelled (15-02-15 21:07)
  ☐ HSVColorPicker
  ☐ ImagePanel
  ✘ Modal @cancelled (15-02-15 02:20)
@@ -49,7 +49,11 @@ BACKLOG:
  ☐ ScrollBar
    ☐ ScrollBarBar
    ☐ ScrollBarButton
+   ☐ VerticalScrollBar
+   ☐ HorizontalScrollBar
  ☐ Slider
+   ☐ HorizontalSlider
+   ☐ VerticalSlider
  ☐ SplitterBar
  ☐ Splitters
  ☐ StatusBar
@@ -58,8 +62,5 @@ BACKLOG:
    ☐ TabStrip
    ☐ TabTitleBar
  ☐ TextBox
- ☐ ToolBar
  ☐ TreeControl
    ☐ TreeNode
- ☐ VerticalScrollBar
- ☐ VerticalSlider

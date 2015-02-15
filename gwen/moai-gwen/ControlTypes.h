@@ -25,6 +25,7 @@
 
 #include <moai-gwen/MOAIGwenScrollControl.h>
 #include <moai-gwen/MOAIGwenToolBar.h>
+#include <moai-gwen/MOAIGwenProgressBar.h>
 
 //compund
 #include <moai-gwen/MOAIGwenColorPicker.h>

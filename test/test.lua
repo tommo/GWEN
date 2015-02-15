@@ -97,9 +97,27 @@ pickerWindow:setResizable( false )
 
 
 local toolBar = canvas:addChild( MOAIGwenToolBar.new() )
-local button1 = toolBar:addChild( MOAIGwenButton.new() )
+local button1 = toolBar:addChild( MOAIGwenToolButton.new() )
 toolBar:setSize( 200, 50 )
 button1:setText( 'test me' )
+
+local progress = canvas:addChild( MOAIGwenProgressBar.new() )
+progress:setPos( 100, 200 )
+progress:setSize( 250, 30 )
+print( progress:getTypeName() )
+MOAICoroutine.new():run( function()
+	local k = 0
+	local delta = 0.1
+	while true do
+		local dt = coroutine.yield()
+		progress:setValue( k )
+		progress:updateCycle( dt )
+		k = k + delta
+		if k > 1 then k = k - 1 end
+	end
+end
+)
+
 -- label = window:addChild( MOAIGwenLabel.new() )
 -- label:setText( 'This is a very huge story which we dont really want to talk at this momemnt!' )
 -- label:setPos( 100, 100 )
