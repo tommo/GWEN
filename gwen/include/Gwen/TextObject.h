@@ -62,7 +62,7 @@ namespace Gwen
 				return m_Unicode;
 			}
 
-			const char* c_str(){
+			const char* c_str() const{
 				return m_Unicode.c_str();
 			}
 

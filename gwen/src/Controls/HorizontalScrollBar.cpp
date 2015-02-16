@@ -41,7 +41,7 @@ void HorizontalScrollBar::Layout( Skin::Base* skin )
 	//Based on our last scroll amount, produce a position for the bar
 	if ( !m_Bar->IsDepressed() )
 	{
-		SetScrolledAmount( GetScrolledAmount(), true );
+		SetScrolledAmount( GetScrolledAmount(), false );
 	}
 }
 
@@ -123,8 +123,8 @@ void HorizontalScrollBar::OnBarMoved( Controls::Base* control )
 	if ( m_Bar->IsDepressed() )
 	{
 		SetScrolledAmount( CalculateScrolledAmount(), false );
-		BaseClass::OnBarMoved( control );
 	}
 	else
 	{ InvalidateParent(); }
+	BaseClass::OnBarMoved( control );
 }

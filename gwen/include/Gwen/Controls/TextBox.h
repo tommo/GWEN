@@ -61,6 +61,9 @@ namespace Gwen
 				virtual void SetCursorPos( int i );
 				virtual void SetCursorEnd( int i );
 
+				virtual int GetCursorPos() { return m_iCursorPos; };
+				virtual int GetCursorEnd() { return m_iCursorEnd; };
+
 				virtual void OnMouseClickLeft( int x, int y, bool bDown );
 				virtual void OnMouseMoved( int x, int y, int deltaX, int deltaY );
 
@@ -68,7 +71,7 @@ namespace Gwen
 
 				virtual void SetSelectAllOnFocus( bool b ) { m_bSelectAll = b; if ( b ) { OnSelectAll( this ); } }
 
-				virtual void MakeCaratVisible();
+				virtual void MakeCaretVisible();
 
 				virtual void OnEnter();
 
@@ -121,7 +124,7 @@ namespace Gwen
 
 				virtual bool OnKeyReturn( bool bDown );
 				virtual void Render( Skin::Base* skin );
-				virtual void MakeCaratVisible();
+				virtual void MakeCaretVisible();
 
 				virtual bool OnKeyHome( bool bDown );
 				virtual bool OnKeyEnd( bool bDown );

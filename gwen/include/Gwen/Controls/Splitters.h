@@ -9,6 +9,7 @@
 #define GWEN_CONTROLS_SPLITTERS_H
 
 #include "Gwen/Controls/Base.h"
+#include "Gwen/Controls/SplitterBar.h"
 
 namespace Gwen
 {

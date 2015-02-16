@@ -165,9 +165,8 @@ void EndDrawString () {
 
 	// Apply render state
 	gfxDevice.SetShaderPreset ( MOAIShaderMgr::DECK2D_SHADER );
-
 	gfxDevice.SetVertexMtxMode ( MOAIGfxDevice::VTX_STAGE_WORLD, MOAIGfxDevice::VTX_STAGE_MODEL );
-	gfxDevice.SetBlendMode ( ZGL_BLEND_FACTOR_ONE, ZGL_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA );
+	// gfxDevice.SetBlendMode ( ZGL_BLEND_FACTOR_ONE, ZGL_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA );
 	MOAIQuadBrush::BindVertexFormat ( gfxDevice );
 
 	// Get the context data
@@ -189,12 +188,12 @@ void EndDrawString () {
 	}
 
 	MOAIDraw::Bind ();
-	gfxDevice.SetVertexPreset ( MOAIVertexFormatMgr::XYZWC );
-	gfxDevice.SetVertexTransform ( MOAIGfxDevice::VTX_WORLD_TRANSFORM, orgWorldTransform );
-	gfxDevice.SetVertexMtxMode ( orgVtxModeInput, orgVtxModeOutput );
+	// gfxDevice.SetVertexPreset ( MOAIVertexFormatMgr::XYZWC );
+	// gfxDevice.SetVertexTransform ( MOAIGfxDevice::VTX_WORLD_TRANSFORM, orgWorldTransform );
+	// gfxDevice.SetVertexMtxMode ( orgVtxModeInput, orgVtxModeOutput );
 	// gfxDevice.SetBlendMode ( orgSrcBlend, orgDestBlend ); // TODO
 	
-	gfxDevice.Flush();
+	// gfxDevice.Flush();
 
 	// Clear context
 	g_CurrentTextDrawContext->mFont = 0;
@@ -290,6 +289,7 @@ namespace Gwen
 
 			gfx.Flush();
 
+			MOAIDraw::Bind ();
 		}
 
 		void MOAIRenderer::LoadTexture( Gwen::Texture* pTexture ) {
@@ -326,7 +326,7 @@ namespace Gwen
 		Gwen::Point MOAIRenderer::MeasureText( Gwen::Font* pFont, const Gwen::UnicodeString& text ) {
 			//TODO:...
 			Gwen::Point p;
-			p.x = pFont->size * Scale() * ( float ) text.length() * 2;
+			p.x = pFont->size * Scale() * ( float ) text.length();
 			p.y = pFont->size * Scale() * 1.5f;
 			return p;
 		}

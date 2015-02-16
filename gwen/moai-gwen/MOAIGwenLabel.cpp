@@ -1,6 +1,12 @@
 #include "moai-gwen/MOAIGwenLabel.h"
 #include "Gwen/Controls/Label.h"
 
+int MOAIGwenLabel::_getText ( lua_State *L ) {
+	MOAI_LUA_SETUP( MOAIGwenLabel, "U" )
+	const Gwen::TextObject& text = self->GetInternalControl()->GetText();
+	lua_pushstring( state, text.c_str() );
+	return 1;
+}
 
 //----------------------------------------------------------------//
 int MOAIGwenLabel::_setText(lua_State* L)
@@ -93,6 +99,7 @@ void MOAIGwenLabel::RegisterLuaFuncs ( MOAILuaState& state ) {
 	
 	luaL_Reg regTable [] = {
 		{ "setFont",                 _setFont      },
+		{ "getText",                 _getText      },
 		{ "setText",                 _setText      },
 		{ "setTextColor",            _setTextColor },
 		{ "setTextColorOverride",    _setTextColorOverride },

@@ -75,6 +75,7 @@ private:
 	static int    _setSize              ( lua_State* L );
 	static int    _getPos               ( lua_State* L );
 	static int    _setPos               ( lua_State* L );
+	static int    _setBounds            ( lua_State* L );
 	static int    _getBounds            ( lua_State* L );
 	static int    _getInnerBounds       ( lua_State* L );
 	static int    _getRenderBounds      ( lua_State* L );
@@ -126,6 +127,9 @@ private:
 	static int    _invalidate           ( lua_State* L );
 	static int    _invalidateChildren   ( lua_State* L );
 	static int    _invalidateParent     ( lua_State* L );
+
+	static int    _setBackgroundVisible ( lua_State* L );
+	static int    _isBackgroundVisible  ( lua_State* L );
 
 	//----------------------------------------------------------------//
 	void _EventCallBack( Gwen::Event::Info &EventInfo ) {

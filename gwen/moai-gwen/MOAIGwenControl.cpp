@@ -258,6 +258,17 @@ int MOAIGwenControl::_getBounds ( lua_State* L ) {
 	return 4;
 }
 
+//----------------------------------------------------------------//
+int MOAIGwenControl::_setBounds ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "UNNNN" )
+	float x = state.GetValue < float >( 2, 0.0f );
+	float y = state.GetValue < float >( 3, 0.0f );
+	float w = state.GetValue < float >( 4, 0.0f );
+	float h = state.GetValue < float >( 5, 0.0f );
+	self->GetInternalControl()->SetBounds( x, y, w, h );
+	return 0;
+}
+
 
 //----------------------------------------------------------------//
 int MOAIGwenControl::_getInnerBounds ( lua_State* L ) {
@@ -549,6 +560,22 @@ int MOAIGwenControl::_invalidateParent ( lua_State* L ) {
 
 
 //----------------------------------------------------------------//
+int MOAIGwenControl::_isBackgroundVisible ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
+	state.Push( self->GetInternalControl()->ShouldDrawBackground() );
+	return 1;
+}
+
+//----------------------------------------------------------------//
+int MOAIGwenControl::_setBackgroundVisible ( lua_State* L ) {
+	MOAI_LUA_SETUP ( MOAIGwenControl, "UB" )
+	bool visible = state.GetValue < bool >( 2, true );
+	self->GetInternalControl()->SetShouldDrawBackground( visible );
+	return 0;
+}
+
+
+//----------------------------------------------------------------//
 MOAIGwenControl::MOAIGwenControl () {
 	RTTI_SINGLE ( MOAIInstanceEventSource )
 	this->mControlRef.owner = this;
@@ -576,6 +603,16 @@ void MOAIGwenControl::RegisterLuaClass ( MOAILuaState& state ) {
 	
 	state.SetField ( -1, "EVENT_HOVER_ENTER",					( u32 )EVENT_HOVER_ENTER );
 	state.SetField ( -1, "EVENT_HOVER_EXIT",					( u32 )EVENT_HOVER_EXIT );
+
+	state.SetField ( -1, "POS_NONE",          ( u32 )Gwen::Pos::None    );
+	state.SetField ( -1, "POS_LEFT",          ( u32 )Gwen::Pos::Left    );
+	state.SetField ( -1, "POS_RIGHT",         ( u32 )Gwen::Pos::Right   );
+	state.SetField ( -1, "POS_TOP",           ( u32 )Gwen::Pos::Top     );
+	state.SetField ( -1, "POS_BOTTOM",        ( u32 )Gwen::Pos::Bottom  );
+	state.SetField ( -1, "POS_CENTERV",       ( u32 )Gwen::Pos::CenterV );
+	state.SetField ( -1, "POS_CENTERH",       ( u32 )Gwen::Pos::CenterH );
+	state.SetField ( -1, "POS_FILL",          ( u32 )Gwen::Pos::Fill    );
+	state.SetField ( -1, "POS_CENTER",        ( u32 )Gwen::Pos::Center  );
 
 	luaL_Reg regTable [] = {
 		{ "new",             MOAILogMessages::_alertNewIsUnsupported },
@@ -621,6 +658,7 @@ void MOAIGwenControl::RegisterLuaFuncs ( MOAILuaState& state ) {
 		{ "getBounds",            _getBounds          },
 		{ "getInnerBounds",       _getInnerBounds     },
 		{ "getRenderBounds",      _getRenderBounds    },
+		{ "setBounds",            _setBounds          },
 
 		{ "getPos",               _getPos             },
 		{ "setPos",               _setPos             },
@@ -668,7 +706,8 @@ void MOAIGwenControl::RegisterLuaFuncs ( MOAILuaState& state ) {
 		{ "invalidate",           _invalidate         },
 		{ "invalidateChildren",   _invalidateChildren },
 		{ "invalidateParent",     _invalidateParent   },
-
+		{ "setBackgroundVisible", _setBackgroundVisible },
+		{ "isBackgroundVisible",  _isBackgroundVisible },
 		{ NULL, NULL }
 	};
 	

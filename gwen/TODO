@@ -6,61 +6,68 @@ WIP:
  ✔ Canvas @done (15-02-14 20:50)
  ✔ CheckBox @done (15-02-14 21:24)
  ✔ ColorPicker @done (15-02-14 22:02)
+ ✔ CollapsibleCategory @done (15-02-16 02:09)
+   ✔ CollapsibleList @done (15-02-16 02:09)
+ ✔ CrossSplitter @done (15-02-16 13:27)
+ ✔ DockBase @done (15-02-16 13:05)
+   ✘ DockedTabControl @cancelled (15-02-16 13:05)
+ ✔ Dragger @done (15-02-16 11:11)
  ☐ ComboBox @API
  ✔ GroupBox @done (15-02-15 02:09)
+ ✔ ImagePanel @done (15-02-15 22:26)
  ✔ Label @done (15-02-15 02:25)
  ✔ LabelClickable @done (15-02-15 02:25)
- ☐ ListBox
  ✔ Menu @done (15-02-15 20:39)
    ✔ MenuItem @done (15-02-15 20:39)
    ✔ MenuStrip @done (15-02-15 20:39)
- ✔ ToolBar @done (15-02-15 21:03)
-   ✔ ToolBarButton @done (15-02-15 21:04)
- ✔ Text @done (15-02-14 21:26)
+ ✔ ProgressBar @done (15-02-15 21:29)
  ✔ Rectangle @done (15-02-14 22:11)
  ✔ RadioButton @done (15-02-15 02:19)
  ✔ RadioButtonController @done (15-02-15 17:43)
  ✔ ScrollControl @done (15-02-15 02:44)
+   ✔ ScrollBar @done (15-02-16 02:52)
+     ✔ ScrollBarBar @done (15-02-16 02:52)
+     ✔ ScrollBarButton @done (15-02-16 02:52)
+     ✔ VerticalScrollBar @done (15-02-16 02:52)
+     ✔ HorizontalScrollBar @done (15-02-16 02:52)
+ ✔ Slider @done (15-02-16 10:13)
+   ✔ HorizontalSlider @done (15-02-16 10:13)
+   ✔ VerticalSlider @done (15-02-16 10:13)
+ ✔ Splitters @done (15-02-16 10:36)
+   ✔ SplitterBar @done (15-02-16 10:36)
+ ✔ StatusBar @done (15-02-15 22:19)
+ ✔ ToolBar @done (15-02-15 21:03)
+   ✔ ToolBarButton @done (15-02-15 21:04)
+ ✔ Text @done (15-02-14 21:26)
+ ✔ TextBox @done (15-02-16 11:04)
  ✔ WindowControl @done (15-02-15 02:46)
    ✘ WindowButtons @cancelled (15-02-15 02:46)
  ✘ WindowCanvas @cancelled (15-02-14 21:27)
-BACKLOG:
- ☐ CollapsibleCategory
-   ☐ CollapsibleList
- ☐ CrossSplitter
- ☐ DockBase
-   ☐ DockedTabControl
- ☐ Dragger
+ ☐ Layout
+   ✔ Position @done (15-02-16 13:29)
+   ☐ Tile
+   ☐ Table
+BACKLOG: 
+ ☐ ListBox
  ☐ FieldLabel
- ☐ FilePicker @optional
- ☐ FolderPicker @optional
  ✘ Highlight @cancelled (15-02-15 21:07)
  ☐ HSVColorPicker
- ☐ ImagePanel
  ✘ Modal @cancelled (15-02-15 02:20)
  ☐ NumericUpDown
  ☐ PageControl
- ☐ ProgressBar
  ☐ Properties
  ☐ PropertyTree
- ✘ ResizableControl @cancelled (15-02-14 22:03)
  ☐ Resizer
- ☐ RichLabel
- ☐ ScrollBar
-   ☐ ScrollBarBar
-   ☐ ScrollBarButton
-   ☐ VerticalScrollBar
-   ☐ HorizontalScrollBar
- ☐ Slider
-   ☐ HorizontalSlider
-   ☐ VerticalSlider
- ☐ SplitterBar
- ☐ Splitters
- ☐ StatusBar
+ ✘ RichLabel @cancelled (15-02-15 22:19)
+    relace this with moai text label
  ☐ TabControl
    ☐ TabButton
    ☐ TabStrip
    ☐ TabTitleBar
- ☐ TextBox
  ☐ TreeControl
    ☐ TreeNode
+Optional:
+  ☐ FilePicker @optional
+  ☐ FolderPicker @optional
+  ☐ ResizableControl
+ 

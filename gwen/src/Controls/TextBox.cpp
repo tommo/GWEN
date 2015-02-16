@@ -126,7 +126,7 @@ void TextBox::RefreshCursorBounds()
 {
 	m_fNextCaretColorChange = Gwen::Platform::GetTimeInSeconds() + 1.5f;
 	m_CaretColor = Gwen::Color( 30, 30, 30, 255 );
-	MakeCaratVisible();
+	MakeCaretVisible();
 	Gwen::Rect pA = GetCharacterPosition( m_iCursorPos );
 	Gwen::Rect pB = GetCharacterPosition( m_iCursorEnd );
 	m_rectSelectionBounds.x = Utility::Min( pA.x, pB.x );
@@ -383,7 +383,7 @@ void TextBox::OnMouseMoved( int x, int y, int /*deltaX*/, int /*deltaY*/ )
 	SetCursorPos( iChar );
 }
 
-void TextBox::MakeCaratVisible()
+void TextBox::MakeCaretVisible()
 {
 	if ( m_Text->Width() < Width() )
 	{
@@ -391,24 +391,24 @@ void TextBox::MakeCaratVisible()
 	}
 	else
 	{
-		int iCaratPos = m_Text->GetCharacterPosition( m_iCursorPos ).x;
-		int iRealCaratPos = iCaratPos + m_Text->X();
+		int iCaretPos = m_Text->GetCharacterPosition( m_iCursorPos ).x;
+		int iRealCaretPos = iCaretPos + m_Text->X();
 		int iSlidingZone = m_Text->GetFont()->size + 1; //Width()*0.1f
 
-		// If the carat is already in a semi-good position, leave it.
-		if ( iRealCaratPos >= iSlidingZone && iRealCaratPos <= Width() - iSlidingZone )
+		// If the caret is already in a semi-good position, leave it.
+		if ( iRealCaretPos >= iSlidingZone && iRealCaretPos <= Width() - iSlidingZone )
 		{ return; }
 
 		int x = 0;
 
-		if ( iRealCaratPos > Width() - iSlidingZone )
+		if ( iRealCaretPos > Width() - iSlidingZone )
 		{
-			x = Width() - iCaratPos - iSlidingZone;
+			x = Width() - iCaretPos - iSlidingZone;
 		}
 
-		if ( iRealCaratPos < iSlidingZone )
+		if ( iRealCaretPos < iSlidingZone )
 		{
-			x = -iCaratPos + iSlidingZone;
+			x = -iCaretPos + iSlidingZone;
 		}
 
 		// Don't show too much whitespace to the right
@@ -560,7 +560,7 @@ void TextBoxMultiline::Render( Skin::Base* skin )
 	skin->GetRender()->DrawFilledRect( m_rectCaretBounds );
 }
 
-void TextBoxMultiline::MakeCaratVisible()
+void TextBoxMultiline::MakeCaretVisible()
 {
 	if( m_Text->Height() < Height() )
 	{
@@ -575,29 +575,29 @@ void TextBoxMultiline::MakeCaratVisible()
 		//if ( pos & Pos::CenterV ) y = bounds.y + ( bounds.h - Height() )  * 0.5;
 
 		Rect pos = m_Text->GetCharacterPosition( m_iCursorPos );
-		int iCaratPos = pos.y;// + pos.h;
-		int iRealCaratPos = iCaratPos + m_Text->Y();
+		int iCaretPos = pos.y;// + pos.h;
+		int iRealCaretPos = iCaretPos + m_Text->Y();
 		//int iSlidingZone =  m_Text->GetFont()->size; //Width()*0.1f
 
-		// If the carat is already in a semi-good position, leave it.
+		// If the Caret is already in a semi-good position, leave it.
 		int mi = GetPadding().top;
 		int ma = Height() - pos.h - GetPadding().bottom;
-		if ( iRealCaratPos >= GetPadding().top && iRealCaratPos <= Height() - pos.h - GetPadding().bottom )
+		if ( iRealCaretPos >= GetPadding().top && iRealCaretPos <= Height() - pos.h - GetPadding().bottom )
 			return;
 
 		int y = 0;
 
-		// bottom of carat too low
-		if(iRealCaratPos > Height() - pos.h - GetPadding().bottom )
+		// bottom of Caret too low
+		if(iRealCaretPos > Height() - pos.h - GetPadding().bottom )
 		{
 			//align bottom
-			y = Height() - iCaratPos - pos.h - GetPadding().bottom;
+			y = Height() - iCaretPos - pos.h - GetPadding().bottom;
 		}
 
-		// top of carat too low
-		if(iRealCaratPos < GetPadding().top)
+		// top of Caret too low
+		if(iRealCaretPos < GetPadding().top)
 		{
-			y = -iCaratPos + GetPadding().top;
+			y = -iCaretPos + GetPadding().top;
 		}
 
 		// Don't show too much whitespace to the bottom

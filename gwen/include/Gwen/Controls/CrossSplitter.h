@@ -52,7 +52,8 @@ namespace Gwen
 				int		m_fBarSize;
 
 				char		m_iZoomedSection;
-
+				
+			public:
 				Gwen::Event::Caller	onZoomed;
 				Gwen::Event::Caller	onUnZoomed;
 				Gwen::Event::Caller	onZoomChange;
