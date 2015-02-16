@@ -1,18 +1,18 @@
-#ifndef	MOAIGWENLayout_H
-#define	MOAIGWENLayout_H
+#ifndef	MOAIGWENLAYOUTTile_H
+#define	MOAIGWENLAYOUTTile_H
 
 #include "moai-gwen/headers.h"
 
 #include "moai-gwen/MOAIGwenControl.h"
-#include "Gwen/Controls/Layout/Position.h"
+#include "Gwen/Controls/Layout/Tile.h"
 
 //================================================================//
-// MOAIGwenLayoutPosition
+// MOAIGwenLayoutTile
 //================================================================//
-/**	@lua MOAIGwenLayoutPosition
+/**	@lua MOAIGwenLayoutTile
 	@text Box2D joint.
 */
-class MOAIGwenLayoutPosition :
+class MOAIGwenLayoutTile :
 	public MOAIGwenControl {
 public:
 	enum Events{
@@ -20,10 +20,10 @@ public:
 	};
 
 private:
-	static int _setPosition              ( lua_State* L );
+	static int _setTileSize         ( lua_State* L );
 		
 	//----------------------------------------------------------------//
-	MOAI_GWEN_NEW( MOAIGwenLayoutPosition )
+	MOAI_GWEN_NEW( MOAIGwenLayoutTile )
 	virtual Gwen::Controls::Base* CreateGwenControl();
 
 protected:
@@ -33,15 +33,15 @@ protected:
 
 public:
 		
-	inline Gwen::Controls::Layout::Position* GetInternalControl() { 
-		return static_cast < Gwen::Controls::Layout::Position* >( this->mControlRef.ref );
+	inline Gwen::Controls::Layout::Tile* GetInternalControl() { 
+		return static_cast < Gwen::Controls::Layout::Tile* >( this->mControlRef.ref );
 	}
 
-  DECL_LUA_FACTORY ( MOAIGwenLayoutPosition )
+  DECL_LUA_FACTORY ( MOAIGwenLayoutTile )
 	
 	//----------------------------------------------------------------//
-						MOAIGwenLayoutPosition			();
-						~MOAIGwenLayoutPosition			();
+						MOAIGwenLayoutTile			();
+						~MOAIGwenLayoutTile			();
 	void				RegisterLuaClass		( MOAILuaState& state );
 	void				RegisterLuaFuncs		( MOAILuaState& state );
 };

@@ -1,34 +1,33 @@
-#include "moai-gwen/MOAIGwenLayout.h"
+#include "moai-gwen/MOAIGwenLayoutTile.h"
 
 //----------------------------------------------------------------//
-int MOAIGwenLayoutPosition::_setPosition ( lua_State *L ) {
-	MOAI_LUA_SETUP( MOAIGwenLayoutPosition, "U" )
-	self->GetInternalControl()->SetPosition(
-		state.GetValue < u32 >( 2, Gwen::Pos::Center )
-		);
+int MOAIGwenLayoutTile::_setTileSize ( lua_State *L ) {
+	MOAI_LUA_SETUP( MOAIGwenLayoutTile, "UNN" )
+	float w = state.GetValue < float >( 2, 100.0f );
+	float h = state.GetValue < float >( 3, 100.0f );
+	self->GetInternalControl()->SetTileSize( w, h );
 	return 0;
 }
 
-
 //----------------------------------------------------------------//
-Gwen::Controls::Base* MOAIGwenLayoutPosition::CreateGwenControl() {
-	return new Gwen::Controls::Layout::Position( NULL );
+Gwen::Controls::Base* MOAIGwenLayoutTile::CreateGwenControl() {
+	return new Gwen::Controls::Layout::Tile( NULL );
 }
 
 //----------------------------------------------------------------//
-MOAIGwenLayoutPosition::MOAIGwenLayoutPosition () {
+MOAIGwenLayoutTile::MOAIGwenLayoutTile () {
 	RTTI_BEGIN
 		RTTI_EXTEND ( MOAIGwenControl )
 	RTTI_END	
 }
 
 //----------------------------------------------------------------//
-MOAIGwenLayoutPosition::~MOAIGwenLayoutPosition () {
+MOAIGwenLayoutTile::~MOAIGwenLayoutTile () {
 }
 
 
 //----------------------------------------------------------------//
-void MOAIGwenLayoutPosition::RegisterLuaClass ( MOAILuaState& state ) {
+void MOAIGwenLayoutTile::RegisterLuaClass ( MOAILuaState& state ) {
 	MOAIGwenControl::RegisterLuaClass( state );
 	luaL_Reg regTable [] = {
 		{ "new", _new },
@@ -38,11 +37,11 @@ void MOAIGwenLayoutPosition::RegisterLuaClass ( MOAILuaState& state ) {
 }
 
 //----------------------------------------------------------------//
-void MOAIGwenLayoutPosition::RegisterLuaFuncs ( MOAILuaState& state ) {
+void MOAIGwenLayoutTile::RegisterLuaFuncs ( MOAILuaState& state ) {
 	MOAIGwenControl::RegisterLuaFuncs( state );
 	
 	luaL_Reg regTable [] = {
-		{ "setPosition",      _setPosition  },
+		{ "setTileSize",      _setTileSize  },
 		{ NULL, NULL  }
 	};
 	

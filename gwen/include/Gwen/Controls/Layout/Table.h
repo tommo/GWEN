@@ -213,7 +213,7 @@ namespace Gwen
 						return gwen_cast<TableRow> ( GetChild( i ) );
 					}
 
-					unsigned int RowCount( int i )
+					unsigned int RowCount()
 					{
 						return NumChildren();
 					}

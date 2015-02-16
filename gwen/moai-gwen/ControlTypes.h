@@ -46,7 +46,9 @@
 // #include <moai-gwen/MOAIGwenColorPicker.h>
 
 //layout
-#include <moai-gwen/MOAIGwenLayout.h>
+#include <moai-gwen/MOAIGwenLayoutPosition.h>
+#include <moai-gwen/MOAIGwenLayoutTile.h>
+#include <moai-gwen/MOAIGwenLayoutTable.h>
 
 //skins
 #include <moai-gwen/MOAIGwenSkinSimple.h>

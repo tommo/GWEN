@@ -50,5 +50,8 @@ MOAIGwenControl* MOAIGwenControl::_GwenToMoai( Gwen::Controls::Base* control0 ) 
 	TRY_GWEN_TO_MOAI( ColorPicker,            ColorPicker,          control0 )
 	//TODO:wrap other control with common class?
 	TRY_GWEN_TO_MOAI( Layout::Position,       LayoutPosition,       control0 )
+	TRY_GWEN_TO_MOAI( Layout::TableRow,       LayoutTableRow,       control0 )
+	TRY_GWEN_TO_MOAI( Layout::Table,          LayoutTable,          control0 )
+	TRY_GWEN_TO_MOAI( Layout::Tile,           LayoutTile,           control0 )
 	return NULL;
 }

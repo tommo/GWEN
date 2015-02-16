@@ -66,6 +66,9 @@ void RegisterGwenControlTypes() {
 
 	//layout
 	REGISTER_GWEN_CLASS ( LayoutPosition )
+	REGISTER_GWEN_CLASS ( LayoutTable )
+	REGISTER_GWEN_CLASS ( LayoutTableRow )
+	REGISTER_GWEN_CLASS ( LayoutTile )
 	
 }
 

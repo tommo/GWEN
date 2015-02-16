@@ -40,20 +40,23 @@ WIP:
    ✔ ToolBarButton @done (15-02-15 21:04)
  ✔ Text @done (15-02-14 21:26)
  ✔ TextBox @done (15-02-16 11:04)
+   ☐ TextBoxNumeric
+   ☐ TextBoxMultiline
+   ☐ NumericUpDown
+   ☐ PasswordTextBox
  ✔ WindowControl @done (15-02-15 02:46)
    ✘ WindowButtons @cancelled (15-02-15 02:46)
  ✘ WindowCanvas @cancelled (15-02-14 21:27)
- ☐ Layout
+ ✔ Layout @done (15-02-16 14:48)
    ✔ Position @done (15-02-16 13:29)
-   ☐ Tile
-   ☐ Table
+   ✔ Tile @done (15-02-16 14:48)
+   ✔ Table @done (15-02-16 14:48)
 BACKLOG: 
  ☐ ListBox
- ☐ FieldLabel
+ ✘ FieldLabel @cancelled (15-02-16 13:31)
  ✘ Highlight @cancelled (15-02-15 21:07)
  ☐ HSVColorPicker
  ✘ Modal @cancelled (15-02-15 02:20)
- ☐ NumericUpDown
  ☐ PageControl
  ☐ Properties
  ☐ PropertyTree
