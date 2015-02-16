@@ -199,6 +199,7 @@ public:
 
 //----------------------------------------------------------------//
 	static MOAIGwenControl* _GwenToMoai( Gwen::Controls::Base* control );
+
 	static bool PushGwenControl( MOAILuaState& state, Gwen::Controls::Base* control ) {
 		MOAIGwenControl* wrapped = _GwenToMoai( control );
 		if( wrapped ){
@@ -208,6 +209,32 @@ public:
 		return false;
 	}
 
+	static void PushGwenControlOrNil( MOAILuaState& state, Gwen::Controls::Base* control ) {
+		if( !PushGwenControl( state, control) ) lua_pushnil( state );
+	}
+
+	static void PushGwenColor( MOAILuaState& state, Gwen::Color c ) {
+		state.Push( (float)c.r/255.0f );
+		state.Push( (float)c.g/255.0f );
+		state.Push( (float)c.b/255.0f );
+		state.Push( (float)c.a/255.0f );
+	}
+
+	static Gwen::Color PullGwenColor( MOAILuaState& state, int idx ) {
+		float r = state.GetValue< float >( idx+0, 1.0f );
+		float g = state.GetValue< float >( idx+1, 1.0f );
+		float b = state.GetValue< float >( idx+2, 1.0f );
+		float a = state.GetValue< float >( idx+3, 1.0f );
+		return Gwen::Color( r*255, g*255, b*255, a*255 );
+	}
+
+	static Gwen::Color PullGwenColor( MOAILuaState& state, int idx, Gwen::Color c0 ) {
+		float r = state.GetValue< float >( idx+0, (float)c0.r/255.0f );
+		float g = state.GetValue< float >( idx+1, (float)c0.g/255.0f );
+		float b = state.GetValue< float >( idx+2, (float)c0.b/255.0f );
+		float a = state.GetValue< float >( idx+3, (float)c0.a/255.0f );
+		return Gwen::Color( r*255, g*255, b*255, a*255 );
+	}
 };
 
 

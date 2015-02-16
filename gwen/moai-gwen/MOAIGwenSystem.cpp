@@ -97,7 +97,7 @@ u32 MOAIGwenSystem::OnGetModelBounds ( ZLBox& bounds ) {
 
 //----------------------------------------------------------------//
 void MOAIGwenSystem::OnUpdate ( float step ) {
-	// this->GetGwenCanvs()->DoThink();
+	this->GetGwenCanvs()->DoThink();
 	this->ScheduleUpdate ();
 }
 

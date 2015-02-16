@@ -16,14 +16,8 @@ int MOAIGwenCrossSplitter::_getPanel ( lua_State *L ) {
 	int panelId = state.GetValue< int >( 2, 1 ) - 1;
 	if( panelId > 3 || panelId < 0 ) return 0;
 	Gwen::Controls::Base* raw = self->GetInternalControl()->GetPanel( panelId );
-	MOAIGwenControl* control = _GwenToMoai( raw );
-	if( control ) {
-		control->PushLuaUserdata( state );
-		return 1;
-	} else {
-		lua_pushnil( state );
-		return 1;
-	}
+	PushGwenControlOrNil( state, raw );
+	return 1;
 }
 
 int MOAIGwenCrossSplitter::_isZoomed ( lua_State *L ) {

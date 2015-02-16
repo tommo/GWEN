@@ -27,6 +27,8 @@ MOAIGwenControl* MOAIGwenControl::_GwenToMoai( Gwen::Controls::Base* control0 ) 
 	TRY_GWEN_TO_MOAI( ComboBox,               ComboBox,             control0 )
 	TRY_GWEN_TO_MOAI( ListBox,                ListBox,              control0 )
 	TRY_GWEN_TO_MOAI( TextBox,                TextBox,              control0 )
+	TRY_GWEN_TO_MOAI( TreeNode,               TreeNode,             control0 )
+	TRY_GWEN_TO_MOAI( TreeControl,            TreeControl,          control0 )
 	TRY_GWEN_TO_MOAI( Menu,                   Menu,                 control0 )
 	TRY_GWEN_TO_MOAI( MenuStrip,              MenuBar,              control0 ) //Renamed
 	TRY_GWEN_TO_MOAI( MenuItem,               MenuItem,             control0 )

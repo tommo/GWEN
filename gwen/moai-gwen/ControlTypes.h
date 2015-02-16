@@ -25,6 +25,8 @@
 
 #include <moai-gwen/MOAIGwenGroupBox.h>
 #include <moai-gwen/MOAIGwenListBox.h>
+#include <moai-gwen/MOAIGwenTreeNode.h>
+#include <moai-gwen/MOAIGwenTreeControl.h>
 
 #include <moai-gwen/MOAIGwenSlider.h>
 #include <moai-gwen/MOAIGwenScrollBar.h>

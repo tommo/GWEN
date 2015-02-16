@@ -3,13 +3,8 @@
 int MOAIGwenDockBase::_getTabControl ( lua_State *L ) {
 	MOAI_LUA_SETUP( MOAIGwenDockBase, "U" )
 	Gwen::Controls::TabControl* tab = self->GetInternalControl()->GetTabControl();
-	if( tab ) {
-		_GwenToMoai( tab )->PushLuaUserdata( state );
-		return 1;
-	} else {
-		lua_pushnil( state );
-		return 0;
-	}
+	PushGwenControlOrNil( state, tab );
+	return 1;
 }
 
 //----------------------------------------------------------------//

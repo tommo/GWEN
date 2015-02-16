@@ -35,7 +35,9 @@ void RegisterGwenControlTypes() {
 	REGISTER_GWEN_CLASS ( GroupBox )
 	REGISTER_GWEN_CLASS ( ListBox )
 	REGISTER_GWEN_CLASS ( TextBox )
-	REGISTER_GWEN_CLASS ( Dragger )
+	
+	REGISTER_GWEN_CLASS ( TreeNode )
+	REGISTER_GWEN_CLASS ( TreeControl )
 
 	REGISTER_GWEN_CLASS ( Menu )
 	REGISTER_GWEN_CLASS ( MenuItem )
@@ -44,6 +46,7 @@ void RegisterGwenControlTypes() {
 	REGISTER_GWEN_CLASS ( VerticalSlider )
 	REGISTER_GWEN_CLASS ( HorizontalSlider )
 
+	REGISTER_GWEN_CLASS ( Dragger )
 	REGISTER_GWEN_CLASS ( VerticalSplitter )
 	REGISTER_GWEN_CLASS ( HorizontalSplitter )
 	REGISTER_GWEN_CLASS ( CrossSplitter )

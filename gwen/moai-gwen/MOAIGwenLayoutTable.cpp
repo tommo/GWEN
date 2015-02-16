@@ -32,14 +32,8 @@ int MOAIGwenLayoutTableRow::_getCell ( lua_State *L ) {
 	MOAI_LUA_SETUP( MOAIGwenLayoutTableRow, "UN" )
 	int id = state.GetValue< int >( 2, 1 ) - 1;
 	Gwen::Controls::Base* raw = self->GetInternalControl()->GetCellContents( id );
-	MOAIGwenControl* control = _GwenToMoai( raw );
-	if( control ) {
-		control->PushLuaUserdata( state );
-		return 1;
-	} else {
-		lua_pushnil( state );
-		return 1;
-	}
+	PushGwenControlOrNil( state, raw );
+	return 1;
 }
 
 int MOAIGwenLayoutTableRow::_setSelected ( lua_State *L ) {
@@ -138,15 +132,8 @@ int MOAIGwenLayoutTable::_getRow ( lua_State *L ) {
 	MOAI_LUA_SETUP( MOAIGwenLayoutTable, "UN" )
 	u32 id = state.GetValue < u32 >( 2, 1 ) - 1;
 	Gwen::Controls::Base* raw = self->GetInternalControl()->GetRow( id );
-	MOAIGwenControl* control = _GwenToMoai( raw );
-	if( control ) {
-		control->PushLuaUserdata( state );
-		return 1;
-	} else {
-		lua_pushnil( state );
-		return 1;
-	}
-	return 0;
+	PushGwenControlOrNil( state, raw );
+	return 1;
 }
 
 int MOAIGwenLayoutTable::_removeRow ( lua_State *L ) {
@@ -161,8 +148,7 @@ int MOAIGwenLayoutTable::_removeRow ( lua_State *L ) {
 int MOAIGwenLayoutTable::_addRow ( lua_State *L ) {
 	MOAI_LUA_SETUP( MOAIGwenLayoutTable, "U" )
 	Gwen::Controls::Base* raw = self->GetInternalControl()->AddRow();
-	MOAIGwenControl* control = _GwenToMoai( raw );
-	control->PushLuaUserdata( state );
+	PushGwenControl( state, raw );
 	return 1;
 }
 

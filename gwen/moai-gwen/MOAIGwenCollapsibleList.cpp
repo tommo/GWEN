@@ -7,8 +7,7 @@ int MOAIGwenCollapsibleList::_addCategory ( lua_State *L ) {
 	MOAI_LUA_SETUP( MOAIGwenCollapsibleList, "US" )
 	cc8* name = state.GetValue < cc8* >( 2, "" );
 	Gwen::Controls::CollapsibleCategory* category = self->GetInternalControl()->Add( name );
-	MOAIGwenControl* control = _GwenToMoai( category );
-	control->PushLuaUserdata( state );
+	PushGwenControl( state, category );
 	return 1;
 }
 
@@ -22,14 +21,8 @@ int MOAIGwenCollapsibleList::_deselectAll(lua_State* L)
 int MOAIGwenCollapsibleList::_getSelection ( lua_State *L ) {
 	MOAI_LUA_SETUP( MOAIGwenCollapsibleList, "U" )
 	Gwen::Controls::Button* selected = self->GetInternalControl()->GetSelected();
-	MOAIGwenControl* control = _GwenToMoai( selected );
-	if( control ) {
-		control->PushLuaUserdata( state );
-		return 1;
-	} else {
-		lua_pushnil( state );
-		return 1;
-	}
+	PushGwenControlOrNil( state, selected );
+	return 1;
 }
 
 //----------------------------------------------------------------//

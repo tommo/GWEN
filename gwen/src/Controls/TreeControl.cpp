@@ -16,10 +16,13 @@ GWEN_CONTROL_CONSTRUCTOR( TreeControl )
 {
 	m_TreeControl = this;
 	m_ToggleButton->DelayedDelete();
+	m_ToggleButton->SetParent( NULL );
 	m_ToggleButton = NULL;
 	m_Title->DelayedDelete();
+	m_Title->SetParent( NULL );
 	m_Title = NULL;
 	m_InnerPanel->DelayedDelete();
+	m_InnerPanel->SetParent( NULL );
 	m_InnerPanel = NULL;
 	m_bAllowMultipleSelection = false;
 	m_ScrollControl = new ScrollControl( this );

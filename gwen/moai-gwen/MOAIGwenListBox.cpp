@@ -5,7 +5,7 @@ int MOAIGwenListBox::_addItem ( lua_State *L ) {
 	cc8* text = state.GetValue < cc8* >( 2, "" );
 	cc8* name = state.GetValue < cc8* >( 3, text );
 	Gwen::Controls::Layout::TableRow* row = self->GetInternalControl()->AddItem( text, name );
-	_GwenToMoai( row )->PushLuaUserdata( state );
+	PushGwenControl( state, row );
 	return 1;
 }
 
@@ -23,13 +23,8 @@ int MOAIGwenListBox::_getSelectedRow ( lua_State *L ) {
 	cc8* text = state.GetValue < cc8* >( 2, "" );
 	cc8* name = state.GetValue < cc8* >( 3, text );
 	Gwen::Controls::Layout::TableRow* row = self->GetInternalControl()->GetSelectedRow();
-	if( row ) {
-		_GwenToMoai( row )->PushLuaUserdata( state );
-		return 1;
-	} else {
-		lua_pushnil( state );
-		return 1;
-	}
+	PushGwenControl( state, row );
+	return 1;
 }
 
 int MOAIGwenListBox::_getSelectedRows ( lua_State *L ) {
@@ -38,15 +33,19 @@ int MOAIGwenListBox::_getSelectedRows ( lua_State *L ) {
 	cc8* name = state.GetValue < cc8* >( 3, text );
 	const Gwen::Controls::ListBox::Rows& rows = 
 		self->GetInternalControl()->GetSelectedRows();
+	lua_newtable( L );
 	u32 count = 0;
 	for ( Gwen::Controls::ListBox::Rows::const_iterator it = rows.begin() ;
 			 it != rows.end();
 			 ++it )
 	{
-		count += 1;
-		_GwenToMoai( *it )->PushLuaUserdata( state );
+		Gwen::Controls::Base* child = *it ;
+		lua_pushnumber ( state, count );
+		PushGwenControl( state, child );
+		lua_settable( L, -3 );
+		++count;
 	}
-	return count;
+	return 1;
 }
 
 
@@ -62,13 +61,13 @@ int MOAIGwenListBox::_getSelectedRowName ( lua_State *L ) {
 	}
 }
 
-int MOAIGwenListBox::_setAllowMultipleSelection ( lua_State *L ) {
+int MOAIGwenListBox::_setAllowMultiSelect ( lua_State *L ) {
 	MOAI_LUA_SETUP( MOAIGwenListBox, "U" )
 	self->GetInternalControl()->SetAllowMultiSelect( state.GetValue < bool >( 2, true ) );
 	return 0;
 }
 
-int MOAIGwenListBox::_isAllowMultipleSelection ( lua_State *L ) {
+int MOAIGwenListBox::_isAllowMultiSelect ( lua_State *L ) {
 	MOAI_LUA_SETUP( MOAIGwenListBox, "U" )
 	state.Push( 
 		self->GetInternalControl()->AllowMultiSelect()
@@ -159,8 +158,8 @@ void MOAIGwenListBox::RegisterLuaFuncs ( MOAILuaState& state ) {
 		{ "addItem",                   _addItem                   },
 		{ "removeItem",                _removeItem                },
 		{ "deselectAll",               _deselectAll               },
-		{ "setAllowMultipleSelection", _setAllowMultipleSelection },
-		{ "isAllowMultipleSelection",  _isAllowMultipleSelection  },
+		{ "setAllowMultiSelect", _setAllowMultiSelect },
+		{ "isAllowMultiSelect",  _isAllowMultiSelect  },
 		{ "getSelectedRows",           _getSelectedRows           },
 		{ "getSelectedRow",            _getSelectedRow            },
 		{ "getSelectedRowName",        _getSelectedRowName        },

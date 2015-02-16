@@ -41,13 +41,7 @@ int MOAIGwenControl::_addChild ( lua_State* L ) {
 int MOAIGwenControl::_getParent ( lua_State* L ) {
 	MOAI_LUA_SETUP ( MOAIGwenControl, "U" )
 	Gwen::Controls::Base* parent = self->GetInternalControl()->GetParent();
-	if( parent ){
-		MOAIGwenControl* control = _GwenToMoai( parent );
-		control->PushLuaUserdata( state );
-		return 1;
-	} else {
-		lua_pushnil( state );
-	}
+	PushGwenControlOrNil( state, parent );
 	return 1;
 }
 
@@ -74,11 +68,7 @@ int MOAIGwenControl::_findChildByName( lua_State* L ) {
 	cc8* name = state.GetValue < cc8* >( 2, "" );
 	bool recursive = state.GetValue < bool >( 3, false );
 	Gwen::Controls::Base *found = self->GetInternalControl()->FindChildByName( name, recursive );
-	if( found ) {
-		PushGwenControl( state, found );
-	} else	{
-		lua_pushnil( state );
-	}
+	PushGwenControlOrNil( state, found );
 	return 1;
 }
 

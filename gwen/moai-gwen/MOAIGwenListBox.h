@@ -25,8 +25,8 @@ private:
 	static int _addItem                     ( lua_State* L );
 	static int _removeItem                  ( lua_State* L );
 	static int _deselectAll                 ( lua_State* L );
-	static int _setAllowMultipleSelection   ( lua_State* L );
-	static int _isAllowMultipleSelection    ( lua_State* L );
+	static int _setAllowMultiSelect         ( lua_State* L );
+	static int _isAllowMultiSelect          ( lua_State* L );
 	static int _getSelectedRows             ( lua_State* L );
 	static int _getSelectedRow              ( lua_State* L );
 	static int _getSelectedRowName          ( lua_State* L );

@@ -17,6 +17,7 @@ WIP:
  ✔ ImagePanel @done (15-02-15 22:26)
  ✔ Label @done (15-02-15 02:25)
  ✔ LabelClickable @done (15-02-15 02:25)
+ ✔ ListBox @done (15-02-16 15:23)
  ✔ Menu @done (15-02-15 20:39)
    ✔ MenuItem @done (15-02-15 20:39)
    ✔ MenuStrip @done (15-02-15 20:39)
@@ -44,6 +45,8 @@ WIP:
    ☐ TextBoxMultiline
    ☐ NumericUpDown
    ☐ PasswordTextBox
+ ☐ TreeControl
+   ☐ TreeNode
  ✔ WindowControl @done (15-02-15 02:46)
    ✘ WindowButtons @cancelled (15-02-15 02:46)
  ✘ WindowCanvas @cancelled (15-02-14 21:27)
@@ -52,7 +55,6 @@ WIP:
    ✔ Tile @done (15-02-16 14:48)
    ✔ Table @done (15-02-16 14:48)
 BACKLOG: 
- ☐ ListBox
  ✘ FieldLabel @cancelled (15-02-16 13:31)
  ✘ Highlight @cancelled (15-02-15 21:07)
  ☐ HSVColorPicker
@@ -67,8 +69,6 @@ BACKLOG:
    ☐ TabButton
    ☐ TabStrip
    ☐ TabTitleBar
- ☐ TreeControl
-   ☐ TreeNode
 Optional:
   ☐ FilePicker @optional
   ☐ FolderPicker @optional
