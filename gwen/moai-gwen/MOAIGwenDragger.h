@@ -31,6 +31,8 @@ private:
 protected:
 	virtual void ConnectEvents() {
 		MOAIGwenControl::ConnectEvents();
+		ConnectEventCallBack( GetInternalControl()->onDragStart, EVENT_DRAG_START );
+		ConnectEventCallBack( GetInternalControl()->onDragged, EVENT_DRAG_END );
 	};
 
 public:

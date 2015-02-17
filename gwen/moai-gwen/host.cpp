@@ -39,6 +39,9 @@ void RegisterGwenControlTypes() {
 	REGISTER_GWEN_CLASS ( TreeNode )
 	REGISTER_GWEN_CLASS ( TreeControl )
 
+	REGISTER_GWEN_CLASS ( TabButton )
+	REGISTER_GWEN_CLASS ( TabControl )
+	
 	REGISTER_GWEN_CLASS ( Menu )
 	REGISTER_GWEN_CLASS ( MenuItem )
 	REGISTER_GWEN_CLASS ( MenuBar )
@@ -66,6 +69,14 @@ void RegisterGwenControlTypes() {
 	REGISTER_GWEN_CLASS ( ColorPicker )
 	REGISTER_GWEN_CLASS ( CollapsibleList )
 	REGISTER_GWEN_CLASS ( CollapsibleCategory )
+	REGISTER_GWEN_CLASS ( PageControl )
+
+	//property
+	REGISTER_GWEN_CLASS ( PropertyRow )
+	REGISTER_GWEN_CLASS ( Properties )
+	REGISTER_GWEN_CLASS ( PropertyTree )
+	REGISTER_GWEN_CLASS ( BaseProperty )
+
 
 	//layout
 	REGISTER_GWEN_CLASS ( LayoutPosition )

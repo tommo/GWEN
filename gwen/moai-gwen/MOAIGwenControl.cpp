@@ -654,6 +654,8 @@ void MOAIGwenControl::RegisterLuaFuncs ( MOAILuaState& state ) {
 		{ "setPos",               _setPos             },
 		{ "moveTo",               _moveTo             },
 		{ "moveBy",               _moveBy             },
+		{ "getLoc",               _getPos             },
+		{ "setLoc",               _setPos             },
 		{ "localToCanvas",        _localToCanvas      },
 		{ "canvasToLocal",        _canvasToLocal      },
 

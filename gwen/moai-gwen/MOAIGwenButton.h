@@ -25,6 +25,15 @@ public:
 
 private:
 	
+	static int _isPressed        ( lua_State* L );
+	static int _setIsToggle      ( lua_State* L );
+	static int _isToggle         ( lua_State* L );
+	static int _getToggleState   ( lua_State* L );
+	static int _setToggleState   ( lua_State* L );
+	static int _setImage         ( lua_State* L );
+	static int _setImageAlpha    ( lua_State* L );
+	static int _fitContent       ( lua_State* L );
+
 	//----------------------------------------------------------------//
 	MOAI_GWEN_NEW( MOAIGwenButton )
 	virtual Gwen::Controls::Base* CreateGwenControl();

@@ -9,6 +9,14 @@
 			"name": "RUN",
 			"target": "exec_in_window",
 			"working_dir": "$project_path"
+		},
+		{
+			"cmd": ["python-32","-u", "$file"],
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"selector": "source.python",
+			"name": "Python32",
+			"working_dir": "$file_path",
+			"target": "exec_in_window"
 		}
 	],
 
@@ -72,7 +80,8 @@
 	{
 		"build_switcher_systems":
 		[
-			"RUN"
+			"RUN",
+			"Python32"
 		],
 		"show_panel_on_build": false,
 		"sublimeclang_options":

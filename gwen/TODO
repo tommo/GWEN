@@ -2,7 +2,7 @@ WIP:
  ✔ Base @done (15-02-14 21:24)
    ✔ API @done (15-02-14 21:29)
    ✔ Event Handle @done (15-02-14 21:24)
- ☐ Button @API
+ ✔ Button @API @done (15-02-17 00:01)
  ✔ Canvas @done (15-02-14 20:50)
  ✔ CheckBox @done (15-02-14 21:24)
  ✔ ColorPicker @done (15-02-14 22:02)
@@ -22,6 +22,8 @@ WIP:
    ✔ MenuItem @done (15-02-15 20:39)
    ✔ MenuStrip @done (15-02-15 20:39)
  ✔ ProgressBar @done (15-02-15 21:29)
+ ✔ Properties @done (15-02-16 22:21)
+ ✔ PropertyTree @done (15-02-16 22:21)
  ✔ Rectangle @done (15-02-14 22:11)
  ✔ RadioButton @done (15-02-15 02:19)
  ✔ RadioButtonController @done (15-02-15 17:43)
@@ -39,14 +41,18 @@ WIP:
  ✔ StatusBar @done (15-02-15 22:19)
  ✔ ToolBar @done (15-02-15 21:03)
    ✔ ToolBarButton @done (15-02-15 21:04)
+ ✔ TabControl @done (15-02-17 17:47)
+   ✔ TabButton @done (15-02-17 17:47)
+   ✘ TabStrip @cancelled (15-02-17 17:47)
+   ✘ TabTitleBar @cancelled (15-02-17 17:10)
  ✔ Text @done (15-02-14 21:26)
  ✔ TextBox @done (15-02-16 11:04)
    ☐ TextBoxNumeric
    ☐ TextBoxMultiline
    ☐ NumericUpDown
    ☐ PasswordTextBox
- ☐ TreeControl
-   ☐ TreeNode
+ ✔ TreeControl @done (15-02-16 16:18)
+   ✔ TreeNode @done (15-02-16 16:18)
  ✔ WindowControl @done (15-02-15 02:46)
    ✘ WindowButtons @cancelled (15-02-15 02:46)
  ✘ WindowCanvas @cancelled (15-02-14 21:27)
@@ -54,21 +60,22 @@ WIP:
    ✔ Position @done (15-02-16 13:29)
    ✔ Tile @done (15-02-16 14:48)
    ✔ Table @done (15-02-16 14:48)
+ ✔ PageControl @done (15-02-17 13:31)
 BACKLOG: 
  ✘ FieldLabel @cancelled (15-02-16 13:31)
  ✘ Highlight @cancelled (15-02-15 21:07)
  ☐ HSVColorPicker
  ✘ Modal @cancelled (15-02-15 02:20)
- ☐ PageControl
- ☐ Properties
- ☐ PropertyTree
  ☐ Resizer
+ ☐ Properties
+   ✔ Base @done (15-02-16 22:21)
+   ☐ Text
+   ☐ File
+   ☐ Folder
+   ☐ ComboBox
+   ☐ Color
  ✘ RichLabel @cancelled (15-02-15 22:19)
     relace this with moai text label
- ☐ TabControl
-   ☐ TabButton
-   ☐ TabStrip
-   ☐ TabTitleBar
 Optional:
   ☐ FilePicker @optional
   ☐ FolderPicker @optional

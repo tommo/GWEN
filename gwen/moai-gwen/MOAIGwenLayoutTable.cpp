@@ -47,18 +47,7 @@ int MOAIGwenLayoutTableRow::_setSelected ( lua_State *L ) {
 int MOAIGwenLayoutTableRow::_setTextColor(lua_State* L)
 {
 	MOAI_LUA_SETUP ( MOAIGwenLayoutTableRow, "UNNN" )
-	float r = state.GetValue < float >( 2, 1.0f );
-	float g = state.GetValue < float >( 3, 1.0f );
-	float b = state.GetValue < float >( 4, 1.0f );
-	float a = state.GetValue < float >( 5, 1.0f );
-	self->GetInternalControl()->SetTextColor( 
-		Gwen::Color(
-			r * 255,
-			g * 255,
-			b * 255,
-			a * 255
-		)
-	);
+	self->GetInternalControl()->SetTextColor( PullGwenColor( state, 2 ) );
 	return 0;
 }
 

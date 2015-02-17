@@ -41,11 +41,19 @@
 
 #include <moai-gwen/MOAIGwenDockBase.h>
 
+#include <moai-gwen/MOAIGwenTabControl.h>
+#include <moai-gwen/MOAIGwenTabButton.h>
+
 //compund
 #include <moai-gwen/MOAIGwenCollapsibleCategory.h>
 #include <moai-gwen/MOAIGwenCollapsibleList.h>
 #include <moai-gwen/MOAIGwenColorPicker.h>
-// #include <moai-gwen/MOAIGwenColorPicker.h>
+#include <moai-gwen/MOAIGwenPageControl.h>
+
+//property
+#include <moai-gwen/MOAIGwenProperties.h>
+#include <moai-gwen/MOAIGwenProperty.h>
+#include <moai-gwen/MOAIGwenPropertyTree.h>
 
 //layout
 #include <moai-gwen/MOAIGwenLayoutPosition.h>

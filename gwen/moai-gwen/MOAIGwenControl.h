@@ -15,7 +15,7 @@ class MOAIGwenSystem;
 class MOAIGwenCanvas;
 
 class MOAIGwenControl :
-	public virtual MOAIInstanceEventSource,
+	public virtual MOAINode,
 	public Gwen::Event::Handler
 	{
 public:
