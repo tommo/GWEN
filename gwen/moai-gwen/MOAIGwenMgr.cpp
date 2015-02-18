@@ -87,7 +87,7 @@ void MOAIGwenMgr::LoadTexture( Gwen::Texture* texture ) {
 		if ( this->mOnLoadTexture.PushRef ( state )) {
 			lua_pushstring( state, texture->name.Get().c_str() );
 			state.DebugCall ( 1, 1 );
-			MOAITexture* tex = state.GetLuaObject < MOAITexture >( -1, 0 );
+			MOAITextureBase* tex = state.GetLuaObject < MOAITextureBase >( -1, 0 );
 			tex->Bind();
 			texture->data = tex;
 			texture->width = tex->GetWidth();
@@ -96,12 +96,12 @@ void MOAIGwenMgr::LoadTexture( Gwen::Texture* texture ) {
 	} else {
 		//default loader
 		zglBegin();
-		MOAITexture* tex = new MOAITexture();
-		tex->Init( texture->name.c_str(), MOAIImageTransform::TRUECOLOR | MOAIImageTransform::PREMULTIPLY_ALPHA );
+		MOAIImageTexture* tex = new MOAIImageTexture();
+		tex->Load( texture->name.c_str(), MOAIImageTransform::TRUECOLOR | MOAIImageTransform::PREMULTIPLY_ALPHA );
 		tex->Bind();
 		texture->data = tex;
-		texture->width = tex->GetWidth();
-		texture->height = tex->GetHeight();
+		texture->width = ((MOAIImage *)tex)->GetWidth();
+		texture->height = ((MOAIImage *)tex)->GetHeight();
 		// printf("loading texture %s\n", texture->name.c_str() );
 		// printf("%d,%d\n", tex->GetWidth(), tex->GetHeight() );
 		tex->Retain();

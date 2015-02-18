@@ -13,7 +13,7 @@
 #include "moai-sim/MOAIGfxDevice.h"
 #include <moai-sim/MOAIShaderMgr.h>
 #include <moai-sim/MOAIVertexFormatMgr.h>
-#include <moai-sim/MOAITexture.h>
+#include <moai-sim/MOAITextureBase.h>
 #include <moai-sim/MOAIQuadBrush.h>
 
 
@@ -332,7 +332,15 @@ namespace Gwen
 		}
 
 		Gwen::Color MOAIRenderer::PixelColour( Gwen::Texture* pTexture, unsigned int x, unsigned int y, const Gwen::Color & col_default ) {
-			//TODO
+			MOAITextureBase* texture = static_cast< MOAITextureBase* >( pTexture->data );
+			MOAIImage* image = texture->AsType< MOAIImage >();
+			if( image ) {
+				u32 rgba = image->GetPixel( x, y );
+				if( rgba != 0 ) {
+					ZLColorVec c = ZLColorVec( rgba );
+					return Gwen::Color( c.mR * 255, c.mG * 255, c.mB * 255, c.mA * 255 );
+				}
+			}
 			return col_default;
 		}
 

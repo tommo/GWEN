@@ -121,3 +121,20 @@ nodeFood:addNode( "steak" )
 nodeDrink = tree:addNode( "drink" )
 nodeDrink:addNode( "coke" )
 nodeDrink:addNode( "milk" )
+
+
+window = canvas:addChild( MOAIGwenWindowControl.new() )
+window:setSize( 200, 300 )
+window:setPos( 100, 100 )
+-- window:addChild( tree )
+
+note = window:addChild( MOAIGwenTabControl.new() )
+note:setSize( 200, 100 )
+
+text1 = MOAIGwenTextBox.new()
+text1:setText( 'No good!' )
+text2 = MOAIGwenTextBox.new()
+text2:setText( 'No Bad!' )
+
+note:addPage( "good", text1 )
+note:addPage( "bad", text2 )
