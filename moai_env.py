@@ -42,7 +42,7 @@ def setup_moai_env( ctx, target, config ):
 		]
 
 	LIB_NAMES += [ 
-		'moai-%s-fmod-ex',
+		# 'moai-%s-fmod-ex',
 		'moai-%s-fmod-designer'
 		]
 	

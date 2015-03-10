@@ -9,6 +9,7 @@ int MOAIGwenTabButton::_setPage ( lua_State *L ) {
 		control->PushLuaUserdata( state );
 		return 1;
 	}
+	return 0;
 }
 
 int MOAIGwenTabButton::_getPage ( lua_State *L ) {

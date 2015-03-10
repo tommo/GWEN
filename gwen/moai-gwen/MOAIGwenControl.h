@@ -133,7 +133,7 @@ private:
 
 	//----------------------------------------------------------------//
 	void _EventCallBack( Gwen::Event::Info &EventInfo ) {
-		u32 ev = (u32)EventInfo.Data;
+		intptr_t ev = ( intptr_t ) EventInfo.Data;
 		MOAIScopedLuaState state = MOAILuaRuntime::Get ().State ();
 		if ( this->PushListenerAndSelf ( ev, state )) {
 			state.DebugCall ( 1, 0 );
@@ -147,7 +147,8 @@ protected:
 	MOAILuaSharedPtr < MOAIGwenSkin > mSkin;
 	
 	void    ConnectEventCallBack( Gwen::Event::Caller& caller, u32 eventId ) {
-		caller.Add( this, &MOAIGwenControl::_EventCallBack, (void*)eventId );
+		void* data = reinterpret_cast< void* >( static_cast < intptr_t >( eventId ) );
+		caller.Add( this, &MOAIGwenControl::_EventCallBack, data );
 	}
 
 	virtual Gwen::Controls::Base* CreateGwenControl();

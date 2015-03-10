@@ -1,3 +1,6 @@
+Unicode Support:
+  ☐ use wide string
+  ☐ utf8 conversion...
 WIP:
  ✔ Base @done (15-02-14 21:24)
    ✔ API @done (15-02-14 21:29)

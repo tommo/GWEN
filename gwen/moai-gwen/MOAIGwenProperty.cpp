@@ -23,6 +23,7 @@ int MOAIGwenBaseProperty::_isEditing ( lua_State *L ) {
 
 Gwen::Controls::Base* MOAIGwenBaseProperty::CreateGwenControl() {
 	// return new Gwen::Controls::Property::Base( MOAIGwenMgr::Get().GetDefaultCanvas() ) ;
+	return NULL;
 }
 
 //----------------------------------------------------------------//
